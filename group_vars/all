@@ -34,3 +34,4 @@ utils:
     - binutils
     - make
     - terminator
+    - xclip
