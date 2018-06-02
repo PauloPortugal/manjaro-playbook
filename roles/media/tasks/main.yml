@@ -1,0 +1,6 @@
+---
+- name: Install media tools from Arch User Repository
+  script: ../../../aur/install-aur.sh {{ item }}
+  with_items: '{{ media_aur }}'
+  tags:
+    - aur

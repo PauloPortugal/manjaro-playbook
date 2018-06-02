@@ -1,0 +1,21 @@
+---
+- name: Install editors
+  pacman: name={{ item }} state=present
+  with_items: '{{ editors }}'
+  become: yes
+
+- name: Install editors from Arch User Repository
+  script: ../../../aur/install-aur.sh {{ item }}
+  with_items: '{{ editors_aur }}'
+  tags:
+    - aur
+
+- name: Setup default Git configuration
+  git_config:
+    name="{{ item.name }}"
+    scope=global
+    value="{{ item.value }}"
+  with_items:
+    - {name: "user.name",   value: "{{ user_name }}" }
+    - {name: "user.email",  value: "{{ user_email }}" }
+    - {name: "core.editor", value: "vim" }

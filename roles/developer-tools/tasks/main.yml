@@ -1,0 +1,11 @@
+---
+- name: Install Developer Tools
+  pacman: name={{ item }} state=present
+  with_items: '{{ developer_stack }}'
+  become: yes
+
+- name: Install Developer Tools from Arch User Repository
+  script: ../../../aur/install-aur.sh {{ item }}
+  with_items: '{{ developer_stack_aur }}'
+  tags:
+    - aur

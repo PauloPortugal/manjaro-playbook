@@ -1,0 +1,36 @@
+browsers_aur:
+    - google-chrome
+
+developer_stack:
+    - jq
+    - docker
+    - nodejs
+    - npm
+    - jre8-openjdk-headless jre8-openjdk jdk8-openjdk openjdk8-doc
+    - jre10-openjdk-headless jre10-openjdk jdk10-openjdk openjdk10-doc
+    - maven
+    - clojure
+
+developer_stack_aur:
+    - leiningen
+
+editors:
+    - vim
+    - atom
+    - emacs
+    - gimp
+
+editors_aur:
+    - intellij-idea-ultimate-edition
+
+media_aur:
+    - spotify
+
+shell_aliases:
+    - alias ll='ls -lrt'
+    - alias vi=vim
+
+utils:
+    - binutils
+    - make
+    - terminator

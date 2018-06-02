@@ -1,0 +1,6 @@
+---
+- name: Install browsers from Arch User Repository
+  script: ../../../aur/install-aur.sh {{ item }}
+  with_items: '{{ browsers_aur }}'
+  tags:
+    - aur

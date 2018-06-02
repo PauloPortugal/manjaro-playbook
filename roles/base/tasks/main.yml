@@ -1,0 +1,22 @@
+---
+- name: Create shell aliases
+  lineinfile: dest=/home/{{ user_name }}/.bashrc regexp='{{ item }}' insertafter="alias more=less" line='{{ item }}' state=present
+  with_items: "{{ shell_aliases }}"
+
+- name: Install Utils
+  pacman: name={{ item }} state=present
+  with_items: '{{ utils }}'
+  become: yes
+
+- name: Install Oh My Zsh
+  shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  tags:
+    - aur
+
+- name: Configure Terminator
+  copy:
+    src: ../files/terminator_config
+    dest: /home/{{ user_name }}/.config/terminator/config
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
+    mode: 0644
