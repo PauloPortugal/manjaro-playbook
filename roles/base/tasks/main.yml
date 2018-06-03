@@ -1,8 +1,4 @@
 ---
-- name: Create shell aliases
-  lineinfile: dest=/home/{{ user_name }}/.bashrc regexp='{{ item }}' insertafter="alias more=less" line='{{ item }}' state=present
-  with_items: "{{ shell_aliases }}"
-
 - name: Install Utils
   pacman: name={{ item }} state=present
   with_items: '{{ utils }}'
@@ -10,8 +6,10 @@
 
 - name: Install Oh My Zsh
   shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-  tags:
-    - aur
+
+- name: Install 'thefuck' utility
+  shell: pip install thefuck
+  become: yes
 
 - name: Configure Terminator
   copy:
@@ -20,3 +18,22 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: 0644
+
+- name: Create bash shell aliases
+  lineinfile: dest=/home/{{ user_name }}/.bashrc regexp='{{ item }}' insertafter='alias more=less' line='{{ item }}' state=present
+  with_items: "{{ shell_aliases }}"
+
+- name: Create zsh shell aliases
+  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' state=present
+  with_items: "{{ shell_aliases }}"
+
+- name: Add zsh plugins
+  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='plugins=' line='  {{ item }}' state=present
+  with_items: "{{ zsh_plugins }}"
+
+- name: Change zsh shell theme from 'robbyrussell' to 'agnoster'
+  replace:
+    path: /home/{{ user_name }}/.zshrc
+    regexp: 'ZSH_THEME="robbyrussell"'
+    replace: 'ZSH_THEME="agnoster"'
+    backup: yes

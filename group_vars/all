@@ -32,6 +32,19 @@ shell_aliases:
 
 utils:
     - binutils
+    - gcc
     - make
+    - python-pip
     - terminator
     - xclip
+
+zsh_plugins:
+    - archlinux
+    - colored-man-pages
+    - docker
+    - docker-compose
+    - dotenv
+    - spring
+    - thefuck
+    - git-prompt
+    - git-extras
