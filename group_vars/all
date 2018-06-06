@@ -29,6 +29,7 @@ media_aur:
 shell_aliases:
     - alias ll='ls -lrt'
     - alias vi=vim
+    - alias rgrep='grep -r'
 
 utils:
     - binutils
@@ -37,6 +38,7 @@ utils:
     - python-pip
     - terminator
     - xclip
+    - mlocate
 
 zsh_plugins:
     - archlinux
