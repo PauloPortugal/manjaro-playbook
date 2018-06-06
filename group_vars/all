@@ -39,6 +39,7 @@ utils:
     - terminator
     - xclip
     - mlocate
+    - htop
 
 zsh_plugins:
     - archlinux
