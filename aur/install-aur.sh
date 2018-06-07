@@ -20,5 +20,5 @@ if [ -z "$(pacman -Q | grep ${1})" ]; then
   # Remove temporary folder
   rm -rf /tmp/${1}
 else
-  exit 0;
+  exit -1;
 fi

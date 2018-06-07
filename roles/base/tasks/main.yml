@@ -5,11 +5,17 @@
   become: yes
 
 - name: Install Oh My Zsh
-  shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+  script: ../files/install-oh-my-zsh.sh {{ user_name }}
+  register: install_result
+  changed_when: install_result.rc == 0
+  failed_when: install_result.rc != 0 and install_result.rc != 255
 
 - name: Install 'thefuck' utility
-  shell: pip install thefuck
+  script: ../files/install-pip.sh thefuck
   become: yes
+  register: install_result
+  changed_when: install_result.rc == 0
+  failed_when: install_result.rc != 0 and install_result.rc != 255
 
 - name: Configure Terminator
   copy:
