@@ -34,12 +34,13 @@ shell_aliases:
 utils:
     - binutils
     - gcc
+    - htop
     - make
+    - mlocate
     - python-pip
     - terminator
+    - tree
     - xclip
-    - mlocate
-    - htop
 
 zsh_plugins:
     - archlinux
