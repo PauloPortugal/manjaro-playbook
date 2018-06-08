@@ -4,6 +4,15 @@
   with_items: '{{ utils }}'
   become: yes
 
+- name: Install Utils from Arch User Repository
+  script: ../../../aur/install-aur.sh {{ item }}
+  with_items: '{{ utils_aur }}'
+  register: install_result
+  changed_when: install_result.rc == 0
+  failed_when: install_result.rc != 0 and install_result.rc != 255
+  tags:
+    - aur
+
 - name: Install Oh My Zsh
   script: ../files/install-oh-my-zsh.sh {{ user_name }}
   register: install_result

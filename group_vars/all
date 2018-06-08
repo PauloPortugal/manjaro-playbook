@@ -41,6 +41,10 @@ utils:
     - terminator
     - tree
     - xclip
+    - xorg-xinput
+
+utils_aur:
+    - lsdesktopf
 
 zsh_plugins:
     - archlinux
