@@ -8,3 +8,4 @@
 - include: top-bar.yml
 - include: peripherals.yml
 - include: keyboard-shortcuts.yml
+- include: screensaver.yml
