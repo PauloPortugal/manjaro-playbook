@@ -12,3 +12,11 @@
   failed_when: install_result.rc != 0 and install_result.rc != 255
   tags:
     - aur
+
+- name: Enable and start the docker daemon
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+    masked: no
+  become: yes
