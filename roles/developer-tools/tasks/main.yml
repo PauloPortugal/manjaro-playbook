@@ -13,10 +13,5 @@
   tags:
     - aur
 
-- name: Enable and start the docker daemon
-  systemd:
-    name: docker
-    enabled: yes
-    state: started
-    masked: no
-  become: yes
+- include: docker-config.yml
+# - include: emacs-config.yml

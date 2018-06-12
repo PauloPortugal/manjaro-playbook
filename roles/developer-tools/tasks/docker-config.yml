@@ -1,0 +1,8 @@
+---
+- name: Enable and start the docker daemon
+  systemd:
+    name: docker
+    enabled: yes
+    state: started
+    masked: no
+  become: yes
