@@ -14,4 +14,4 @@
     - aur
 
 - include: docker-config.yml
-# - include: emacs-config.yml
+- include: emacs-config.yml
