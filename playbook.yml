@@ -1,9 +1,9 @@
 ---
 - hosts: localhost
   roles:
-  - role: base
-  - role: browsers
-  - role: developer-tools
-  - role: editors
-  - role: media
-  - role: gnome
+  - { role: base,            tags: ['base'] }
+  - { role: browsers,        tags: ['browsers'] }
+  - { role: developer-tools, tags: ['dev-tools'] }
+  - { role: editors,         tags: ['editors'] }
+  - { role: media,           tags: ['media'] }
+  - { role: gnome,           tags: ['gnome'] }
