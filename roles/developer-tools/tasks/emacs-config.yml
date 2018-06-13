@@ -1,14 +1,14 @@
 ---
-- name: "Check that the ~/.lein/profile.clj exists"
+- name: "Emacs - Check that the ~/.emacs.d/prelude-modules.el exists"
   stat:
     path: /home/{{ user_name}}/.emacs.d/prelude-modules.el
   register: prelude_modules_exists
 
-- name: Create the file, if it doesnt exist already
+- name: "Emacs - Create prelude-modules.el"
   shell: curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
   when: prelude_modules_exists.stat.exists == False
 
-- name: "Add prelude tools and languages support"
+- name: "Emacs - Add prelude tools and languages support"
   copy:
     src: ../files/prelude-modules.el
     dest: /home/{{ user_name }}/.emacs.d/
