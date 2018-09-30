@@ -13,6 +13,8 @@ developer_stack:
 
 developer_stack_aur:
     - leiningen
+    - kubernetes
+    - kubectl-bin
 
 editors:
     - vim
