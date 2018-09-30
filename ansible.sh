@@ -8,7 +8,7 @@ if [ "$#" -ne 2 ]; then
 fi
 
 # install required ansible galaxy roles
-ansible-galaxy -v install -r requirements.yml
+ansible-galaxy install -r requirements.yml
 
 # install/update software stack
 ansible-playbook playbook.yml --extra-vars="user_name=$1 user_email=$2" --ask-become-pass
