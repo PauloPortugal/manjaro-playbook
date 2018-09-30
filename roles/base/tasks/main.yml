@@ -13,15 +13,10 @@
   tags:
     - aur
 
+- include: pip.yml
+
 - name: Install Oh My Zsh
   script: ../files/install-oh-my-zsh.sh {{ user_name }}
-  register: install_result
-  changed_when: install_result.rc == 0
-  failed_when: install_result.rc != 0 and install_result.rc != 255
-
-- name: Install 'thefuck' utility
-  script: ../files/install-pip.sh thefuck
-  become: yes
   register: install_result
   changed_when: install_result.rc == 0
   failed_when: install_result.rc != 0 and install_result.rc != 255

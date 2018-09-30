@@ -59,3 +59,6 @@ zsh_plugins:
     - thefuck
     - git-prompt
     - git-extras
+
+pip_packages:
+    - thefuck
