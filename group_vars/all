@@ -13,6 +13,7 @@ developer_stack:
 
 developer_stack_aur:
     - leiningen
+    - bluemix-cli
     - kubernetes
     - kubectl-bin
 
