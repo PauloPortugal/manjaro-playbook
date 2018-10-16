@@ -1,7 +1,8 @@
 ---
 - name: Install Utils
-  pacman: name={{ item }} state=present
-  with_items: '{{ utils }}'
+  pacman:
+    name: '{{ utils }}'
+    state: present
   become: yes
 
 - name: Install Utils from Arch User Repository

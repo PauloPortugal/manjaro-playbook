@@ -1,7 +1,8 @@
 ---
 - name: Install Developer Tools
-  pacman: name={{ item }} state=present
-  with_items: '{{ developer_stack }}'
+  pacman:
+    name: '{{ developer_stack }}'
+    state: present
   become: yes
 
 - name: Install Developer Tools from Arch User Repository

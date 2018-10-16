@@ -1,7 +1,8 @@
 ---
 - name: Install editors
-  pacman: name={{ item }} state=present
-  with_items: '{{ editors }}'
+  pacman:
+    name: '{{ editors }}'
+    state: present
   become: yes
 
 - name: Install editors from Arch User Repository
