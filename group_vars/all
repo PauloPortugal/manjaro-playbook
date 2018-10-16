@@ -49,6 +49,7 @@ utils:
 utils_aur:
     - lsdesktopf
     - brother-mfc-j415w
+    - pdftk
 
 zsh_plugins:
     - archlinux
