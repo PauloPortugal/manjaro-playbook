@@ -10,6 +10,8 @@ developer_stack:
     - jre10-openjdk-headless jre10-openjdk jdk10-openjdk openjdk10-doc
     - maven
     - clojure
+    - scala
+    - sbt
 
 developer_stack_aur:
     - leiningen
