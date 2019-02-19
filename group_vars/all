@@ -53,6 +53,7 @@ utils_aur:
     - brother-mfc-j415w
     - python2-pypdf2
     - stapler
+    - mkpasswd
 
 zsh_plugins:
     - archlinux
