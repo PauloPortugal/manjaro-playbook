@@ -23,3 +23,5 @@
     - {name: "user.name",   value: "{{ user_name }}" }
     - {name: "user.email",  value: "{{ user_email }}" }
     - {name: "core.editor", value: "vim" }
+  become_user: '{{ user_name }}'
+  become: yes

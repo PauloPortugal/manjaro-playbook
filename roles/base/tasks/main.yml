@@ -22,6 +22,12 @@
   changed_when: install_result.rc == 0
   failed_when: install_result.rc != 0 and install_result.rc != 255
 
+- name: Creates terminator config directory
+  file:
+    path: /home/{{ user_name }}/.config/terminator
+    state: directory
+  become: yes
+
 - name: Configure Terminator
   copy:
     src: ../files/terminator_config
@@ -29,18 +35,32 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: 0644
+  become: yes
+  become_user: '{{ user_name }}'
+
+- name: Creates terminator config directory
+  file:
+    path: /home/{{ user_name }}/.config/terminator
+    state: directory
+  become: yes
 
 - name: Create bash shell aliases
-  lineinfile: dest=/home/{{ user_name }}/.bashrc regexp='{{ item }}' insertafter='alias more=less' line='{{ item }}' state=present
+  lineinfile: dest=/home/{{ user_name }}/.bashrc regexp='{{ item }}' insertafter='alias more=less' line='{{ item }}' owner='{{ user_name }}' state=present
   with_items: "{{ shell_aliases }}"
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: Create zsh shell aliases
-  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' state=present
+  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' owner='{{ user_name }}' state=present
   with_items: "{{ shell_aliases }}"
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: Add zsh plugins
-  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='plugins=' line='  {{ item }}' state=present
+  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='plugins=' line='  {{ item }}' owner='{{ user_name }}' state=present
   with_items: "{{ zsh_plugins }}"
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: Change zsh shell theme from 'robbyrussell' to 'agnoster'
   replace:
@@ -48,3 +68,5 @@
     regexp: 'ZSH_THEME="robbyrussell"'
     replace: 'ZSH_THEME="agnoster"'
     backup: yes
+  become_user: '{{ user_name }}'
+  become: yes

@@ -4,48 +4,64 @@
     key: "/org/gnome/shell/extensions/dash-to-dock/dash-max-icon-size"
     value: "64"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Set dots colour"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-color"
     value: "'#ffffff'"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Set dots border colour"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-running-dots-border-color"
     value: "'#ffffff'"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Set background colour"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/background-color"
     value: "'#ffffff'"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Set transparency mode"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/transparency-mode"
     value: "'FIXED'"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Set running indicator style"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/running-indicator-style"
     value: "'DOTS'"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Set background opacity"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/background-opacity"
     value: "0.22"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Set dock position"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/dock-position"
     value: "'BOTTOM'"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 # Enabled settings
 - name: "Dash to Dock - Enable custom background color"
@@ -53,18 +69,24 @@
     key: "/org/gnome/shell/extensions/dash-to-dock/custom-background-color"
     value: "true"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Enable custom-theme-shrink"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/custom-theme-shrink"
     value: "true"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Enable multi monitor"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/multi-monitor"
     value: "true"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 # Disabled settings
 - name: "Dash to Dock - Disable fixed icon size"
@@ -72,45 +94,61 @@
     key: "/org/gnome/shell/extensions/dash-to-dock/icon-size-fixed"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Disable unity-backlit-items"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/unity-backlit-items"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Disable custom theme "
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/apply-custom-theme"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Disable running indicator dominant color"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/running-indicator-dominant-color"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Disable straight corners"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/force-straight-corner"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Disable show apps at top"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/show-apps-at-top"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Disable extend height"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/extend-height"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Dash to Dock - Disable dock fixed"
   dconf:
     key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes

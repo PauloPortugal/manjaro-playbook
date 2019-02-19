@@ -4,27 +4,37 @@
     key: "/org/gnome/settings-daemon/peripherals/mouse/locate-pointer"
     value: "true"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Touchpad - Enable natural scrolling"
   dconf:
     key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
     value: "true"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Touchpad - Disable edge scrolling"
   dconf:
     key: "/org/gnome/desktop/peripherals/touchpad/edge-scrolling-enabled"
     value: "false"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Touchpad - Enable two finger scrolling"
   dconf:
     key: "/org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled"
     value: "true"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Touchpad - Disable while typing"
   dconf:
     key: "/org/gnome/desktop/peripherals/touchpad/disable-while-typing"
     value: "true"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes

@@ -4,6 +4,8 @@
     key: "/org/gnome/shell/favorite-apps"
     value: "['firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'atom.desktop', 'jetbrains-idea.desktop', 'emacs.desktop', 'terminator.desktop', 'pamac-manager.desktop']"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - include: top-bar.yml
 - include: peripherals.yml

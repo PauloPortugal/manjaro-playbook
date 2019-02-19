@@ -4,9 +4,13 @@
     key: "/org/gnome/desktop/screensaver/picture-uri"
     value: "'file:///usr/share/backgrounds/gnome/ColdWarm.jpg'"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Screensaver - background"
   dconf:
     key: "/org/gnome/desktop/screensaver/picture-options"
     value: "'zoom'"
     state: present
+  become_user: '{{ user_name }}'
+  become: yes

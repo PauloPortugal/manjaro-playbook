@@ -3,10 +3,14 @@
   stat:
     path: /home/{{ user_name}}/.emacs.d/prelude-modules.el
   register: prelude_modules_exists
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Emacs - Create prelude-modules.el"
   shell: curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
   when: prelude_modules_exists.stat.exists == False
+  become_user: '{{ user_name }}'
+  become: yes
 
 - name: "Emacs - Add prelude tools and languages support"
   copy:
@@ -15,3 +19,5 @@
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
     mode: 0644
+  become_user: '{{ user_name }}'
+  become: yes
