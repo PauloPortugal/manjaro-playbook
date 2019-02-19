@@ -5,6 +5,12 @@
     password: '$6$njre9EVs$9BZugl5GcxpymEDI2hZxgxAJdW1FO1VQKfESjKPcZaCNhBMVy5MDzc9/iHS8pE7qeZ.S54J/xp1KucNbrFzPL0'
     groups:
      - docker
+     - network
+     - scanner
+     - power
+     - video
+     - storage
+     - wheel
     state: present
     shell: /bin/zsh
     system: no
