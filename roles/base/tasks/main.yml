@@ -70,3 +70,10 @@
     backup: yes
   become_user: '{{ user_name }}'
   become: yes
+
+- name: Creates Workspace directory
+  file:
+    path: /home/{{ user_name }}/Workspace
+    state: directory
+  become_user: '{{ user_name }}'
+  become: yes
