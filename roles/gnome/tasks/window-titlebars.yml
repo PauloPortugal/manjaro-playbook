@@ -1,0 +1,8 @@
+---
+- name: "Window titlebars - Button Layout"
+  dconf:
+    key: "/org/gnome/desktop/wm/preferences/button-layout"
+    value: "'close,minimize,maximize:appmenu'"
+    state: present
+  become_user: '{{ user_name }}'
+  become: yes

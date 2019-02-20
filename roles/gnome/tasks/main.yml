@@ -12,3 +12,4 @@
 - include: keyboard-shortcuts.yml
 - include: screensaver.yml
 - include: dash-to-dock.yml
+- include: window-titlebars.yml
