@@ -16,6 +16,16 @@
 
 - include: pip.yml
 
+- name: Check NTP status
+  command: timedatectl show -p NTP --value
+  register: ntpStatusVar
+  changed_when: false
+
+- name: Configure NTP client
+  command: timedatectl set-ntp true
+  when: ntpStatusVar == "yes"
+  become: yes
+
 - name: Install Oh My Zsh
   script: ../files/install-oh-my-zsh.sh {{ user_name }}
   register: install_result

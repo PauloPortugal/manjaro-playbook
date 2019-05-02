@@ -54,6 +54,7 @@ utils:
     - tree
     - xclip
     - xorg-xinput
+    - ntp
 
 utils_aur:
     - lsdesktopf
