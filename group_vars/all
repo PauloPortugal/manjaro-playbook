@@ -1,5 +1,6 @@
 browsers_aur:
-    - google-chrome
+    - google-chrome 73.0.3683.75-1
+    - chromedriver 73.0.3683.68-1
 
 developer_stack:
     - jq

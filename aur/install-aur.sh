@@ -2,8 +2,16 @@
 
 set -x
 
+searchQuery=${1}
+if [ ! -z "${2}" ]; then
+  searchQuery="${1} ${2}"
+fi
+
+searchResult=`pacman -Q | grep "$searchQuery"`
+
 # Only install if package does not exist
-if [ -z "$(pacman -Q | grep ${1})" ]; then
+if [ -z "${searchResult}" ]; then
+  echo "Installing"
   # Download Arch linux AUR package
   wget https://aur.archlinux.org/cgit/aur.git/snapshot/${1}.tar.gz -P /tmp/${1}
 
@@ -20,5 +28,6 @@ if [ -z "$(pacman -Q | grep ${1})" ]; then
   # Remove temporary folder
   rm -rf /tmp/${1}
 else
+  echo "${searchQuery} package already installed"
   exit -1;
 fi
