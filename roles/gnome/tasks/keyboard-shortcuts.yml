@@ -7,6 +7,14 @@
   become_user: '{{ user_name }}'
   become: yes
 
+- name: "keyboard Shortcuts - Hide all normal windows"
+  dconf:
+    key: "/org/gnome/desktop/wm/keybindings/show-desktop"
+    value: "['<Primary><Alt>d']"
+    state: present
+  become_user: '{{ user_name }}'
+  become: yes
+
 - name: "keyboard Shortcuts - Default Browser"
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/www"
