@@ -7,3 +7,10 @@
   failed_when: install_result.rc != 0 and install_result.rc != 255
   tags:
     - aur
+
+
+- name: Install media packages
+  pacman:
+    name: '{{ media }}'
+    state: present
+  become: yes

@@ -32,6 +32,9 @@ editors:
 editors_aur:
     - intellij-idea-ultimate-edition
 
+media:
+    - peek
+
 media_aur:
     - spotify
 
