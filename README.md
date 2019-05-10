@@ -20,13 +20,11 @@ git clone git@github.com:PauloPortugal/manjaro-playbook.git
 
 ### Install everything
 ```
-ansible-galaxy install -r requirements.yml
 ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
 ```
 
 ### Install everything with debug turned on
 ```
-ansible-galaxy -v install -r requirements.yml
 ansible-playbook -vvv playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
 ```
 
@@ -34,15 +32,17 @@ ansible-playbook -vvv playbook.yml --extra-vars="user_name=USERNAME user_email=E
 
 Tags supported:
 
-| Tag       | Description                                                             |
-|-----------|-------------------------------------------------------------------------|
-| base      | Install Linux util libraries, python-pip, xinput, terminator and zsh    |
-| browsers  | Install Chrome                                                          |
-| dev-tools | Install Docker, nodejs, npm, jre8, jre10, maven, clojure and leiningen  |
-| editors   | Install vim, atom, emacs and gimp                                       |
-| media     | Install Spotify                                                         |
-| gnome     | Configure the desktop environment                                       |
-| aur       | Install Arch User Repository libraries                                  |
+| Tag       | Description                                                                                                      |
+|-----------|------------------------------------------------------------------------------------------------------------------|
+| base      | Install Linux util libraries, python-pip, xinput, terminator and zsh                                             |
+| users     | Setup user accounts                                                                                              |
+| printers  | Install printer drivers                                                                                          |
+| browsers  | Install Chrome and chromedriver                                                                                  |
+| dev-tools | Install jq, docker, nodejs, npm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes and bluemix-cli  |
+| editors   | Install vim, atom, emacs, gimp and Intellij                                                                      |
+| media     | Install Spotify and Peek (GIF Screen recorder)                                                                   |
+| gnome     | Configure the desktop environment                                                                                |
+| aur       | Install Arch User Repository libraries                                                                           |
 
 Example on how to install only browsers:
 ```
