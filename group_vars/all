@@ -58,12 +58,15 @@ utils:
 
 utils_aur:
     - lsdesktopf
-    - brother-mfc-j415w
     - python2-pypdf2
     - stapler
     - mkpasswd
     - git-extras
     - zsh-git-prompt
+
+printers_aur:
+    - brother-mfc-j415w
+    - brother-hl8350cdw
 
 zsh_plugins:
     - archlinux
