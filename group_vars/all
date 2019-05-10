@@ -16,6 +16,7 @@ developer_stack:
 
 developer_stack_sudo:
     - docker-compose
+    - hub
 
 developer_stack_aur:
     - leiningen
