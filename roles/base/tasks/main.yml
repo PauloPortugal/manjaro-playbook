@@ -46,13 +46,8 @@
     group: '{{ user_name }}'
     mode: 0644
   become: yes
+  sudo: yes
   become_user: '{{ user_name }}'
-
-- name: Creates terminator config directory
-  file:
-    path: /home/{{ user_name }}/.config/terminator
-    state: directory
-  become: yes
 
 - name: Create bash shell aliases
   lineinfile: dest=/home/{{ user_name }}/.bashrc regexp='{{ item }}' insertafter='alias more=less' line='{{ item }}' owner='{{ user_name }}' state=present
