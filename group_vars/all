@@ -3,20 +3,20 @@ browsers_aur:
     - chromedriver 73.0.3683.68-1
 
 developer_stack:
-    - jq
-    - docker
     - nodejs
     - npm
+
+developer_stack_sudo:
+    - jq
+    - docker
+    - docker-compose
+    - hub
     - jre8-openjdk-headless jre8-openjdk jdk8-openjdk openjdk8-doc
-    - jre10-openjdk-headless jre10-openjdk jdk10-openjdk openjdk10-doc
+    - jre11-openjdk-headless jre11-openjdk jdk11-openjdk openjdk11-doc
     - maven
     - clojure
     - scala
     - sbt
-
-developer_stack_sudo:
-    - docker-compose
-    - hub
 
 developer_stack_aur:
     - leiningen
