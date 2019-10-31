@@ -37,6 +37,7 @@
     path: /home/{{ user_name }}/.config/terminator
     state: directory
   become: yes
+  become_user: '{{ user_name }}'
 
 - name: Configure Terminator
   copy:
@@ -46,7 +47,6 @@
     group: '{{ user_name }}'
     mode: 0644
   become: yes
-  sudo: yes
   become_user: '{{ user_name }}'
 
 - name: Create bash shell aliases
