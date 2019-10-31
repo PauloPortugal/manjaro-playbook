@@ -45,6 +45,7 @@ shell_aliases:
     - alias rgrep='grep -r'
 
 utils:
+    - base-devel
     - binutils
     - gcc
     - htop
@@ -59,8 +60,6 @@ utils:
 
 utils_aur:
     - lsdesktopf
-    - python2-pypdf2
-    - stapler
     - mkpasswd
     - git-extras
     - zsh-git-prompt
