@@ -46,6 +46,9 @@ shell_aliases:
 
 utils:
     - base-devel
+    - gconf
+    - openssl-1.0
+    - libcurl-gnutls
     - binutils
     - gcc
     - htop
