@@ -62,8 +62,11 @@
   become: yes
 
 - name: Add zsh plugins
-  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='plugins=' line='  {{ item }}' owner='{{ user_name }}' state=present
-  with_items: "{{ zsh_plugins }}"
+  replace:
+    path: /home/{{ user_name }}/.zshrc
+    regexp: 'plugins=(git)'
+    replace: 'plugins=(git git-extras git-prompt thefuck spring dotenv docker-compose docker colored-man-pages archlinux)'
+    backup: yes
   become_user: '{{ user_name }}'
   become: yes
 
