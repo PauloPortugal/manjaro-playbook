@@ -43,6 +43,7 @@ shell_aliases:
     - alias ll='ls -lrt'
     - alias vi=vim
     - alias rgrep='grep -r'
+    - alias pull='hub pull-request --no-edit -o -p'
 
 utils:
     - base-devel
