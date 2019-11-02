@@ -1,0 +1,21 @@
+---
+- name: Creates terminator config directory
+  file:
+    path: /home/{{ user_name }}/.config/terminator
+    state: directory
+  become: yes
+  become_user: '{{ user_name }}'
+  tags:
+    - terminator
+
+- name: Configure Terminator
+  copy:
+    src: ../files/terminator_config
+    dest: /home/{{ user_name }}/.config/terminator/config
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
+    mode: 0644
+  become: yes
+  become_user: '{{ user_name }}'
+  tags:
+    - terminator

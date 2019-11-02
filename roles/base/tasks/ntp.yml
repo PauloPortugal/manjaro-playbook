@@ -1,0 +1,20 @@
+---
+- name: Make sure the NTP service is running
+  systemd: state=started name=ntpd
+  become: yes
+  tags:
+    - ntp
+
+- name: Check NTP status
+  command: timedatectl show -p NTP --value
+  register: ntpStatusVar
+  changed_when: false
+  tags:
+    - ntp
+
+- name: Configure NTP client
+  command: timedatectl set-ntp true
+  when: ntpStatusVar == "yes"
+  become: yes
+  tags:
+    - ntp

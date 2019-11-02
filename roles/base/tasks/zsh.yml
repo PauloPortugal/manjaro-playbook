@@ -1,0 +1,46 @@
+---
+- name: Install Oh My Zsh
+  script: ../files/install-oh-my-zsh.sh {{ user_name }}
+  register: install_result
+  changed_when: install_result.rc == 0
+  failed_when: install_result.rc != 0 and install_result.rc != 255
+  tags:
+    - zsh
+
+- name: Create zsh shell aliases
+  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' owner='{{ user_name }}' state=present
+  with_items: "{{ shell_aliases }}"
+  become_user: '{{ user_name }}'
+  become: yes
+  tags:
+    - zsh
+
+- name: Add zsh plugins
+  replace:
+    path: /home/{{ user_name }}/.zshrc
+    regexp: 'plugins=(git)'
+    replace: 'plugins=(git git-extras git-prompt thefuck spring dotenv docker-compose docker colored-man-pages archlinux)'
+    backup: yes
+  become_user: '{{ user_name }}'
+  become: yes
+  tags:
+    - zsh
+
+- name: Change zsh shell theme from 'robbyrussell' to 'agnoster'
+  replace:
+    path: /home/{{ user_name }}/.zshrc
+    regexp: 'ZSH_THEME="robbyrussell"'
+    replace: 'ZSH_THEME="agnoster"'
+    backup: yes
+  become_user: '{{ user_name }}'
+  become: yes
+  tags:
+    - zsh
+
+- name: Set zsh as default shell
+  user:
+    name: "{{ user_name }}"
+    shell: /usr/bin/zsh
+  become: true
+  tags:
+    - zsh
