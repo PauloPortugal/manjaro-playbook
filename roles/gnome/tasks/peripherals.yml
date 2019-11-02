@@ -6,6 +6,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - peripherals
 
 - name: "Touchpad - Enable natural scrolling"
   dconf:
@@ -14,6 +16,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - peripherals
 
 - name: "Touchpad - Disable edge scrolling"
   dconf:
@@ -22,6 +26,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - peripherals
 
 - name: "Touchpad - Enable two finger scrolling"
   dconf:
@@ -30,6 +36,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - peripherals
 
 - name: "Touchpad - Disable while typing"
   dconf:
@@ -38,3 +46,5 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - peripherals

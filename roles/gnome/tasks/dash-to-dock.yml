@@ -6,6 +6,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Set dots colour"
   dconf:
@@ -14,6 +16,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Set dots border colour"
   dconf:
@@ -22,6 +26,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Set background colour"
   dconf:
@@ -30,6 +36,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Set transparency mode"
   dconf:
@@ -38,6 +46,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Set running indicator style"
   dconf:
@@ -46,6 +56,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Set background opacity"
   dconf:
@@ -54,6 +66,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Set dock position"
   dconf:
@@ -62,6 +76,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 # Enabled settings
 - name: "Dash to Dock - Enable custom background color"
@@ -71,6 +87,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Enable custom-theme-shrink"
   dconf:
@@ -79,6 +97,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Enable multi monitor"
   dconf:
@@ -87,6 +107,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 # Disabled settings
 - name: "Dash to Dock - Disable fixed icon size"
@@ -96,6 +118,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Disable unity-backlit-items"
   dconf:
@@ -104,6 +128,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Disable custom theme "
   dconf:
@@ -112,6 +138,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Disable running indicator dominant color"
   dconf:
@@ -120,6 +148,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Disable straight corners"
   dconf:
@@ -128,6 +158,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Disable show apps at top"
   dconf:
@@ -136,6 +168,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Disable extend height"
   dconf:
@@ -144,6 +178,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock
 
 - name: "Dash to Dock - Disable dock fixed"
   dconf:
@@ -152,3 +188,5 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - dash-to-dock

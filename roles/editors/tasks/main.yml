@@ -25,3 +25,5 @@
     - {name: "core.editor", value: "vim" }
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - git

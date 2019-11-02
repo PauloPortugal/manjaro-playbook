@@ -6,3 +6,5 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - windows

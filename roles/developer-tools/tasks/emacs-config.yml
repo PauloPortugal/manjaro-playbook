@@ -5,12 +5,16 @@
   register: prelude_modules_exists
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - emacs
 
 - name: "Emacs - Create prelude-modules.el"
   shell: curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
   when: prelude_modules_exists.stat.exists == False
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - emacs
 
 - name: "Emacs - Add prelude tools and languages support"
   copy:
@@ -21,3 +25,5 @@
     mode: 0644
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - emacs

@@ -38,6 +38,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - keyboard-shortcuts
 
 - name: "keyboard Shortcuts - Defining custom bindings"
   dconf:
@@ -46,6 +48,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - keyboard-shortcuts
 
 - name: "keyboard Shortcuts - Terminator name"
   dconf:
@@ -54,6 +58,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - keyboard-shortcuts
 
 - name: "keyboard Shortcuts - Terminator binding"
   dconf:
@@ -62,6 +68,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - keyboard-shortcuts
 
 - name: "keyboard Shortcuts - Terminator comand"
   dconf:
@@ -70,3 +78,5 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - keyboard-shortcuts

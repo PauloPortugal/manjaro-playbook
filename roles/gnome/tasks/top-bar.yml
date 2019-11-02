@@ -6,6 +6,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - top-bar
 
 - name: "Top Bar - Disable clock seconds"
   dconf:
@@ -14,6 +16,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - top-bar
 
 - name: "Top Bar - Disable week dates on calendar"
   dconf:
@@ -22,6 +26,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - top-bar
 
 - name: "Top Bar - Add Time in Cape Town, South Africa"
   dconf:
@@ -30,6 +36,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - top-bar
 
 - name: "Top Bar - Add Weather Locations"
   dconf:
@@ -38,6 +46,8 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - top-bar
 
 - name: "Top Bar - Enable battery percentage"
   dconf:
@@ -46,3 +56,5 @@
     state: present
   become_user: '{{ user_name }}'
   become: yes
+  tags:
+    - top-bar

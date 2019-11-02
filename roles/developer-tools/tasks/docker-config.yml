@@ -5,6 +5,8 @@
     groups: docker
     append: yes
   become: yes
+  tags:
+    - docker
 
 - name: "Docker - Enable and start the docker daemon"
   systemd:
@@ -13,3 +15,5 @@
     state: started
     masked: no
   become: yes
+  tags:
+    - docker
