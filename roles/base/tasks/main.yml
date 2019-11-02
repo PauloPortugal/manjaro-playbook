@@ -79,6 +79,12 @@
   become_user: '{{ user_name }}'
   become: yes
 
+- name: Set zsh as default shell
+  user:
+    name: "{{ user_name }}"
+    shell: /usr/bin/zsh
+  become: true
+
 - name: Creates Workspace directory
   file:
     path: /home/{{ user_name }}/Workspace
