@@ -32,6 +32,7 @@ editors:
 
 editors_aur:
     - intellij-idea-ultimate-edition
+    - visual-studio-code-bin
 
 media:
     - peek

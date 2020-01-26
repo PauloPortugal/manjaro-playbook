@@ -39,7 +39,7 @@ Tags supported:
 | printers  | Install printer drivers                                                                                          |
 | browsers  | Install Chrome and chromedriver                                                                                  |
 | dev-tools | Install jq, docker, docker-compose, nodejs, npm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli and hub  |
-| editors   | Install vim, atom, emacs, gimp and Intellij                                                                      |
+| editors   | Install vim, atom, emacs, gimp, Intellij and Microsoft Visual Studio                                             |
 | media     | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | gnome     | Configure the desktop environment                                                                                |
 | aur       | Install Arch User Repository libraries                                                                           |
