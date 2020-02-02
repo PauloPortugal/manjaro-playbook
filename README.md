@@ -34,11 +34,11 @@ Tags supported:
 
 | Tag       | Description                                                                                                      |
 |-----------|------------------------------------------------------------------------------------------------------------------|
-| base      | Install Linux util libraries, python-pip, xinput, terminator and zsh                                             |
+| base      | Install Linux util libraries, python-pip, xinput, terminator, snap and zsh                                       |
 | users     | Setup user accounts                                                                                              |
 | printers  | Install printer drivers                                                                                          |
 | browsers  | Install Chrome and chromedriver                                                                                  |
-| dev-tools | Install jq, docker, docker-compose, nodejs, npm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli and hub  |
+| dev-tools | Install jq, docker, docker-compose, nodejs, npm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli, hub and heroku  |
 | editors   | Install vim, atom, emacs, gimp, Intellij and Microsoft Visual Studio                                             |
 | media     | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | gnome     | Configure the desktop environment                                                                                |
