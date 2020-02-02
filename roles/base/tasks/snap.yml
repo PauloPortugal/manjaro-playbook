@@ -1,0 +1,26 @@
+---
+- name: Install Snapd
+  pacman:
+    name: 'snapd'
+    state: present
+  become: yes
+  tags:
+    - snap
+
+- name: Make sure snapd is running
+  systemd:
+    name: snapd
+    enabled: yes
+  tags:
+    - snap
+
+- name: Create a snap symbolic link
+  file:
+    src: /var/lib/snapd/snap
+    dest: /snap
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
+    state: link
+  become: yes
+  tags:
+    - snap

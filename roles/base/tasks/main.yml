@@ -18,6 +18,7 @@
 - include: pip.yml
 - include: zsh.yml
 - include: bash.yml
+- include: snap.yml
 - include: terminator.yml
 
 - name: Creates Workspace directory
