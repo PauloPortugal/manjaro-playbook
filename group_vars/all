@@ -1,6 +1,6 @@
 browsers_aur:
-    - google-chrome 73.0.3683.75-1
-    - chromedriver 73.0.3683.68-1
+    - google-chrome 80.0.3987.106
+    - chromedriver 80.0.3987.106
 
 developer_stack:
     - nodejs
