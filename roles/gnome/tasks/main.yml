@@ -2,7 +2,7 @@
 - name: Configure favourite apps in Gnome
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'atom.desktop', 'jetbrains-idea.desktop', 'visual-studio-code.desktop', 'emacs.desktop', 'terminator.desktop', 'pamac-manager.desktop']"
+    value: "['firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'atom.desktop', 'jetbrains-idea.desktop', 'visual-studio-code.desktop', 'emacs.desktop', 'signal-desktop.desktop', 'terminator.desktop', 'pamac-manager.desktop']"
     state: present
   become_user: '{{ user_name }}'
   become: yes
