@@ -1,0 +1,6 @@
+---
+- name: Install communication/instant messenger apps
+  pacman:
+    name: '{{ comms }}'
+    state: present
+  become: yes

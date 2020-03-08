@@ -86,3 +86,6 @@ zsh_plugins:
 
 pip_packages:
     - thefuck
+
+comms:
+    - signal-desktop
