@@ -2,7 +2,7 @@
 - name: "keyboard Shortcuts - System settings"
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/control-center"
-    value: "'<Super>t'"
+    value: "['<Super>t']"
     state: present
   become_user: '{{ user_name }}'
   become: yes
@@ -18,7 +18,7 @@
 - name: "keyboard Shortcuts - Default Browser"
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/www"
-    value: "'<Super>w'"
+    value: "['<Super>w']"
     state: present
   become_user: '{{ user_name }}'
   become: yes
@@ -26,7 +26,7 @@
 - name: "keyboard Shortcuts - Home"
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/home"
-    value: "'<Super>e'"
+    value: "['<Super>e']"
     state: present
   become_user: '{{ user_name }}'
   become: yes
@@ -34,7 +34,7 @@
 - name: "keyboard Shortcuts - Calculator"
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/calculator"
-    value: "'<Super>c'"
+    value: "['<Super>c']"
     state: present
   become_user: '{{ user_name }}'
   become: yes
