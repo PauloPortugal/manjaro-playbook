@@ -9,3 +9,4 @@
   - { role: editors,         tags: ['editors'] }
   - { role: media,           tags: ['media'] }
   - { role: gnome,           tags: ['gnome'] }
+  - { role: comms,           tags: ['comms'] }
