@@ -89,3 +89,6 @@ pip_packages:
 
 comms:
     - signal-desktop
+
+comms_aur:
+    - slack-desktop
