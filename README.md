@@ -42,7 +42,7 @@ Tags supported:
 | editors   | Install vim, atom, emacs, gimp, Intellij and Microsoft Visual Studio                                             |
 | media     | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | gnome     | Configure the desktop environment                                                                                |
-| comms     | Install communication/Instant Messaging apps: signal-desktop                                                     |
+| comms     | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
 | aur       | Install Arch User Repository libraries                                                                           |
 
 Example on how to install only browsers:
