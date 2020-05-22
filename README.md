@@ -38,12 +38,13 @@ Tags supported:
 | users     | Setup user accounts                                                                                              |
 | printers  | Install printer drivers                                                                                          |
 | browsers  | Install Chrome and chromedriver                                                                                  |
-| dev-tools | Install jq, docker, docker-compose, nodejs, npm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli, hub and heroku  |
+| dev-tools | Install jq, xq, docker, docker-compose, go, nodejs, npm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli, hub and heroku  |
 | editors   | Install vim, atom, emacs, gimp, Intellij and Microsoft Visual Studio                                             |
 | media     | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | gnome     | Configure the desktop environment                                                                                |
 | comms     | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
 | aur       | Install Arch User Repository libraries                                                                           |
+| security  | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
 
 Example on how to install only browsers:
 ```
