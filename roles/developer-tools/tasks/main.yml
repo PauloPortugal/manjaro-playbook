@@ -12,7 +12,6 @@
     state: present
   become_user: 'root'
   become: yes
-  become_method: su
 
 - name: Install Developer Tools from Arch User Repository
   script: ../../../aur/install-aur.sh {{ item }}

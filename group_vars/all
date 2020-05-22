@@ -17,12 +17,14 @@ developer_stack_sudo:
     - clojure
     - scala
     - sbt
+    - go-pie
 
 developer_stack_aur:
     - leiningen
     - bluemix-cli
     - kubernetes
     - kubectl-bin
+    - xq
 
 editors:
     - vim
