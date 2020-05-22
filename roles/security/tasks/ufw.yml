@@ -1,0 +1,25 @@
+---
+- name: Ensure that ufw is running
+  systemd: state=started name=ufw.service
+  become: yes
+  tags:
+    - security
+    - ufw
+
+- name: Check if ufw is active
+  command: ufw status
+  register: ufw_status
+  changed_when: false
+  become: yes
+  tags:
+    - security
+    - ufw
+
+
+- name: Enable ufw
+  command: ufw enable
+  when: "'inactive' in ufw_status.stdout"
+  become: yes
+  tags:
+    - security
+    - ufw

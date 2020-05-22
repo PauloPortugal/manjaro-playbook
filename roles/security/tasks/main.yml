@@ -1,0 +1,13 @@
+---
+- name: Install security tools
+  pacman:
+    name: '{{ security_tools }}'
+    state: present
+  become: yes
+  tags:
+    - security
+    - clamav
+    - ufw
+
+- include: clamav.yml
+- include: ufw.yml

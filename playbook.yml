@@ -10,3 +10,4 @@
   - { role: media,           tags: ['media'] }
   - { role: comms,           tags: ['comms'] }
   - { role: gnome,           tags: ['gnome'] }
+  - { role: security,        tags: ['security'] }

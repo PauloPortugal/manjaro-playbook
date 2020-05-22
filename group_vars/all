@@ -94,3 +94,10 @@ comms:
 
 comms_aur:
     - slack-desktop
+
+security_tools:
+    - clamav
+    - clamtk
+    - ufw
+    - ufw-extras
+    - gufw
