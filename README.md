@@ -38,7 +38,7 @@ Tags supported:
 | users     | Setup user accounts                                                                                              |
 | printers  | Install printer drivers                                                                                          |
 | browsers  | Install Chrome and chromedriver                                                                                  |
-| dev-tools | Install jq, xq, docker, docker-compose, go, nodejs, npm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli, hub and heroku  |
+| dev-tools | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli, hub and heroku  |
 | editors   | Install vim, atom, emacs, gimp, Intellij and Microsoft Visual Studio                                             |
 | media     | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | gnome     | Configure the desktop environment                                                                                |

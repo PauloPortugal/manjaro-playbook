@@ -22,6 +22,8 @@
   tags:
     - aur
 
+- include: nvm.yml
+
 - include: docker-config.yml
 - include: emacs-config.yml
 - include: heroku-config.yml

@@ -8,3 +8,6 @@
     name: '{{ pip_packages }}'
     state: present
   become: yes
+  tags:
+    - base
+    - nvm
