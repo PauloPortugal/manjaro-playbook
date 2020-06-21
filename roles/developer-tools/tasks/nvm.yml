@@ -1,0 +1,17 @@
+---
+- name: Get latest release of the Node Version Manager (nvm) repository
+  github_release:
+    user: nvm-sh
+    repo: nvm
+    action: latest_release
+  register: nvm_latest_version
+  tags:
+    - nvm
+    - dev-tools
+
+- name: Install nvm
+  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest_version.tag }}/install.sh | zsh
+  when: nvm_latest_version.tag == nvm_installed_version
+  tags:
+    - nvm
+    - dev-tools
