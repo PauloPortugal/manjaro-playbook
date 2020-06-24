@@ -5,13 +5,47 @@ based on Arch Linux. It should run locally after a clean OS install.
 
 ## Preamble
 
-1. Refresh the copy of the master package database from the server and install `Ansible` and `Git`
+### 1. Creating Bootable Linux USB Drive from the Command Line
+
+Find out the name of the USB drive
 ```
-sudo pacman -Syy
-sudo pacman -S ansible git --noconfirm
+lsblk
 ```
 
-2. Git clone the current project
+Flash the ISO image to the USB drive
+```
+dd bs=4M if=/path/to/iso of=/dev/sdx status=progress oflag=sync
+```
+
+### 2. Refresh the copy of the master package database from the server and install `ansible`, `git` and `xclip`
+```
+sudo pacman -Syy
+sudo pacman -S ansible git xclip --noconfirm
+```
+
+### 3. Set Git SSH credentials
+
+Generate a new SSH Key
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Start the ssh-agent in the background
+```
+eval "$(ssh-agent -s)"
+```
+
+Add SSH Key to the ssh-agent
+```
+ssh-add ~/.ssh/id_rsa
+```
+
+Copy the SSH public key to the clipboard
+```
+xclip -sel clip < ~/.ssh/id_rsa.pub
+```
+
+### 4. Git clone the current project
 ```
 git clone git@github.com:PauloPortugal/manjaro-playbook.git
 ```
@@ -53,11 +87,12 @@ ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL"
 
 ## TODO
 
-Bluemix setup:
- * enable zsh completion, add the following line in "~/.zshrc":
-   . /usr/local/ibmcloud/autocomplete/zsh_autocomplete
- * IBM Cloud CLI automatically collects data for usage analysis and user experience improvement. To disable the collecting, run "ibmcloud config --usage-stats-collect false"
- * IBM Cloud CLI has a plug-in framework to extend its capability. To install the recommended plug-ins and dependencies, run the install script from http://ibm.biz/install-idt. For additional plug-in details, see https://console.bluemix.net/docs/cli/reference/bluemix_cli/extend_cli.html.
- * Install the container-registry ibmcloud plugin install container-registry -r Bluemix
-   Use 'ibmcloud plugin show container-registry' to show its details.
- * Install the kubernetes CLI tool (ibmcloud ks) : ibmcloud plugin install container-service
+1. The following steps need to be reviewed as they will always have a `changed` status:
+ * pip
+ * google-chrome
+ * chromedriver
+ * kubernetes
+ * nvm
+
+2. Configure `thefuck`
+ * add `eval $(thefuck --alias)` in your `~/.zshrc`

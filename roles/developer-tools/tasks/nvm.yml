@@ -11,7 +11,6 @@
 
 - name: Install nvm
   shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest_version.tag }}/install.sh | zsh
-  when: nvm_latest_version.tag == nvm_installed_version
   tags:
     - nvm
     - dev-tools

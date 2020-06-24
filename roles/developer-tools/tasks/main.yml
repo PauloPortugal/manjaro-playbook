@@ -3,13 +3,6 @@
   pacman:
     name: '{{ developer_stack }}'
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
-
-- name: Install Developer Tools that require sudo
-  pacman:
-    name: '{{ developer_stack_sudo }}'
-    state: present
   become_user: 'root'
   become: yes
 
