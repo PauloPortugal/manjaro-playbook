@@ -5,13 +5,47 @@ based on Arch Linux. It should run locally after a clean OS install.
 
 ## Preamble
 
-1. Refresh the copy of the master package database from the server and install `Ansible` and `Git`
+### 1. Creating Bootable Linux USB Drive from the Command Line
+
+Find out the name of the USB drive
 ```
-sudo pacman -Syy
-sudo pacman -S ansible git --noconfirm
+lsblk
 ```
 
-2. Git clone the current project
+Flash the ISO image to the USB drive
+```
+dd bs=4M if=/path/to/iso of=/dev/sdx status=progress oflag=sync
+```
+
+### 2. Refresh the copy of the master package database from the server and install `ansible`, `git` and `xclip`
+```
+sudo pacman -Syy
+sudo pacman -S ansible git xclip --noconfirm
+```
+
+### 3. Set Git SSH credentials
+
+Generate a new SSH Key
+```
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+Start the ssh-agent in the background
+```
+eval "$(ssh-agent -s)"
+```
+
+Add SSH Key to the ssh-agent
+```
+ssh-add ~/.ssh/id_rsa
+```
+
+Copy the SSH public key to the clipboard
+```
+xclip -sel clip < ~/.ssh/id_rsa.pub
+```
+
+### 4. Git clone the current project
 ```
 git clone git@github.com:PauloPortugal/manjaro-playbook.git
 ```
