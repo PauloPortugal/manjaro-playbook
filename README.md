@@ -87,11 +87,12 @@ ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL"
 
 ## TODO
 
-Bluemix setup:
- * enable zsh completion, add the following line in "~/.zshrc":
-   . /usr/local/ibmcloud/autocomplete/zsh_autocomplete
- * IBM Cloud CLI automatically collects data for usage analysis and user experience improvement. To disable the collecting, run "ibmcloud config --usage-stats-collect false"
- * IBM Cloud CLI has a plug-in framework to extend its capability. To install the recommended plug-ins and dependencies, run the install script from http://ibm.biz/install-idt. For additional plug-in details, see https://console.bluemix.net/docs/cli/reference/bluemix_cli/extend_cli.html.
- * Install the container-registry ibmcloud plugin install container-registry -r Bluemix
-   Use 'ibmcloud plugin show container-registry' to show its details.
- * Install the kubernetes CLI tool (ibmcloud ks) : ibmcloud plugin install container-service
+1. The following steps need to be reviewed as they will always have a `changed` status:
+ * pip
+ * google-chrome
+ * chromedriver
+ * kubernetes
+ * nvm
+
+2. Configure `thefuck`
+ * add `eval $(thefuck --alias)` in your `~/.zshrc`

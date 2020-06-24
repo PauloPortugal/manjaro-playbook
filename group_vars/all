@@ -3,14 +3,12 @@ browsers_aur:
     - chromedriver 80.0.3987.106
 
 developer_stack:
-    - nodejs
-    - npm
-
-developer_stack_sudo:
     - jq
     - docker
     - docker-compose
     - hub
+    - nodejs
+    - npm
     - jre8-openjdk-headless jre8-openjdk jdk8-openjdk openjdk8-doc
     - jre11-openjdk-headless jre11-openjdk jdk11-openjdk openjdk11-doc
     - maven
@@ -21,7 +19,6 @@ developer_stack_sudo:
 
 developer_stack_aur:
     - leiningen
-    - bluemix-cli
     - kubernetes
     - kubectl-bin
     - xq
@@ -73,7 +70,6 @@ utils_aur:
 
 printers_aur:
     - brother-mfc-j415w
-    - brother-hl8350cdw
 
 zsh_plugins:
     - archlinux
