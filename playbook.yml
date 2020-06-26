@@ -11,3 +11,4 @@
   - { role: comms,           tags: ['comms'] }
   - { role: gnome,           tags: ['gnome'] }
   - { role: security,        tags: ['security'] }
+  - { role: pro-audio,       tags: ['pro-audio'] }

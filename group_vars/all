@@ -101,3 +101,14 @@ security_tools:
     - ufw
     - ufw-extras
     - gufw
+
+pro_audio:
+    - jack2
+    - jack-stdio
+    - jack_capture
+    - jack_delay
+    - jack_utils
+    - jackmeter
+    - cadence
+    - guitarix
+    - ardour

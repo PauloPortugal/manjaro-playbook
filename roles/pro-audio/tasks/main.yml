@@ -1,0 +1,8 @@
+---
+- name: Install (semi) pro-audio tools
+  pacman:
+    name: '{{ pro_audio }}'
+    state: present
+  become: yes
+  tags:
+    - pro-audio

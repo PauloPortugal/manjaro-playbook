@@ -45,6 +45,7 @@ Tags supported:
 | comms     | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
 | aur       | Install Arch User Repository libraries                                                                           |
 | security  | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
+| pro-audio | Install |
 
 Example on how to install only browsers:
 ```
