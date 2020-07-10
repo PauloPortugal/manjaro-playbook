@@ -4,6 +4,8 @@
     name: '{{ editors }}'
     state: present
   become: yes
+  tags:
+    - editors
 
 - name: Install editors from Arch User Repository
   script: ../../../aur/install-aur.sh {{ item }}
@@ -13,6 +15,7 @@
   failed_when: install_result.rc != 0 and install_result.rc != 255
   tags:
     - aur
+    - editors_aur
 
 - name: Setup default Git configuration
   git_config:
