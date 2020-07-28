@@ -27,7 +27,6 @@ editors:
     - vim
     - atom
     - emacs
-    - gimp
 
 editors_aur:
     - intellij-idea-ultimate-edition
@@ -39,6 +38,10 @@ media:
 
 media_aur:
     - spotify
+
+multimedia:
+    - gimp
+    - darktable
 
 shell_aliases:
     - alias ll='ls -lrt'

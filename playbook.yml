@@ -8,6 +8,7 @@
   - { role: developer-tools, tags: ['dev-tools'] }
   - { role: editors,         tags: ['editors'] }
   - { role: media,           tags: ['media'] }
+  - { role: multimedia,      tags: ['multimedia'] }
   - { role: comms,           tags: ['comms'] }
   - { role: gnome,           tags: ['gnome'] }
   - { role: security,        tags: ['security'] }
