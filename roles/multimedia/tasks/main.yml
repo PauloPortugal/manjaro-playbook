@@ -1,0 +1,8 @@
+---
+- name: Install multimedia packages
+  pacman:
+    name: '{{ multimedia }}'
+    state: present
+  become: yes
+  tags:
+    - multime
