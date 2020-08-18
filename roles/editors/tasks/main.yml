@@ -30,3 +30,6 @@
   become: yes
   tags:
     - git
+
+
+- include: xmind.yml
