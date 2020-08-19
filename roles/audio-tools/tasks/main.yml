@@ -1,0 +1,8 @@
+---
+- name: Install audio tools
+  pacman:
+    name: '{{ audio_tools }}'
+    state: present
+  become: yes
+  tags:
+    - audio-tools
