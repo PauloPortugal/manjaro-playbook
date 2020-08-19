@@ -66,20 +66,21 @@ ansible-playbook -vvv playbook.yml --extra-vars="user_name=USERNAME user_email=E
 
 Tags supported:
 
-| Tag       | Description                                                                                                      |
-|-----------|------------------------------------------------------------------------------------------------------------------|
-| base      | Install Linux util libraries, python-pip, xinput, terminator, snap and zsh                                       |
-| users     | Setup user accounts                                                                                              |
-| printers  | Install printer drivers                                                                                          |
-| browsers  | Install Chrome and chromedriver                                                                                  |
-| dev-tools | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli, hub and heroku  |
-| editors   | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
-| media     | Install Spotify and Peek (GIF Screen recorder)                                                                   |
-| multimedia| Install gimp and darktable                                                                                       |
-| gnome     | Configure the desktop environment                                                                                |
-| comms     | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
-| aur       | Install Arch User Repository libraries                                                                           |
-| security  | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
+| Tag         | Description                                                                                                      |
+|-------------|------------------------------------------------------------------------------------------------------------------|
+| base        | Install Linux util libraries, python-pip, xinput, terminator, snap and zsh                                       |
+| users       | Setup user accounts                                                                                              |
+| printers    | Install printer drivers                                                                                          |
+| browsers    | Install Chrome and chromedriver
+| audio-tools | Install Audacity                                                                                  |
+| dev-tools   | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli, hub and heroku  |
+| editors     | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
+| media       | Install Spotify and Peek (GIF Screen recorder)                                                                   |
+| multimedia  | Install gimp and darktable                                                                                       |
+| gnome       | Configure the desktop environment                                                                                |
+| comms       | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
+| aur         | Install Arch User Repository libraries                                                                           |
+| security    | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
 
 Example on how to install only browsers:
 ```

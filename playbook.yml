@@ -9,6 +9,7 @@
   - { role: editors,         tags: ['editors'] }
   - { role: media,           tags: ['media'] }
   - { role: multimedia,      tags: ['multimedia'] }
+  - { role: audio-tools,     tags: ['audio-tools'] }
   - { role: comms,           tags: ['comms'] }
   - { role: gnome,           tags: ['gnome'] }
   - { role: security,        tags: ['security'] }

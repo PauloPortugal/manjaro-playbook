@@ -1,3 +1,6 @@
+audio_tools:
+    - audacity
+
 browsers_aur:
     - google-chrome 80.0.3987.106
     - chromedriver 80.0.3987.106
