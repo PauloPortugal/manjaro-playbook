@@ -6,6 +6,7 @@
   - { role: printers,        tags: ['printers'] }
   - { role: browsers,        tags: ['browsers'] }
   - { role: developer-tools, tags: ['dev-tools'] }
+  - { role: cloud-tools,     tags: ['cloud-tools'] }
   - { role: editors,         tags: ['editors'] }
   - { role: media,           tags: ['media'] }
   - { role: multimedia,      tags: ['multimedia'] }

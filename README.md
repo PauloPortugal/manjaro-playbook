@@ -73,7 +73,8 @@ Tags supported:
 | printers    | Install printer drivers                                                                                          |
 | browsers    | Install Chrome and chromedriver
 | audio-tools | Install Audacity                                                                                  |
-| dev-tools   | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, bluemix-cli, hub and heroku  |
+| dev-tools   | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, hub and heroku  |
+| cloud-tools | Install google-cloud-sdk                                                                                         |
 | editors     | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
 | media       | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | multimedia  | Install gimp and darktable                                                                                       |
@@ -87,6 +88,16 @@ Example on how to install only browsers:
 ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass --tags browsers
 ```
 
+## Google Cloud Configuration
+
+On the command line run
+```
+gcloud init
+```
+
+For more information about Gcloud command lines read https://cloud.google.com/sdk/gcloud
+
+
 ## TODO
 
 1. The following steps need to be reviewed as they will always have a `changed` status:
@@ -98,3 +109,5 @@ ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL"
 
 2. Configure `thefuck`
  * add `eval $(thefuck --alias)` in your `~/.zshrc`
+
+3. It would be nice to include more audio-tools.
