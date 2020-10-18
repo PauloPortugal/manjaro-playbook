@@ -7,6 +7,7 @@
   failed_when: install_result.rc != 0 and install_result.rc != 255
   tags:
     - aur
+    - media_aur
 
 
 - name: Install media packages
@@ -14,3 +15,5 @@
     name: '{{ media }}'
     state: present
   become: yes
+  tags:
+    - media
