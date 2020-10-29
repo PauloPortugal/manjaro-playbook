@@ -2,8 +2,14 @@ audio_tools:
     - audacity
 
 browsers_aur:
-    - google-chrome 80.0.3987.106
-    - chromedriver 80.0.3987.106
+    - google-chrome 86.0.4240.111-1
+    - chromedriver 86.0.4240.22-1
+
+browser_tor:
+    - mozilla-common
+    - tor
+    - nyx
+    - torbrowser-launcher
 
 cloud_tools_aur:
     - google-cloud-sdk
