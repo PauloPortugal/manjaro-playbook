@@ -1,4 +1,13 @@
 ---
+- name: Install tor browser and required dependencies
+  pacman:
+    name: '{{ browser_tor }}'
+    state: present
+  become: yes
+  tags:
+    - browsers
+    - tor
+
 - name: Install browsers from Arch User Repository
   script: ../../../aur/install-aur.sh {{ item }}
   with_items: '{{ browsers_aur }}'
