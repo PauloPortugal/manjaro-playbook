@@ -98,12 +98,10 @@ zsh_plugins:
     - docker-compose
     - dotenv
     - spring
-    - thefuck
     - git-prompt
     - git-extras
 
 pip_packages:
-    - thefuck
     - github3.py
 
 comms:
