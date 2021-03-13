@@ -14,7 +14,7 @@
 
 - name: Configure NTP client
   command: timedatectl set-ntp true
-  when: ntpStatusVar == "yes"
+  when: ntpStatusVar == "no"
   become: yes
   tags:
     - ntp
