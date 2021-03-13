@@ -7,12 +7,19 @@
   become: yes
 
 - name: Install Developer Tools from Arch User Repository
-  script: ../../../aur/install-aur.sh {{ item }}
+  shell: |
+    pamac build -d --no-confirm {{ item }} | grep "is up to date"
+    if [ $? != 0 ]; then
+      pamac build --no-confirm {{ item }}
+    fi
+    exit 0;
   with_items: '{{ developer_stack_aur }}'
-  register: install_result
-  changed_when: install_result.rc == 0
-  failed_when: install_result.rc != 0 and install_result.rc != 255
+  register: command_result
+  failed_when: command_result.rc != 0
+  changed_when: "'successfully' in command_result.stdout"
+  become: true
   tags:
+    - dev-tools
     - aur
 
 - include: nvm.yml

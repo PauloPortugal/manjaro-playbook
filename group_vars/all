@@ -32,11 +32,11 @@ developer_stack:
     - scala
     - sbt
     - go-pie
+    - leiningen
+    - minikube
+    - kubectl
 
 developer_stack_aur:
-    - leiningen
-    - kubernetes
-    - kubectl-bin
     - xq
 
 editors:
