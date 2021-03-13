@@ -73,7 +73,7 @@ Tags supported:
 | printers    | Install printer drivers                                                                                          |
 | browsers    | Install Chrome and chromedriver
 | audio-tools | Install Audacity                                                                                  |
-| dev-tools   | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, kubernetes, hub and heroku  |
+| dev-tools   | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
 | cloud-tools | Install google-cloud-sdk                                                                                         |
 | editors     | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
 | media       | Install Spotify and Peek (GIF Screen recorder)                                                                   |
@@ -102,10 +102,6 @@ For more information about Gcloud command lines read https://cloud.google.com/sd
 
 1. The following steps need to be reviewed as they will always have a `changed` status:
  * pip
- * google-chrome
- * chromedriver
- * kubernetes
- * nvm
 
 2. Configure `thefuck`
  * add `eval $(thefuck --alias)` in your `~/.zshrc`

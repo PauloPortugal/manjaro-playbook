@@ -9,8 +9,12 @@
     - nvm
     - dev-tools
 
+
 - name: Install nvm
-  shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest_version.tag }}/install.sh | zsh
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest_version.tag }}/install.sh | zsh
+  args:
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
   tags:
     - nvm
     - dev-tools
