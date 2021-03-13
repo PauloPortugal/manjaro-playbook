@@ -102,8 +102,6 @@ For more information about Gcloud command lines read https://cloud.google.com/sd
 
 1. The following steps need to be reviewed as they will always have a `changed` status:
  * pip
- * google-chrome
- * chromedriver
  * kubernetes
  * nvm
 
