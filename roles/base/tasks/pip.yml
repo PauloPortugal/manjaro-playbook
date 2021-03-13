@@ -10,4 +10,4 @@
   become: yes
   tags:
     - base
-    - nvm
+    - pip
