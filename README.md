@@ -103,4 +103,6 @@ For more information about Gcloud command lines read https://cloud.google.com/sd
 1. The following steps need to be reviewed as they will always have a `changed` status:
  * pip
 
-3. It would be nice to include more audio-tools.
+2. It would be nice to include more audio-tools.
+
+3. Test the playbook
