@@ -23,7 +23,7 @@ if [ -z "${searchResult}" ]; then
   makepkg -s --skippgpcheck
 
   # Install package
-  sudo pacman -U *xz --noconfirm
+  makepkg -si --noconfirm
 
   # Remove temporary folder
   rm -rf /tmp/${1}
