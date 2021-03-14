@@ -1,9 +1,14 @@
 # Manjaro/Arch Linux Ansible Provision
 
-This is an Ansible playbook meant to provision a Manjaro or Antergos Linux distribution,
+This is an [Ansible playbook](https://docs.ansible.com/ansible/latest/user_guide/index.html) meant to provision a Manjaro Linux distribution,
 based on Arch Linux. It should run locally after a clean OS install.
 
-## Preamble
+This playbook follows the Manjaro [community recommendation when installing the additional software packages](https://wiki.manjaro.org/index.php/Arch_User_Repository) from the [Arch User Repository](https://aur.archlinux.org/packages):
+ * Using Arch Linux Package Manager **pacman** to install [Arch Linux official packages](https://archlinux.org/packages/)
+ * Using the command line **Pamac** for a more automated way of installing [AUR packages](https://aur.archlinux.org/packages)
+ * Using the [install-aur.sh](https://github.com/PauloPortugal/manjaro-playbook/blob/master/aur/install-aur.sh) to provide a "manual installation"
+
+## Prior Instructions
 
 ### 1. Creating Bootable Linux USB Drive from the Command Line
 
@@ -48,6 +53,7 @@ xclip -sel clip < ~/.ssh/id_rsa.pub
 ### 4. Git clone the current project
 ```
 git clone git@github.com:PauloPortugal/manjaro-playbook.git
+cd manjaro-playbook
 ```
 
 ## Run
@@ -62,6 +68,12 @@ ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL"
 ansible-playbook -vvv playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
 ```
 
+### Install only the 'dev-tools' role
+```
+ansible-playbook -v playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass --tags dev-tools
+```
+
+
 ## Playbook Tags
 
 Tags supported:
@@ -71,8 +83,8 @@ Tags supported:
 | base        | Install Linux util libraries, python-pip, xinput, terminator, snap and zsh                                       |
 | users       | Setup user accounts                                                                                              |
 | printers    | Install printer drivers                                                                                          |
-| browsers    | Install Chrome and chromedriver
-| audio-tools | Install Audacity                                                                                  |
+| browsers    | Install Tor, Chrome and chromedriver                                                                             |
+| audio-tools | Install Audacity                                                                                                 |
 | dev-tools   | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
 | cloud-tools | Install google-cloud-sdk                                                                                         |
 | editors     | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
