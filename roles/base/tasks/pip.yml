@@ -1,8 +1,4 @@
 ---
-- name: "Upgrade pip to v19.3.1"
-  shell: pip install --upgrade pip==19.3.1
-  become: yes
-
 - name: "Install pip packages"
   pip:
     name: '{{ pip_packages }}'
