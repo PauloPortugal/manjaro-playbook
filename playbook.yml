@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Configure a Manjaro OS (Arch Linux distribution) GNOME 3 desktop
+  hosts: localhost
   roles:
   - { role: base,            tags: ['base'] }
   - { role: users,           tags: ['users', 'never'] }

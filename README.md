@@ -1,7 +1,7 @@
 # Manjaro/Arch Linux Ansible Provision
 
-This is an [Ansible playbook](https://docs.ansible.com/ansible/latest/user_guide/index.html) meant to provision a Manjaro Linux distribution,
-based on Arch Linux. It should run locally after a clean OS install.
+This is an [Ansible playbook](https://docs.ansible.com/ansible/latest/user_guide/index.html) meant to configure a Manjaro OS (Arch Linux distribution) GNOME 3 desktop.
+It should run locally after a clean OS install.
 
 This playbook follows the Manjaro [community recommendation when installing the additional software packages](https://wiki.manjaro.org/index.php/Arch_User_Repository) from the [Arch User Repository](https://aur.archlinux.org/packages):
  * Using Arch Linux Package Manager **pacman** to install [Arch Linux official packages](https://archlinux.org/packages/)
