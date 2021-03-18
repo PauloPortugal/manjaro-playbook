@@ -24,7 +24,7 @@ dd bs=4M if=/path/to/iso of=/dev/sdx status=progress oflag=sync
 
 ### 2. Refresh the copy of the master package database from the server and install `ansible`, `git` and `xclip`
 ```
-sudo pacman -Syy
+sudo pacman -Syyu
 sudo pacman -S ansible git xclip --noconfirm
 ```
 
@@ -78,22 +78,23 @@ ansible-playbook -v playbook.yml --extra-vars="user_name=USERNAME user_email=EMA
 
 Tags supported:
 
-| Tag         | Description                                                                                                      |
-|-------------|------------------------------------------------------------------------------------------------------------------|
-| base        | Install Linux util libraries, python-pip, xinput, terminator, snap and zsh                                       |
-| users       | Setup user accounts                                                                                              |
-| printers    | Install printer drivers                                                                                          |
-| browsers    | Install Tor, Chrome and chromedriver                                                                             |
-| audio-tools | Install Audacity                                                                                                 |
-| dev-tools   | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
-| cloud-tools | Install google-cloud-sdk                                                                                         |
-| editors     | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
-| media       | Install Spotify and Peek (GIF Screen recorder)                                                                   |
-| multimedia  | Install gimp and darktable                                                                                       |
-| gnome       | Configure the desktop environment                                                                                |
-| comms       | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
-| aur         | Install Arch User Repository libraries                                                                           |
-| security    | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
+| Tag            | Description                                                                                                      |
+|----------------|------------------------------------------------------------------------------------------------------------------|
+| base           | Install Linux util libraries, python-pip, xinput, terminator, snap and zsh                                       |
+| users          | Setup user accounts                                                                                              |
+| printers       | Install printer drivers                                                                                          |
+| browsers       | Install tor, google-chrome and chromedriver                                                                      |
+| audio-tools    | Install audacity                                                                                                 |
+| dev-tools      | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
+| cloud-tools    | Install google-cloud-sdk                                                                                         |
+| editors        | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
+| media          | Install Spotify and Peek (GIF Screen recorder)                                                                   |
+| multimedia     | Install gimp and darktable                                                                                       |
+| gnome          | Configure the desktop environment                                                                                |
+| comms          | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
+| aur            | Install Arch User Repository libraries                                                                           |
+| security       | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
+| virtualization | Install vagrant, virtualbox and virtualbox-host-modules-arch                                                     |
 
 Example on how to install only browsers:
 ```

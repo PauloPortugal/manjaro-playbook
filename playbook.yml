@@ -15,3 +15,4 @@
   - { role: comms,           tags: ['comms'] }
   - { role: gnome,           tags: ['gnome'] }
   - { role: security,        tags: ['security'] }
+  - { role: virtualization,  tags: ['virtualization'] }
