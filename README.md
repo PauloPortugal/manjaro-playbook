@@ -22,9 +22,9 @@ Flash the ISO image to the USB drive
 dd bs=4M if=/path/to/iso of=/dev/sdx status=progress oflag=sync
 ```
 
-### 2. Refresh the copy of the master package database from the server and install `ansible`, `git` and `xclip`
+### 2. Refresh pacaman mirrors, the copy of the master package database from the server and install `ansible`, `git` and `xclip`
 ```
-sudo pacman -Syyu
+sudo pacman-mirrors -f && sudo pacman -Syyu
 sudo pacman -S ansible git xclip --noconfirm
 ```
 
