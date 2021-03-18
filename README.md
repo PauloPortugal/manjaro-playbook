@@ -94,7 +94,7 @@ Tags supported:
 | comms          | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
 | aur            | Install Arch User Repository libraries                                                                           |
 | security       | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
-| virtualization | Install vagrant, virtualbox and virtualbox-host-modules-arch                                                     |
+| virtualization | Install vagrant, virtualbox and virtualbox-host-modules                                                     |
 
 Example on how to install only browsers:
 ```
