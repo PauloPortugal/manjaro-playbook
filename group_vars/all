@@ -116,3 +116,7 @@ security_tools:
     - ufw
     - ufw-extras
     - gufw
+
+virtualization: 
+    - vagrant
+    - virtualbox

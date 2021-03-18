@@ -1,0 +1,8 @@
+---
+- name: Install virtualization tools
+  pacman:
+    name: '{{ virtualization }}'
+    state: present
+  become: yes
+  tags:
+    - virtualization
