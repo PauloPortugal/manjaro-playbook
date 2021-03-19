@@ -7,7 +7,7 @@
   tags:
     - virtualization
 
-- name: Check the Kernel Version with UNAME
+- name: Get the Linux kernel version
   register: kernelVersion
   shell: uname -r | awk -F. '{ print $1$2 }'
   changed_when: false
@@ -22,9 +22,43 @@
   tags:
     - virtualization
 
-- name: Add the vboxdrv module
+- name: Load the vboxdrv module
   modprobe:
     name: vboxdrv
     state: present
   tags:
     - virtualization
+    - modprobe
+
+- name: Load the vboxnetadp module
+  modprobe:
+    name: vboxnetadp
+    state: present
+  become: yes
+  tags:
+    - virtualization
+    - modprobe
+
+- name: Load the vboxnetflt module
+  modprobe:
+    name: vboxnetflt
+    state: present
+  tags:
+    - virtualization
+    - modprobe
+
+- name: Install Oracle VM VirtualBox Extension Pack
+  shell: |
+    pamac build -d --no-confirm virtualbox-ext-oracle | grep "is up to date"
+    if [ $? != 0 ]; then
+      pamac build --no-confirm virtualbox-ext-oracle
+    fi
+    exit 0;
+  register: command_result
+  failed_when: command_result.rc != 0
+  changed_when: "'successfully' in command_result.stdout"
+  become: true
+  tags:
+    - virtualization
+    - oracle
+    - aur
