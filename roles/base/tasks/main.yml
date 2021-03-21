@@ -1,9 +1,21 @@
 ---
+- name: Update cache and upgrade
+  pacman:
+    update_cache: yes
+    upgrade: yes
+    upgrade_extra_args: "--noconfirm"
+  become: yes
+  tags:
+    - pre
+
 - name: Install Utils
   pacman:
     name: '{{ utils }}'
     state: present
   become: yes
+  tags:
+    - utils
+
 
 - name: Install Utils from Arch User Repository
   script: ../../../aur/install-aur.sh {{ item }}
@@ -16,7 +28,6 @@
 
 - include: ntp.yml
 - include: pip.yml
-- include: zsh.yml
 - include: bash.yml
 - include: snap.yml
 - include: terminator.yml
