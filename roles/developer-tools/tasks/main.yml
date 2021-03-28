@@ -5,6 +5,8 @@
     state: present
   become_user: 'root'
   become: yes
+  tags:
+    - dev-tools
 
 - name: Install Developer Tools from Arch User Repository
   shell: |
@@ -12,7 +14,6 @@
     if [ $? != 0 ]; then
       pamac build --no-confirm {{ item }}
     fi
-    exit 0;
   with_items: '{{ developer_stack_aur }}'
   register: command_result
   failed_when: command_result.rc != 0
@@ -26,4 +27,3 @@
 
 - include: docker-config.yml
 - include: emacs-config.yml
-- include: heroku-config.yml

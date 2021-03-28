@@ -16,20 +16,25 @@
   tags:
     - utils
 
-
 - name: Install Utils from Arch User Repository
-  script: ../../../aur/install-aur.sh {{ item }}
+  shell: |
+    pamac build -d --no-confirm {{ item }} | grep "is up to date"
+    if [ $? != 0 ]; then
+      pamac build --no-confirm {{ item }}
+    fi
   with_items: '{{ utils_aur }}'
-  register: install_result
-  changed_when: install_result.rc == 0
-  failed_when: install_result.rc != 0 and install_result.rc != 255
+  become: true
+  register: command_result
+  failed_when: command_result.rc != 0
+  changed_when: "'successfully' in command_result.stdout"
   tags:
+    - base
     - aur
 
 - include: ntp.yml
 - include: pip.yml
 - include: bash.yml
-- include: snap.yml
+- include: zsh.yml
 - include: terminator.yml
 
 - name: Creates Workspace directory

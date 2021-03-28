@@ -1,4 +1,12 @@
 ---
+- name: Install browsers
+  pacman:
+    name: '{{ browsers }}'
+    state: present
+  become: yes
+  tags:
+    - browsers
+
 - name: Install tor browser and required dependencies
   pacman:
     name: '{{ browser_tor }}'
@@ -14,7 +22,6 @@
     if [ $? != 0 ]; then
       pamac build --no-confirm {{ item }}
     fi
-    exit 0;
   with_items: '{{ browsers_aur }}'
   register: command_result
   failed_when: command_result.rc != 0

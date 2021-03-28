@@ -1,6 +1,9 @@
 audio_tools:
     - audacity
 
+browsers:
+    - firefox
+
 browsers_aur:
     - google-chrome
     - chromedriver
@@ -31,13 +34,15 @@ developer_stack:
     - clojure
     - scala
     - sbt
-    - go-pie
+    - go
     - leiningen
     - minikube
     - kubectl
+    - yarn
 
 developer_stack_aur:
     - xq
+    - heroku-cli
 
 editors:
     - vim
