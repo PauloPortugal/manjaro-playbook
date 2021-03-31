@@ -1,9 +1,0 @@
----
-- name: Install "xmind" through snap with option --classic
-  snap:
-    name: xmind
-    classic: yes
-  become: yes
-  tags:
-    - snap
-    - xmind

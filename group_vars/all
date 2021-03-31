@@ -53,6 +53,7 @@ editors_aur:
     - intellij-idea-ultimate-edition
     - jetbrains-toolbox
     - visual-studio-code-bin
+    - xmind
 
 media:
     - peek
