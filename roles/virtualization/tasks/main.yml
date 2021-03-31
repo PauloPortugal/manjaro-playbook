@@ -26,6 +26,7 @@
   modprobe:
     name: vboxdrv
     state: present
+  become: yes
   tags:
     - virtualization
     - modprobe
@@ -43,6 +44,7 @@
   modprobe:
     name: vboxnetflt
     state: present
+  become: yes
   tags:
     - virtualization
     - modprobe
