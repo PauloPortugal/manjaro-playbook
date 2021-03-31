@@ -35,13 +35,13 @@ developer_stack:
     - scala
     - sbt
     - go
+    - go-tools
     - leiningen
     - minikube
     - kubectl
     - yarn
 
 developer_stack_aur:
-    - xq
     - heroku-cli
 
 editors:

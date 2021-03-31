@@ -1,0 +1,17 @@
+---
+- name: Add 'GOPATH' to .zshrc
+  lineinfile: 
+    dest: /home/{{ user_name }}/.zshrc 
+    regexp: 'GOPATH'
+    line: 'export GOPATH=$HOME/go' 
+    owner: '{{ user_name }}'
+    state: present
+  tags:
+    - dev-tools
+    - go
+
+- name: Source ~/.zshrc
+  shell: source ~/.zshrc
+  tags:
+    - dev-tools
+    - go
