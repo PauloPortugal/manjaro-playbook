@@ -1,8 +1,0 @@
----
-- name: Install "heroku" through snap with option --classic
-  snap:
-    name: heroku
-    classic: yes
-  become: yes
-  tags:
-    - heroku

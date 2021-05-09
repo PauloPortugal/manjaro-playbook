@@ -1,11 +1,31 @@
 ---
-- name: Install Oh My Zsh
-  script: ../files/install-oh-my-zsh.sh {{ user_name }}
-  register: install_result
-  changed_when: install_result.rc == 0
-  failed_when: install_result.rc != 0 and install_result.rc != 255
+- name: Install oh-my-zsh-git
+  shell: |
+    pamac build -d --no-confirm oh-my-zsh-git | grep -E 'is up to date|downgrading'
+    if [ $? != 0 ]; then
+      pamac build --no-confirm oh-my-zsh-git
+    fi
+  register: command_result
+  failed_when: command_result.rc != 0
+  changed_when: "'successfully' in command_result.stdout"
+  become: yes
   tags:
     - zsh
+    - aur
+
+- name: Copy .zshrc to home folder
+  copy:
+    remote_src: yes
+    src: /usr/share/oh-my-zsh/zshrc
+    dest: /home/{{ user_name }}/.zshrc
+    owner: '{{ user_name }}'
+    group: '{{ user_name }}'
+    mode: 0644
+  become: yes
+  become_user: '{{ user_name }}'
+  tags:
+    - terminator
+
 
 - name: Create zsh shell aliases
   lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' owner='{{ user_name }}' state=present

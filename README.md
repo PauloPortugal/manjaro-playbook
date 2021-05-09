@@ -6,9 +6,102 @@ It should run locally after a clean OS install.
 This playbook follows the Manjaro [community recommendation when installing the additional software packages](https://wiki.manjaro.org/index.php/Arch_User_Repository) from the [Arch User Repository](https://aur.archlinux.org/packages):
  * Using Arch Linux Package Manager **pacman** to install [Arch Linux official packages](https://archlinux.org/packages/)
  * Using the command line **Pamac** for a more automated way of installing [AUR packages](https://aur.archlinux.org/packages)
- * Using the [install-aur.sh](https://github.com/PauloPortugal/manjaro-playbook/blob/master/aur/install-aur.sh) to provide a "manual installation"
+ * Using a bespoke script [install-aur.sh](https://github.com/PauloPortugal/manjaro-playbook/blob/master/aur/install-aur.sh) to provide a "manual installation" for [AUR packages](https://aur.archlinux.org/packages)
 
-## Prior Instructions
+
+## Table of contents
+1. [Provision and configure a Vagrant VM](#provision-and-configure-a-vagrant-vm)
+    1. [Configure a Manjaro Vagrant VM from a native Manjaro OS](#configure-a-manjaro-vagrant-vm-from-a-native-manjaro-os)
+    2. [Configure a Manjaro Vagrant VM from another Linux Distributions](#configure-a-manjaro-vagrant-vm-from-another-linux-distributions)
+2. [Run and configure the localhost machine](#run-and-configure-the-localhost-machine)
+3. [Playbook Roles](#playbook-roles)
+4. [Instructions to install a new Manjaro image](#instructions-to-install-a-new-Manjaro-image)
+5. [Google Cloud Configuration](#google-cloud-configuration)
+5. [TODO](#todo)
+
+---- 
+
+## Provision and configure a Vagrant VM
+Before applying the changes against your desktop/laptop, being able to test against a [Docker](https://www.docker.com/) container or a [Vagrant](https://www.vagrantup.com/) VM machine allows to test the playbook safer, quicker and often.
+
+Since this is a Manjaro/Arch Desktop setup, having a Virtual Box to be able to login and inspect the UI is somewhat useful, although this is still an experimentation as the preferred approach was to opt for a Docker container.
+
+The Vagrant VM box is based on a [Manjaro Gnome X64 21.0](https://app.vagrantup.com/pmonteiro/boxes/manjaro-21-X64-gnome/versions/1.0.0) box. This should not be an issue if you want the [latest Manjaro release](https://manjaro.org/downloads/official/gnome/), as the playbook will upgrade the VM to the lastest Manjaro release version.
+
+
+### Configure a Manjaro Vagrant VM from a native Manjaro OS
+
+Install and configure Vagrant & [Oracle VirtualBox](https://www.virtualbox.org/) locally
+```
+# Install and configure Vagrant & Oracle VirtualBox locally
+ansible-playbook playbook.yml -l localhost --extra-vars="user_name=USERNAME" --ask-become-pass --tags virtualization
+
+#Provision the Vagrant box
+vagrant up --provision
+
+# Run Ansible playbook against the Vagrant VM
+ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
+```
+
+### Configuring a Manjaro Vagrant VM from another Linux Distributions
+Ensure you have installed and properly configured Ansible, Vagrant & [Oracle VirtualBox](https://www.virtualbox.org/).
+
+```
+# Provision the Vagrant box
+vagrant up --provision
+
+# Run Ansible playbook against the Vagrant VM
+ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
+```
+
+
+## Run and configure the localhost machine
+
+### Install everything
+```
+ansible-playbook playbook.yml -l localhost --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
+```
+
+### Install everything with debug turned on
+```
+ansible-playbook -vvvv playbook.yml -l localhost --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
+```
+
+### Install only the 'dev-tools' role with minimal logging
+```
+ansible-playbook -v playbook.yml -l localhost --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass --tags dev-tools
+```
+
+
+## Playbook Roles
+
+Roles supported:
+
+| Roles          | Description                                                                                                      |
+|----------------|------------------------------------------------------------------------------------------------------------------|
+| base           | Install Linux util libraries, python-pip, xinput, terminator, snap and zsh                                       |
+| users          | Setup user accounts                                                                                              |
+| printers       | Install printer drivers                                                                                          |
+| browsers       | Install tor, google-chrome and chromedriver                                                                      |
+| audio-tools    | Install audacity                                                                                                 |
+| dev-tools      | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
+| cloud-tools    | Install google-cloud-sdk                                                                                         |
+| editors        | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
+| media          | Install Spotify and Peek (GIF Screen recorder)                                                                   |
+| multimedia     | Install gimp and darktable                                                                                       |
+| gnome          | Configure the desktop environment                                                                                |
+| comms          | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
+| aur            | Install Arch User Repository libraries                                                                           |
+| security       | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
+| virtualization | Install vagrant, virtualbox and virtualbox-host-modules                                                     |
+
+Example on how to install only browsers:
+```
+ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass --tags browsers
+```
+
+
+## Instructions to install a new Manjaro image
 
 ### 1. Creating Bootable Linux USB Drive from the Command Line
 
@@ -22,7 +115,13 @@ Flash the ISO image to the USB drive
 dd bs=4M if=/path/to/iso of=/dev/sdx status=progress oflag=sync
 ```
 
+Change boot order and install Manjaro.
+
+
 ### 2. Refresh pacaman mirrors, the copy of the master package database from the server and install `ansible`, `git` and `xclip`
+
+After installing Manjaro, ensure that ansible, git and xclip are installed
+
 ```
 sudo pacman-mirrors -f && sudo pacman -Syyu
 sudo pacman -S ansible git xclip --noconfirm
@@ -56,50 +155,8 @@ git clone git@github.com:PauloPortugal/manjaro-playbook.git
 cd manjaro-playbook
 ```
 
-## Run
-
-### Install everything
-```
-ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
-```
-
-### Install everything with debug turned on
-```
-ansible-playbook -vvv playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
-```
-
-### Install only the 'dev-tools' role
-```
-ansible-playbook -v playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass --tags dev-tools
-```
 
 
-## Playbook Tags
-
-Tags supported:
-
-| Tag            | Description                                                                                                      |
-|----------------|------------------------------------------------------------------------------------------------------------------|
-| base           | Install Linux util libraries, python-pip, xinput, terminator, snap and zsh                                       |
-| users          | Setup user accounts                                                                                              |
-| printers       | Install printer drivers                                                                                          |
-| browsers       | Install tor, google-chrome and chromedriver                                                                      |
-| audio-tools    | Install audacity                                                                                                 |
-| dev-tools      | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
-| cloud-tools    | Install google-cloud-sdk                                                                                         |
-| editors        | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
-| media          | Install Spotify and Peek (GIF Screen recorder)                                                                   |
-| multimedia     | Install gimp and darktable                                                                                       |
-| gnome          | Configure the desktop environment                                                                                |
-| comms          | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
-| aur            | Install Arch User Repository libraries                                                                           |
-| security       | Install clamav, clamtk, ufw, ufw-extras and gufw                                                                 |
-| virtualization | Install vagrant, virtualbox and virtualbox-host-modules                                                     |
-
-Example on how to install only browsers:
-```
-ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass --tags browsers
-```
 
 ## Google Cloud Configuration
 
@@ -114,5 +171,3 @@ For more information about Gcloud command lines read https://cloud.google.com/sd
 ## TODO
 
 1. It would be nice to include more audio-tools.
-
-2. Test the playbook

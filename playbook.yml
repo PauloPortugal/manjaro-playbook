@@ -1,6 +1,6 @@
 ---
 - name: Configure a Manjaro OS (Arch Linux distribution) GNOME 3 desktop
-  hosts: localhost
+  hosts: all
   roles:
   - { role: base,            tags: ['base'] }
   - { role: users,           tags: ['users', 'never'] }
@@ -16,3 +16,6 @@
   - { role: gnome,           tags: ['gnome'] }
   - { role: security,        tags: ['security'] }
   - { role: virtualization,  tags: ['virtualization'] }
+
+  handlers:
+  - import_tasks: handlers/os.yml

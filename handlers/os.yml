@@ -1,0 +1,4 @@
+---
+- name: restart os
+  reboot:
+  listen: "restart os"

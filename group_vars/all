@@ -1,12 +1,14 @@
 audio_tools:
     - audacity
 
+browsers:
+    - firefox
+
 browsers_aur:
     - google-chrome
     - chromedriver
 
 browser_tor:
-    - mozilla-common
     - tor
     - nyx
     - torbrowser-launcher
@@ -31,13 +33,15 @@ developer_stack:
     - clojure
     - scala
     - sbt
-    - go-pie
+    - go
+    - go-tools
     - leiningen
     - minikube
     - kubectl
+    - yarn
 
 developer_stack_aur:
-    - xq
+    - heroku-cli
 
 editors:
     - vim
@@ -48,6 +52,7 @@ editors_aur:
     - intellij-idea-ultimate-edition
     - jetbrains-toolbox
     - visual-studio-code-bin
+    - xmind
 
 media:
     - peek
