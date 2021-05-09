@@ -5,11 +5,7 @@
     groups: docker
     append: yes
   become: yes
-  tags:
-    - docker
-
-- name: Wait for OS to restart
-  reboot:
+  notify: restart os
   tags:
     - docker
 
@@ -22,3 +18,4 @@
   become: yes
   tags:
     - docker
+    

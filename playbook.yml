@@ -16,3 +16,8 @@
   - { role: gnome,           tags: ['gnome'] }
   - { role: security,        tags: ['security'] }
   - { role: virtualization,  tags: ['virtualization'] }
+
+  handlers:
+  - name: restart os
+    reboot:
+
