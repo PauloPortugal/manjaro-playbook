@@ -8,6 +8,11 @@
   tags:
     - docker
 
+- name: Wait for OS to restart
+  reboot:
+  tags:
+    - docker
+
 - name: "Docker - Enable and start the docker daemon"
   systemd:
     name: docker
