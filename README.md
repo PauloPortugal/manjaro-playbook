@@ -29,11 +29,12 @@ Since this is a Manjaro/Arch Desktop setup, having a Virtual Box to be able to l
 The Vagrant VM box is based on a [Manjaro Gnome X64 21.0](https://app.vagrantup.com/pmonteiro/boxes/manjaro-21-X64-gnome/versions/1.0.0) box. This should not be an issue if you want the [latest Manjaro release](https://manjaro.org/downloads/official/gnome/), as the playbook will upgrade the VM to the lastest Manjaro release version.
 
 
-### Configure a Manjaro Vagrant VM from a native Manjaro OS
+### Provision and configure a Manjaro Vagrant VM
 
 Install and configure Vagrant & [Oracle VirtualBox](https://www.virtualbox.org/) locally
 ```
-# Install and configure Vagrant & Oracle VirtualBox locally
+# if from a different Linux distribution or on a Mac make sure to install Vagrant and Oracle
+# if you are using a Manjaro/Arch, install and configure Vagrant & Oracle VirtualBox locally
 ansible-playbook playbook.yml -l localhost --extra-vars="user_name=USERNAME" --ask-become-pass --tags virtualization
 
 #Provision the Vagrant box
@@ -42,18 +43,6 @@ vagrant up --provision
 # Run Ansible playbook against the Vagrant VM
 ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
 ```
-
-### Configuring a Manjaro Vagrant VM from another Linux Distributions
-Ensure you have installed and properly configured Ansible, Vagrant & [Oracle VirtualBox](https://www.virtualbox.org/).
-
-```
-# Provision the Vagrant box
-vagrant up --provision
-
-# Run Ansible playbook against the Vagrant VM
-ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
-```
-
 
 ## Run and configure the localhost machine
 
