@@ -9,7 +9,6 @@ browsers_aur:
     - chromedriver
 
 browser_tor:
-    - mozilla-common
     - tor
     - nyx
     - torbrowser-launcher
