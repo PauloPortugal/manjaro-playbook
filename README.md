@@ -19,7 +19,7 @@ This playbook follows the Manjaro [community recommendation when installing the 
 5. [Google Cloud Configuration](#google-cloud-configuration)
 5. [TODO](#todo)
 
----- 
+----
 
 ## Provision and configure a Vagrant VM
 Before applying the changes against your desktop/laptop, being able to test against a [Docker](https://www.docker.com/) container or a [Vagrant](https://www.vagrantup.com/) VM machine allows to test the playbook safer, quicker and often.
@@ -73,7 +73,7 @@ Roles supported:
 | printers       | Install printer drivers                                                                                          |
 | browsers       | Install tor, google-chrome and chromedriver                                                                      |
 | audio-tools    | Install audacity                                                                                                 |
-| dev-tools      | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
+| dev-tools      | Install tesseract, jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
 | cloud-tools    | Install google-cloud-sdk                                                                                         |
 | editors        | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
 | media          | Install Spotify and Peek (GIF Screen recorder)                                                                   |
