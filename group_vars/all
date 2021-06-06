@@ -122,6 +122,10 @@ security_tools:
     - ufw-extras
     - gufw
 
-virtualization: 
+virtualization:
     - vagrant
     - virtualbox
+
+tesseract:
+    - tesseract
+    - tesseract-data-eng
