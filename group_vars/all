@@ -49,8 +49,9 @@ editors:
     - emacs
 
 editors_aur:
-    - intellij-idea-ultimate-edition
     - jetbrains-toolbox
+    - intellij-idea-ultimate-edition
+    - goland
     - visual-studio-code-bin
     - xmind
 
@@ -75,6 +76,7 @@ utils:
     - gconf
     - openssl-1.0
     - libcurl-gnutls
+    - lib32-glibc
     - binutils
     - gcc
     - htop
@@ -86,6 +88,8 @@ utils:
     - xclip
     - xorg-xinput
     - ntp
+    - pamac
+    - wget
 
 utils_aur:
     - lsdesktopf
@@ -129,3 +133,9 @@ virtualization:
 tesseract:
     - tesseract
     - tesseract-data-eng
+
+gnome:
+    - gnome
+    - gnome-extra
+    - manjaro-gnome-assets
+    - manjaro-settings-manager

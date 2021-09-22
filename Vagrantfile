@@ -3,7 +3,7 @@
 
 Vagrant.configure("2") do |config|
 
-  config.vm.box = "pmonteiro/manjaro-21-X64-gnome"
+  config.vm.box = "Zelec/manjarolinux"
 
   # not needed for build testing purposes
   config.ssh.insert_key = false

@@ -1,4 +1,12 @@
 ---
+- name: Install or Update gnome
+  pacman:
+    name: '{{ gnome }}'
+    state: present
+  become: yes
+  tags:
+    - gnome
+
 - name: Configure favourite apps in Gnome
   dconf:
     key: "/org/gnome/shell/favorite-apps"
