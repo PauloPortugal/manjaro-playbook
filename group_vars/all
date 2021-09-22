@@ -42,6 +42,7 @@ developer_stack:
 
 developer_stack_aur:
     - heroku-cli
+    - lens-bin
 
 editors:
     - vim
