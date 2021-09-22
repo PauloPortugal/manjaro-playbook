@@ -7,7 +7,7 @@ if [ ! -z "${2}" ]; then
   searchQuery="${1} ${2}"
 fi
 
-searchResult=`pacman -Q | grep "$searchQuery"`
+searchResult=`pacman -Q | grep -sw '$searchQuery'`
 
 # Only install if package does not exist
 if [ -z "${searchResult}" ]; then
