@@ -136,7 +136,5 @@ tesseract:
     - tesseract-data-eng
 
 gnome:
-    - gnome
-    - gnome-extra
     - manjaro-gnome-assets
     - manjaro-settings-manager
