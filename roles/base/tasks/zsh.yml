@@ -13,6 +13,13 @@
     - zsh
     - aur
 
+- name: Check if .zshrc exists on user home folder
+  stat:
+    path: '/home/{{ user_name }}/.zshrc'
+  register: zsh_file_check
+  tags:
+    - zsh
+
 - name: Copy .zshrc to home folder
   copy:
     remote_src: yes
@@ -23,8 +30,9 @@
     mode: 0644
   become: yes
   become_user: '{{ user_name }}'
+  when: not zsh_file_check.stat.exists
   tags:
-    - terminator
+    - zsh
 
 
 - name: Create zsh shell aliases
