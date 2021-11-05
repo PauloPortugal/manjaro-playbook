@@ -7,11 +7,10 @@ if [ ! -z "${2}" ]; then
   searchQuery="${1} ${2}"
 fi
 
-searchResult=`pacman -Q | grep -sw '$searchQuery'`
-
+searchResult=`pacman -Q | grep -sw "${searchQuery}"`
 # Only install if package does not exist
 if [ -z "${searchResult}" ]; then
-  echo "Installing"
+  echo "Installing ${searchQuery} package"
   # Download Arch linux AUR package
   wget https://aur.archlinux.org/cgit/aur.git/snapshot/${1}.tar.gz -P /tmp/${1}
 
