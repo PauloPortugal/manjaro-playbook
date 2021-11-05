@@ -1,5 +1,4 @@
 ---
-
 - name: Install Cloud Tools from Arch User Repository
   script: ../../../aur/install-aur.sh {{ item }}
   with_items: '{{ cloud_tools_aur }}'
@@ -8,4 +7,4 @@
   failed_when: install_result.rc != 0 and install_result.rc != 255
   tags:
     - aur
-    - cloud-tools
+    - cloud

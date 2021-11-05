@@ -7,14 +7,15 @@
   register: nvm_latest_version
   tags:
     - nvm
-    - dev-tools
+    - development
 
 
 - name: Install nvm
-  shell: >
+  shell: |
+    set -o pipefail
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest_version.tag }}/install.sh | zsh
   args:
     creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
   tags:
     - nvm
-    - dev-tools
+    - development

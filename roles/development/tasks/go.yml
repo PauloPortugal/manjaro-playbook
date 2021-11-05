@@ -6,12 +6,7 @@
     line: 'export GOPATH=$HOME/go' 
     owner: '{{ user_name }}'
     state: present
+  notify: "source .zshrc"
   tags:
-    - dev-tools
-    - go
-
-- name: Source ~/.zshrc
-  shell: source ~/.zshrc
-  tags:
-    - dev-tools
+    - development
     - go

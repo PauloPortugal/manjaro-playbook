@@ -1,24 +1,28 @@
 ---
 - name: "Emacs - Check that the ~/.emacs.d/prelude-modules.el exists"
   stat:
-    path: /home/{{ user_name}}/.emacs.d/prelude-modules.el
+    path: /home/{{ user_name }}/.emacs.d/prelude-modules.el
   register: prelude_modules_exists
   become_user: '{{ user_name }}'
   become: yes
   tags:
     - emacs
+    - development
 
 - name: "Emacs - Create prelude-modules.el"
-  shell: curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
-  when: prelude_modules_exists.stat.exists == False
+  shell: |
+    set -o pipefail
+    curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
+  when: not prelude_modules_exists.stat.exists
   become_user: '{{ user_name }}'
   become: yes
   tags:
     - emacs
+    - development
 
 - name: "Emacs - Add prelude tools and languages support"
   copy:
-    src: ../files/prelude-modules.el
+    src: files/prelude-modules.el
     dest: /home/{{ user_name }}/.emacs.d/
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
@@ -27,3 +31,4 @@
   become: yes
   tags:
     - emacs
+    - development

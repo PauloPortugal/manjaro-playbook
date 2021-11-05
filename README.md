@@ -121,7 +121,7 @@ After installing Manjaro, ensure that ansible, git and xclip are installed
 
 ```
 sudo pacman-mirrors -f && sudo pacman -Syyu
-sudo pacman -S ansible git xclip --noconfirm
+sudo pacman -S ansible ansible-lint git xclip --noconfirm
 ```
 
 ### 3. Set Git SSH credentials

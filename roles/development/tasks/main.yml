@@ -7,6 +7,7 @@
   become: yes
   tags:
     - dev-tools
+    - development
 
 - include: go.yml
 
@@ -17,8 +18,8 @@
   changed_when: install_result.rc == 0
   failed_when: install_result.rc != 0 and install_result.rc != 255
   tags:
-    - dev-tools-aur
-    - dev-tools
+    - development-aur
+    - development
     - aur
 
 - include: nvm.yml

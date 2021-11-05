@@ -6,7 +6,7 @@
   become: yes
   tags:
     - pip
-    - dev-tools
+    - development
     - tesseract
 
 - name: Install Tesseract
@@ -16,7 +16,7 @@
   become_user: 'root'
   become: yes
   tags:
-    - dev-tools
+    - development
     - tesseract
 
 - name: Ensure TESSDATA_PREFIX is set
@@ -25,5 +25,5 @@
     regexp: '^TESSDATA_PREFIX='
     line: TESSDATA_PREFIX=/usr/share/tessdata/
   tags:
-    - dev-tools
+    - development
     - tesseract

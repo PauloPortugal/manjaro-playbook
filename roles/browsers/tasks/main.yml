@@ -18,6 +18,7 @@
 
 - name: Install browsers from Arch User Repository
   shell: |
+    set -o pipefail
     pamac build -d --no-confirm {{ item }} | grep "is up to date"
     if [ $? != 0 ]; then
       pamac build --no-confirm {{ item }}
