@@ -43,30 +43,30 @@ Install and configure Vagrant & [Oracle VirtualBox](https://www.virtualbox.org/)
 ```
 # if from a different Linux distribution or on a Mac make sure to install Vagrant and Oracle
 # if you are using a Manjaro/Arch, install and configure Vagrant & Oracle VirtualBox locally
-ansible-playbook playbook.yml -l localhost --extra-vars="user_name=USERNAME" --ask-become-pass --tags virtualization
+ansible-playbook playbook.yml -l localhost --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME" --ask-become-pass --tags virtualization
 
 #Provision the Vagrant box
 vagrant up --provision
 
 # Run Ansible playbook against the Vagrant VM
-ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
+ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" --ask-become-pass
 ```
 
 ## Run and configure the localhost machine
 
 ### Install everything
 ```
-ansible-playbook playbook.yml -l localhost --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
+ansible-playbook playbook.yml -l localhost --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" --ask-become-pass
 ```
 
 ### Install everything with debug turned on
 ```
-ansible-playbook -vvvv playbook.yml -l localhost --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass
+ansible-playbook -vvvv playbook.yml -l localhost --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" --ask-become-pass
 ```
 
 ### Install only the 'dev-tools' role with minimal logging
 ```
-ansible-playbook -v playbook.yml -l localhost --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass --tags dev-tools
+ansible-playbook -v playbook.yml -l localhost --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" --ask-become-pass --tags dev-tools
 ```
 
 
@@ -94,7 +94,7 @@ Roles supported:
 
 Example on how to install only browsers:
 ```
-ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_email=EMAIL" --ask-become-pass --tags browsers
+ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" --ask-become-pass --tags browsers
 ```
 
 

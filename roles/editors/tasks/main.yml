@@ -23,7 +23,7 @@
     scope=global
     value="{{ item.value }}"
   with_items:
-    - {name: "user.name",   value: "{{ user_name }}" }
+    - {name: "user.name",   value: "{{ user_git_name }}" }
     - {name: "user.email",  value: "{{ user_email }}" }
     - {name: "core.editor", value: "vim" }
   become_user: '{{ user_name }}'
