@@ -38,11 +38,13 @@ developer_stack:
     - leiningen
     - minikube
     - kubectl
+    - kubectx
     - yarn
 
 developer_stack_aur:
     - heroku-cli
     - lens-bin
+    - kubefwd-bin
 
 editors:
     - vim

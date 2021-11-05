@@ -10,14 +10,22 @@ This playbook follows the Manjaro [community recommendation when installing the 
 
 
 ## Table of contents
-1. [Provision and configure a Vagrant VM](#provision-and-configure-a-vagrant-vm)
-    1. [Configure a Manjaro Vagrant VM from a native Manjaro OS](#configure-a-manjaro-vagrant-vm-from-a-native-manjaro-os)
-    2. [Configure a Manjaro Vagrant VM from another Linux Distributions](#configure-a-manjaro-vagrant-vm-from-another-linux-distributions)
-2. [Run and configure the localhost machine](#run-and-configure-the-localhost-machine)
-3. [Playbook Roles](#playbook-roles)
-4. [Instructions to install a new Manjaro image](#instructions-to-install-a-new-Manjaro-image)
-5. [Google Cloud Configuration](#google-cloud-configuration)
-5. [TODO](#todo)
+- [Manjaro/Arch Linux Ansible Provision](#manjaroarch-linux-ansible-provision)
+  - [Table of contents](#table-of-contents)
+  - [Provision and configure a Vagrant VM](#provision-and-configure-a-vagrant-vm)
+    - [Provision and configure a Manjaro Vagrant VM](#provision-and-configure-a-manjaro-vagrant-vm)
+  - [Run and configure the localhost machine](#run-and-configure-the-localhost-machine)
+    - [Install everything](#install-everything)
+    - [Install everything with debug turned on](#install-everything-with-debug-turned-on)
+    - [Install only the 'dev-tools' role with minimal logging](#install-only-the-dev-tools-role-with-minimal-logging)
+  - [Playbook Roles](#playbook-roles)
+  - [Instructions to install a new Manjaro image](#instructions-to-install-a-new-manjaro-image)
+    - [1. Creating Bootable Linux USB Drive from the Command Line](#1-creating-bootable-linux-usb-drive-from-the-command-line)
+    - [2. Refresh pacaman mirrors, the copy of the master package database from the server and install `ansible`, `git` and `xclip`](#2-refresh-pacaman-mirrors-the-copy-of-the-master-package-database-from-the-server-and-install-ansible-git-and-xclip)
+    - [3. Set Git SSH credentials](#3-set-git-ssh-credentials)
+    - [4. Git clone the current project](#4-git-clone-the-current-project)
+  - [Google Cloud Configuration](#google-cloud-configuration)
+  - [TODO](#todo)
 
 ----
 
@@ -73,9 +81,9 @@ Roles supported:
 | printers       | Install printer drivers                                                                                          |
 | browsers       | Install tor, google-chrome and chromedriver                                                                      |
 | audio-tools    | Install audacity                                                                                                 |
-| dev-tools      | Install tesseract, jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, hub and heroku  |
+| dev-tools      | Install tesseract, jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, kubectx, kubefwd, hub and heroku  |
 | cloud-tools    | Install google-cloud-sdk                                                                                         |
-| editors        | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Microsoft Visual Studio and Xmind                  |
+| editors        | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Goland, Visual Studio Code and Xmind                  |
 | media          | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | multimedia     | Install gimp and darktable                                                                                       |
 | gnome          | Configure the desktop environment                                                                                |
@@ -152,6 +160,7 @@ cd manjaro-playbook
 On the command line run
 ```
 gcloud init
+gcloud auth login
 ```
 
 For more information about Gcloud command lines read https://cloud.google.com/sdk/gcloud
