@@ -8,15 +8,17 @@
     - virtualization
 
 - name: Get the Linux kernel version
-  register: kernelVersion
-  shell: uname -r | awk -F. '{ print $1$2 }'
+  register: kernel_version
+  shell: |
+    set -o pipefail
+    uname -r | awk -F. '{ print $1$2 }'
   changed_when: false
   tags:
     - virtualization
 
 - name: Install the relevant virtualbox-host-modules
   pacman:
-    name: linux{{ kernelVersion.stdout }}-virtualbox-host-modules
+    name: linux{{ kernel_version.stdout }}-virtualbox-host-modules
     state: present
   become: yes
   tags:
@@ -51,6 +53,7 @@
 
 - name: Install Oracle VM VirtualBox Extension Pack
   shell: |
+    set -o pipefail
     pamac build -d --no-confirm virtualbox-ext-oracle | grep "is up to date"
     if [ $? != 0 ]; then
       pamac build --no-confirm virtualbox-ext-oracle

@@ -8,6 +8,7 @@
   notify: "restart os"
   tags:
     - docker
+    - development
 
 - name: "Docker - Enable and start the docker daemon"
   systemd:
@@ -18,4 +19,5 @@
   become: yes
   tags:
     - docker
+    - development
     

@@ -1,0 +1,5 @@
+---
+- name: source zshrc
+  shell: | 
+    source ~/.zshrc
+  listen: "source .zshrc"

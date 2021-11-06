@@ -1,0 +1,8 @@
+---
+- name: Update freshClam database
+  command: freshclam
+  become: yes
+  tags:
+    - security
+    - clamav
+  listen: "freshclam"

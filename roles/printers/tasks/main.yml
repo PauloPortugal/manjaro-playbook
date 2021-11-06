@@ -1,6 +1,7 @@
 ---
 - name: Install Printer Drivers from Arch User Repository
   shell: |
+    set -o pipefail
     pamac build -d --no-confirm {{ item }} | grep -E 'is up to date|downgrading'
     if [ $? != 0 ]; then
       pamac build --no-confirm {{ item }}

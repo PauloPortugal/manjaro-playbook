@@ -2,13 +2,7 @@
 - name: Ensure that clamav-freshclam is not running in order to update the database
   systemd: state=stopped name=clamav-freshclam
   become: yes
-  tags:
-    - security
-    - clamav
-
-- name: Update freshClam database
-  command: freshclam
-  become: yes
+  notify: "freshclam"
   tags:
     - security
     - clamav

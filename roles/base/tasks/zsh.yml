@@ -1,6 +1,7 @@
 ---
 - name: Install oh-my-zsh-git
   shell: |
+    set -o pipefail
     pamac build -d --no-confirm oh-my-zsh-git | grep -E 'is up to date|downgrading'
     if [ $? != 0 ]; then
       pamac build --no-confirm oh-my-zsh-git

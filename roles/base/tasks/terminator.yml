@@ -3,6 +3,7 @@
   file:
     path: /home/{{ user_name }}/.config/terminator
     state: directory
+    mode: 0764
   become: yes
   become_user: '{{ user_name }}'
   tags:
@@ -10,7 +11,7 @@
 
 - name: Configure Terminator
   copy:
-    src: ../files/terminator_config
+    src: files/terminator_config
     dest: /home/{{ user_name }}/.config/terminator/config
     owner: '{{ user_name }}'
     group: '{{ user_name }}'
