@@ -47,6 +47,7 @@ developer_stack_aur:
     - heroku-cli
     - lens-bin
     - kubefwd-bin
+    - golangci-lint
 
 editors:
     - vim
