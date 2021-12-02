@@ -80,3 +80,13 @@
   become: true
   tags:
     - keyboard-shortcuts
+
+- name: "Force alt + tab to switch only on current workspace"
+  dconf:
+    key: "/org/gnome/shell/app-switcher/current-workspace-only"
+    value: "true"
+    state: present
+  become_user: '{{ user_name }}'
+  become: true
+  tags:
+    - keyboard-shortcuts
