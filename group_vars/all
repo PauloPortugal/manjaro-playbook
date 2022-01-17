@@ -42,6 +42,7 @@ developer_stack:
     - yarn
     - ansible
     - ansible-lint
+    - terraform
 
 developer_stack_aur:
     - heroku-cli
