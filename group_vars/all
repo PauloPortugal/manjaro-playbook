@@ -43,6 +43,7 @@ developer_stack:
     - scala
     - terraform
     - yarn
+    - yq
 
 developer_stack_aur:
     - golangci-lint
