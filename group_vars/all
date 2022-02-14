@@ -5,60 +5,61 @@ browsers:
     - firefox
 
 browsers_aur:
-    - google-chrome
     - chromedriver
+    - google-chrome
 
 browser_tor:
-    - tor
     - nyx
+    - tor
     - torbrowser-launcher
 
 cloud_tools_aur:
     - google-cloud-sdk
 
 developer_stack:
-    - jq
-    - docker
-    - docker-compose
-    - hub
-    - nodejs
-    - npm
-    - jre8-openjdk-headless
-    - jre8-openjdk
-    - jdk8-openjdk
-    - jre11-openjdk-headless
-    - jre11-openjdk
-    - jdk11-openjdk
-    - maven
-    - clojure
-    - scala
-    - sbt
-    - go
-    - go-tools
-    - leiningen
-    - minikube
-    - kubectl
-    - kubectx
-    - yarn
     - ansible
     - ansible-lint
+    - clojure
+    - docker
+    - docker-compose
+    - go
+    - go-tools
+    - hub
+    - jdk8-openjdk
+    - jdk11-openjdk
+    - jq
+    - jre8-openjdk-headless
+    - jre8-openjdk
+    - jre11-openjdk-headless
+    - jre11-openjdk
+    - kubectl
+    - kubectx
+    - leiningen
+    - maven
+    - minikube
+    - npm
+    - nodejs
+    - sbt
+    - scala
     - terraform
+    - yarn
+    - yq
 
 developer_stack_aur:
-    - heroku-cli
-    - lens-bin
-    - kubefwd-bin
     - golangci-lint
+    - heroku-cli
+    - kubefwd-bin
+    - lens-bin
 
 editors:
-    - vim
     - atom
     - emacs
+    - vim
 
 editors_aur:
-    - jetbrains-toolbox
-    - intellij-idea-ultimate-edition
     - goland
+    - intellij-idea-ultimate-edition
+    - jetbrains-toolbox
     - visual-studio-code-bin
     - xmind
 
@@ -69,39 +70,39 @@ media_aur:
     - spotify
 
 multimedia:
-    - gimp
     - darktable
+    - gimp
 
 shell_aliases:
     - alias ll='ls -lrt'
-    - alias vi=vim
-    - alias rgrep='grep -r'
     - alias pull='hub pull-request --no-edit -o -p'
+    - alias rgrep='grep -r'
+    - alias vi=vim
 
 utils:
     - base-devel
-    - gconf
-    - openssl-1.0
-    - libcurl-gnutls
-    - lib32-glibc
     - binutils
     - gcc
+    - gconf
     - htop
+    - libcurl-gnutls
+    - lib32-glibc
     - make
     - mlocate
+    - ntp
+    - openssl-1.0
+    - pamac
     - python-pip
     - terminator
     - tree
+    - wget
     - xclip
     - xorg-xinput
-    - ntp
-    - pamac
-    - wget
 
 utils_aur:
+    - git-extras
     - lsdesktopf
     - mkpasswd
-    - git-extras
     - zsh-git-prompt
 
 printers_aur:
@@ -113,9 +114,9 @@ zsh_plugins:
     - docker
     - docker-compose
     - dotenv
-    - spring
     - git-prompt
     - git-extras
+    - spring
 
 pip_packages:
     - github3.py
@@ -129,9 +130,9 @@ comms_aur:
 security_tools:
     - clamav
     - clamtk
+    - gufw
     - ufw
     - ufw-extras
-    - gufw
 
 virtualization:
     - vagrant
