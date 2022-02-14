@@ -87,6 +87,7 @@ utils:
     - gcc
     - gconf
     - htop
+    - keychain
     - libcurl-gnutls
     - lib32-glibc
     - make
