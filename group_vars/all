@@ -50,6 +50,7 @@ developer_stack_aur:
     - heroku-cli
     - kubefwd-bin
     - lens-bin
+    - mongodb-bin 
     - mongodb-tools-bin 
 
 editors:
