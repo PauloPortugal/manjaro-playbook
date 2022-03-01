@@ -51,7 +51,8 @@ developer_stack_aur:
     - kubefwd-bin
     - lens-bin
     - mongodb-bin 
-    - mongodb-tools-bin 
+    - mongodb-tools-bin
+    - tfswitch-bin
 
 editors:
     - atom
