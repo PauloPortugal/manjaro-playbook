@@ -39,6 +39,7 @@ developer_stack:
     - minikube
     - npm
     - nodejs
+    - ruby
     - sbt
     - scala
     - terraform
