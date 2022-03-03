@@ -46,6 +46,7 @@ developer_stack:
     - yq
 
 developer_stack_aur:
+    - concourse-fly
     - golangci-lint
     - heroku-cli
     - kubefwd-bin
