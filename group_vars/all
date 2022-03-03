@@ -24,6 +24,7 @@ developer_stack:
     - docker-compose
     - go
     - go-tools
+    - go-yq
     - hub
     - jdk8-openjdk
     - jdk11-openjdk
@@ -44,7 +45,6 @@ developer_stack:
     - scala
     - terraform
     - yarn
-    - yq
 
 developer_stack_aur:
     - concourse-fly
