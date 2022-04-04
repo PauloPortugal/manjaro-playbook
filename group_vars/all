@@ -110,6 +110,7 @@ utils_aur:
     - git-extras
     - lsdesktopf
     - mkpasswd
+    - plugin-autenticacao-gov-pt
     - zsh-git-prompt
 
 printers_aur:

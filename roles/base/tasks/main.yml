@@ -15,6 +15,7 @@
   become: yes
   tags:
     - utils
+    - base
 
 - name: Install Utils from Arch User Repository
   shell: |
@@ -30,6 +31,7 @@
   changed_when: "'successfully' in command_result.stdout"
   tags:
     - base
+    - utils-aur
     - aur
 
 - include: ntp.yml
