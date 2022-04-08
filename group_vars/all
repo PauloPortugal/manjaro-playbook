@@ -49,6 +49,7 @@ developer_stack:
 developer_stack_aur:
     - concourse-fly
     - golangci-lint
+    - go-swagger-bin
     - heroku-cli
     - kubefwd-bin
     - lens-bin
