@@ -47,6 +47,7 @@ developer_stack:
     - yarn
 
 developer_stack_aur:
+    - aws-cli-v2-bin
     - concourse-fly
     - golangci-lint
     - go-swagger-bin
