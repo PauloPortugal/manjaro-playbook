@@ -57,6 +57,7 @@ developer_stack_aur:
     - mongodb-bin 
     - mongodb-tools-bin
     - postman-bin
+    - robo3t-bin
     - tfswitch-bin
 
 editors:
