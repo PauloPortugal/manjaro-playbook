@@ -1,60 +1,63 @@
 ---
-- name: "Top Bar - Enable date on clock"
+- name: Top Bar - Enable date on clock
   dconf:
-    key: "/org/gnome/desktop/interface/clock-show-date"
+    key: /org/gnome/desktop/interface/clock-show-date
     value: "true"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - top-bar
 
-- name: "Top Bar - Disable clock seconds"
+- name: Top Bar - Disable clock seconds
   dconf:
-    key: "/org/gnome/desktop/interface/clock-show-seconds"
+    key: /org/gnome/desktop/interface/clock-show-seconds
     value: "false"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - top-bar
 
-- name: "Top Bar - Disable week dates on calendar"
+- name: Top Bar - Disable week dates on calendar
   dconf:
-    key: "/org/gnome/desktop/calendar/show-weekdate"
+    key: /org/gnome/desktop/calendar/show-weekdate
     value: "false"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - top-bar
 
-- name: "Top Bar - Add Time in Cape Town, South Africa"
+- name: Top Bar - Add Time in Cape Town, South Africa
   dconf:
-    key: "/org/gnome/clocks/world-clocks"
-    value: "[{'location': <(uint32 2, <('Cape Town', 'FACT', true, [(-0.59312105165164219, 0.3246312408709453)], [(-0.59195751045250755, 0.32143147639338654)])>)>}]"
+    key: /org/gnome/clocks/world-clocks
+    value: "[{'location': <(uint32 2, <('Cape Town', 'FACT', true, \
+    \ [(-0.59312105165164219, 0.3246312408709453)], [(-0.59195751045250755, 0.32143147639338654)])>)>}]"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - top-bar
 
-- name: "Top Bar - Add Weather Locations"
+- name: Top Bar - Add Weather Locations
   dconf:
-    key: "/org/gnome/Weather/Application/locations"
-    value: "[<(uint32 2, <('London', 'EGLL', true, [(0.89855367075064974, -0.0078539816339744835)], [(0.89884456477707964, -0.0020362232784242244)])>)>, <(uint32 2, <('Porto', 'LPPR', true, [(0.7196574224212311, -0.15155275089707676)], [(0.71820298719566655, -0.15038920969794223)])>)>]"
+    key: /org/gnome/Weather/Application/locations
+    value: "[<(uint32 2, <('London', 'EGLL', true, \
+      \ [(0.89855367075064974, -0.0078539816339744835)], [(0.89884456477707964, -0.0020362232784242244)])>)>, <(uint32\
+      \ 2, <('Porto', 'LPPR', true, [(0.7196574224212311, -0.15155275089707676)], [(0.71820298719566655, -0.15038920969794223)])>)>]"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - top-bar
 
-- name: "Top Bar - Enable battery percentage"
+- name: Top Bar - Enable battery percentage
   dconf:
-    key: "/org/gnome/desktop/interface/show-battery-percentage"
+    key: /org/gnome/desktop/interface/show-battery-percentage
     value: "true"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - top-bar

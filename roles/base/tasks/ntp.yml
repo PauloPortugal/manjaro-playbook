@@ -1,15 +1,15 @@
 ---
 - name: Make sure the NTP service is running
-  systemd: 
+  ansible.builtin.systemd:
     state: started
     name: ntpd
-  become: yes
+  become: true
   tags:
     - ntp
 
 - name: Set timezone to Europe/London
   timezone:
     name: Europe/London
-  become: yes
+  become: true
   tags:
     - ntp

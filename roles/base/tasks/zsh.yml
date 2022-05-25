@@ -1,6 +1,6 @@
 ---
 - name: Install oh-my-zsh-git
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     pamac build -d --no-confirm oh-my-zsh-git | grep -E 'is up to date|downgrading'
     if [ $? != 0 ]; then
@@ -9,67 +9,66 @@
   register: command_result
   failed_when: command_result.rc != 0
   changed_when: "'successfully' in command_result.stdout"
-  become: yes
+  become: true
   tags:
     - zsh
     - aur
 
 - name: Check if .zshrc exists on user home folder
-  stat:
-    path: '/home/{{ user_name }}/.zshrc'
+  ansible.builtin.stat:
+    path: /home/{{ user_name }}/.zshrc
   register: zsh_file_check
   tags:
     - zsh
 
 - name: Copy .zshrc to home folder
-  copy:
-    remote_src: yes
+  ansible.builtin.copy:
+    remote_src: true
     src: /usr/share/oh-my-zsh/zshrc
     dest: /home/{{ user_name }}/.zshrc
-    owner: '{{ user_name }}'
-    group: '{{ user_name }}'
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
     mode: 0644
-  become: yes
-  become_user: '{{ user_name }}'
+  become: true
+  become_user: "{{ user_name }}"
   when: not zsh_file_check.stat.exists
   tags:
     - zsh
 
-
-- name: Create zsh shell aliases
-  lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' owner='{{ user_name }}' state=present
-  with_items: "{{ shell_aliases }}"
-  become_user: '{{ user_name }}'
-  become: yes
+- name: Create zsh ansible.builtin.shell aliases
+  ansible.builtin.lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' owner='{{ user_name }}' state=present
+  with_items: "{{ ansible.builtin.shell_aliases }}"
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - zsh
 
 - name: Add zsh plugins
-  replace:
+  ansible.builtin.replace:
     path: /home/{{ user_name }}/.zshrc
-    regexp: 'plugins=(git)'
-    replace: 'plugins=(git git-extras git-prompt spring dotenv docker-compose docker colored-man-pages archlinux)'
-    backup: yes
-  become_user: '{{ user_name }}'
-  become: yes
+    regexp: plugins=(git)
+    replace: plugins=(git git-extras git-prompt spring dotenv docker-compose docker colored-man-pages archlinux)
+    backup: true
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - zsh
 
-- name: Change zsh shell theme from 'robbyrussell' to 'agnoster'
-  replace:
+- name: Change zsh ansible.builtin.shell theme from 'robbyrussell' to 'agnoster'
+  ansible.builtin.replace:
     path: /home/{{ user_name }}/.zshrc
-    regexp: 'ZSH_THEME="robbyrussell"'
-    replace: 'ZSH_THEME="agnoster"'
-    backup: yes
-  become_user: '{{ user_name }}'
-  become: yes
+    regexp: ZSH_THEME="robbyrussell"
+    replace: ZSH_THEME="agnoster"
+    backup: true
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - zsh
 
-- name: Set zsh as default shell
-  user:
+- name: Set zsh as default ansible.builtin.shell
+  ansible.builtin.user:
     name: "{{ user_name }}"
-    shell: /usr/bin/zsh
+    ansible.builtin.shell: /usr/bin/zsh
   become: true
   tags:
     - zsh

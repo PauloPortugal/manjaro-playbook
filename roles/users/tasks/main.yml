@@ -1,19 +1,19 @@
 ---
 - name: Create a user profile
-  user:
+  ansible.builtin.user:
     name: pmonteiro-work
-    password: '$6$njre9EVs$9BZugl5GcxpymEDI2hZxgxAJdW1FO1VQKfESjKPcZaCNhBMVy5MDzc9/iHS8pE7qeZ.S54J/xp1KucNbrFzPL0'
+    password: $6$njre9EVs$9BZugl5GcxpymEDI2hZxgxAJdW1FO1VQKfESjKPcZaCNhBMVy5MDzc9/iHS8pE7qeZ.S54J/xp1KucNbrFzPL0
     groups:
-     - docker
-     - network
-     - scanner
-     - power
-     - video
-     - storage
-     - wheel
+      - docker
+      - network
+      - scanner
+      - power
+      - video
+      - storage
+      - wheel
     state: present
-    shell: /bin/zsh
-    system: no
-    createhome: yes
+    ansible.builtin.shell: /bin/zsh
+    system: false
+    createhome: true
     home: /home/pmonteiro-work
-  become: yes
+  become: true

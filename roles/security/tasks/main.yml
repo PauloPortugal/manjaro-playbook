@@ -1,9 +1,9 @@
 ---
 - name: Install security tools
-  pacman:
-    name: '{{ security_tools }}'
+  community.general.pacman:
+    name: "{{ security_tools }}"
     state: present
-  become: yes
+  become: true
   tags:
     - security
     - clamav

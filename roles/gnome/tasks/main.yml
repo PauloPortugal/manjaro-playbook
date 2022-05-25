@@ -1,19 +1,21 @@
 ---
 - name: Install or Update gnome
-  pacman:
-    name: '{{ gnome }}'
+  community.general.pacman:
+    name: "{{ gnome }}"
     state: present
-  become: yes
+  become: true
   tags:
     - gnome
 
 - name: Configure favourite apps in Gnome
   dconf:
-    key: "/org/gnome/shell/favorite-apps"
-    value: "['firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'jetbrains-idea.desktop', 'jetbrains-goland.desktop', 'visual-studio-code.desktop', 'atom.desktop', 'emacs.desktop', 'slack.desktop', 'signal-desktop.desktop', 'terminator.desktop', 'pamac-manager.desktop']"
+    key: /org/gnome/shell/favorite-apps
+    value: "['firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'jetbrains-idea.desktop',
+      \ 'jetbrains-goland.desktop', 'visual-studio-code.desktop', 'atom.desktop', 'emacs.desktop',
+      \ 'slack.desktop', 'signal-desktop.desktop', 'terminator.desktop', 'pamac-manager.desktop']"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - gnome
 

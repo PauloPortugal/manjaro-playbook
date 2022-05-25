@@ -1,23 +1,22 @@
 ---
-- name: "Docker - Add {{ user_name }} to docker group"
-  user:
+- name: Docker - Add {{ user_name }} to docker group
+  ansible.builtin.user:
     name: "{{ user_name }}"
     groups: docker
-    append: yes
-  become: yes
-  notify: "restart os"
+    append: true
+  become: true
+  notify: restart os
   tags:
     - docker
     - development
 
-- name: "Docker - Enable and start the docker daemon"
-  systemd:
+- name: Docker - Enable and start the docker daemon
+  ansible.builtin.systemd:
     name: docker
-    enabled: yes
+    enabled: true
     state: started
-    masked: no
-  become: yes
+    masked: false
+  become: true
   tags:
     - docker
     - development
-    

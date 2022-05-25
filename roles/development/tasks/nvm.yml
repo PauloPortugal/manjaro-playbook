@@ -9,9 +9,8 @@
     - nvm
     - development
 
-
 - name: Install nvm
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest_version.tag }}/install.sh | zsh
   args:

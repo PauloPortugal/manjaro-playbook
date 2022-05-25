@@ -84,7 +84,7 @@ multimedia:
     - darktable
     - gimp
 
-shell_aliases:
+ansible.builtin.shell_aliases:
     - alias ll='ls -lrt'
     - alias pull='hub pull-request --no-edit -o -p'
     - alias rgrep='grep -r'

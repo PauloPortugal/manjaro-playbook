@@ -1,10 +1,10 @@
 ---
 - name: Install Developer Tools
-  pacman:
-    name: '{{ developer_stack }}'
+  community.general.pacman:
+    name: "{{ developer_stack }}"
     state: present
-  become_user: 'root'
-  become: yes
+  become_user: root
+  become: true
   tags:
     - dev-tools
     - development
@@ -12,8 +12,8 @@
 - include: go.yml
 
 - name: Install Developer Tools from Arch User Repository
-  script: ../../../aur/install-aur.sh {{ item }}
-  with_items: '{{ developer_stack_aur }}'
+  ansible.builtin.script: ../../../aur/install-aur.sh {{ item }}
+  with_items: "{{ developer_stack_aur }}"
   register: install_result
   changed_when: install_result.rc == 0
   failed_when: install_result.rc != 0 and install_result.rc != 255

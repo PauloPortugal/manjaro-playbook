@@ -1,15 +1,15 @@
 ---
 - name: Install virtualization tools
-  pacman:
-    name: '{{ virtualization }}'
+  community.general.pacman:
+    name: "{{ virtualization }}"
     state: present
-  become: yes
+  become: true
   tags:
     - virtualization
 
 - name: Get the Linux kernel version
   register: kernel_version
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     uname -r | awk -F. '{ print $1$2 }'
   changed_when: false
@@ -17,10 +17,10 @@
     - virtualization
 
 - name: Install the relevant virtualbox-host-modules
-  pacman:
+  community.general.pacman:
     name: linux{{ kernel_version.stdout }}-virtualbox-host-modules
     state: present
-  become: yes
+  become: true
   tags:
     - virtualization
 
@@ -28,7 +28,7 @@
   modprobe:
     name: vboxdrv
     state: present
-  become: yes
+  become: true
   tags:
     - virtualization
     - modprobe
@@ -37,7 +37,7 @@
   modprobe:
     name: vboxnetadp
     state: present
-  become: yes
+  become: true
   tags:
     - virtualization
     - modprobe
@@ -46,13 +46,13 @@
   modprobe:
     name: vboxnetflt
     state: present
-  become: yes
+  become: true
   tags:
     - virtualization
     - modprobe
 
 - name: Install Oracle VM VirtualBox Extension Pack
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     pamac build -d --no-confirm virtualbox-ext-oracle | grep "is up to date"
     if [ $? != 0 ]; then
