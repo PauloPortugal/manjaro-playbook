@@ -105,6 +105,7 @@ utils:
     - openssl-1.0
     - pamac
     - python-pip
+    - pwgen
     - terminator
     - tree
     - wget
