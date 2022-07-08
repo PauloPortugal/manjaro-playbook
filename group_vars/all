@@ -82,6 +82,7 @@ media_aur:
 multimedia:
     - darktable
     - gimp
+    - kdenlive
 
 shell_aliases:
     - alias ll='ls -lrt'

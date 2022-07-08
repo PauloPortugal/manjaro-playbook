@@ -88,7 +88,7 @@ Roles supported:
 | cloud-tools    | Install google-cloud-sdk                                                                                         |
 | editors        | Install vim, emacs, gimp, Intellij + JetBrains Toolbox, Goland, Visual Studio Code and Xmind                  |
 | media          | Install Spotify and Peek (GIF Screen recorder)                                                                   |
-| multimedia     | Install gimp and darktable                                                                                       |
+| multimedia     | Install gimp, darktable and kdenlive                                                                                       |
 | gnome          | Configure the desktop environment                                                                                |
 | comms          | Install communication/Instant Messaging apps: signal-desktop, slack-desktop                                      |
 | aur            | Install Arch User Repository libraries                                                                           |
