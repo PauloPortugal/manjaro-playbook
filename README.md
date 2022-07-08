@@ -86,7 +86,7 @@ Roles supported:
 | audio-tools    | Install audacity                                                                                                 |
 | dev-tools      | Install tesseract, jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, kubectx, kubefwd, hub and heroku  |
 | cloud-tools    | Install google-cloud-sdk                                                                                         |
-| editors        | Install vim, atom, emacs, gimp, Intellij + JetBrains Toolbox, Goland, Visual Studio Code and Xmind                  |
+| editors        | Install vim, emacs, gimp, Intellij + JetBrains Toolbox, Goland, Visual Studio Code and Xmind                  |
 | media          | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | multimedia     | Install gimp and darktable                                                                                       |
 | gnome          | Configure the desktop environment                                                                                |
