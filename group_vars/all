@@ -82,8 +82,9 @@ media_aur:
 multimedia:
     - darktable
     - gimp
+    - kdenlive
 
-ansible.builtin.shell_aliases:
+shell_aliases:
     - alias ll='ls -lrt'
     - alias pull='hub pull-request --no-edit -o -p'
     - alias rgrep='grep -r'

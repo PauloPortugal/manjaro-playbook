@@ -35,9 +35,9 @@
   tags:
     - zsh
 
-- name: Create zsh ansible.builtin.shell aliases
+- name: Create zsh shell aliases
   ansible.builtin.lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' owner='{{ user_name }}' state=present
-  with_items: "{{ ansible.builtin.shell_aliases }}"
+  with_items: "{{ shell_aliases }}"
   become_user: "{{ user_name }}"
   become: true
   tags:
@@ -54,7 +54,7 @@
   tags:
     - zsh
 
-- name: Change zsh ansible.builtin.shell theme from 'robbyrussell' to 'agnoster'
+- name: Change zsh shell theme from 'robbyrussell' to 'agnoster'
   ansible.builtin.replace:
     path: /home/{{ user_name }}/.zshrc
     regexp: ZSH_THEME="robbyrussell"
@@ -65,7 +65,7 @@
   tags:
     - zsh
 
-- name: Set zsh as default ansible.builtin.shell
+- name: Set zsh as default shell
   ansible.builtin.user:
     name: "{{ user_name }}"
     ansible.builtin.shell: /usr/bin/zsh
