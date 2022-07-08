@@ -1,20 +1,20 @@
 ---
-- name: "Screensaver - background"
+- name: Screensaver - background
   dconf:
-    key: "/org/gnome/desktop/screensaver/picture-uri"
+    key: /org/gnome/desktop/screensaver/picture-uri
     value: "'file:///usr/share/backgrounds/gnome/ColdWarm.jpg'"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - screensaver
 
-- name: "Screensaver - background"
+- name: Screensaver - background
   dconf:
-    key: "/org/gnome/desktop/screensaver/picture-options"
+    key: /org/gnome/desktop/screensaver/picture-options
     value: "'zoom'"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - screensaver

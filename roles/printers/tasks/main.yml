@@ -1,16 +1,16 @@
 ---
 - name: Install Printer Drivers from Arch User Repository
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     pamac build -d --no-confirm {{ item }} | grep -E 'is up to date|downgrading'
     if [ $? != 0 ]; then
       pamac build --no-confirm {{ item }}
     fi
-  with_items: '{{ printers_aur }}'
+  with_items: "{{ printers_aur }}"
   register: command_result
   failed_when: command_result.rc != 0
   changed_when: "'successfully' in command_result.stdout"
-  become: yes
+  become: true
   tags:
     - printers
     - aur

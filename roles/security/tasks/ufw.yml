@@ -3,7 +3,7 @@
   community.general.ufw:
     state: enabled
     policy: allow
-  become: yes
+  become: true
   tags:
     - security
     - ufws

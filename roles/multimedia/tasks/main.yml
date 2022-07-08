@@ -1,8 +1,8 @@
 ---
 - name: Install multimedia packages
-  pacman:
-    name: '{{ multimedia }}'
+  community.general.pacman:
+    name: "{{ multimedia }}"
     state: present
-  become: yes
+  become: true
   tags:
     - multimedia

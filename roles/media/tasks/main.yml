@@ -1,7 +1,7 @@
 ---
 - name: Install media tools from Arch User Repository
-  script: ../../../aur/install-aur.sh {{ item }}
-  with_items: '{{ media_aur }}'
+  ansible.builtin.script: ../../../aur/install-aur.sh {{ item }}
+  with_items: "{{ media_aur }}"
   register: install_result
   changed_when: install_result.rc == 0
   failed_when: install_result.rc != 0 and install_result.rc != 255
@@ -9,11 +9,10 @@
     - aur
     - media_aur
 
-
 - name: Install media packages
-  pacman:
-    name: '{{ media }}'
+  community.general.pacman:
+    name: "{{ media }}"
     state: present
-  become: yes
+  become: true
   tags:
     - media

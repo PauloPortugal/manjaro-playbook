@@ -2,22 +2,22 @@
 - name: Configure a Manjaro OS (Arch Linux distribution) GNOME 3 desktop
   hosts: all
   roles:
-  - { role: base,             tags: ['base'] }
-  - { role: users,            tags: ['users', 'never'] }
-  - { role: printers,         tags: ['printers'] }
-  - { role: browsers,         tags: ['browsers'] }
-  - { role: development,      tags: ['development'] }
-  - { role: cloud,            tags: ['cloud'] }
-  - { role: editors,          tags: ['editors'] }
-  - { role: media,            tags: ['media'] }
-  - { role: multimedia,       tags: ['multimedia'] }
-  - { role: audio,            tags: ['audio'] }
-  - { role: comms,            tags: ['comms'] }
-  - { role: gnome,            tags: ['gnome'] }
-  - { role: security,         tags: ['security'] }
-  - { role: virtualization,   tags: ['virtualization'] }
+    - {role: base, tags: [base]}
+    - {role: users, tags: [users, never]}
+    - {role: printers, tags: [printers]}
+    - {role: browsers, tags: [browsers]}
+    - {role: development, tags: [development]}
+    - {role: cloud, tags: [cloud]}
+    - {role: editors, tags: [editors]}
+    - {role: media, tags: [media]}
+    - {role: multimedia, tags: [multimedia]}
+    - {role: audio, tags: [audio]}
+    - {role: comms, tags: [comms]}
+    - {role: gnome, tags: [gnome]}
+    - {role: security, tags: [security]}
+    - {role: virtualization, tags: [virtualization]}
 
   handlers:
-  - import_tasks: handlers/os.yml
-  - import_tasks: handlers/freshclam.yml
-  - import_tasks: handlers/zshrc.yml
+    - import_tasks: handlers/os.yml
+    - import_tasks: handlers/freshclam.yml
+    - import_tasks: handlers/zshrc.yml

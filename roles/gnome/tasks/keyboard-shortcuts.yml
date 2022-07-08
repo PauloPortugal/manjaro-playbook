@@ -1,82 +1,82 @@
 ---
-- name: "keyboard Shortcuts - System settings"
+- name: keyboard Shortcuts - System settings
   dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/control-center"
+    key: /org/gnome/settings-daemon/plugins/media-keys/control-center
     value: "['<Super>t']"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
 
-- name: "keyboard Shortcuts - Hide all normal windows"
+- name: keyboard Shortcuts - Hide all normal windows
   dconf:
-    key: "/org/gnome/desktop/wm/keybindings/show-desktop"
+    key: /org/gnome/desktop/wm/keybindings/show-desktop
     value: "['<Primary><Alt>d']"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
 
-- name: "keyboard Shortcuts - Default Browser"
+- name: keyboard Shortcuts - Default Browser
   dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/www"
+    key: /org/gnome/settings-daemon/plugins/media-keys/www
     value: "['<Super>w']"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
 
-- name: "keyboard Shortcuts - Home"
+- name: keyboard Shortcuts - Home
   dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/home"
+    key: /org/gnome/settings-daemon/plugins/media-keys/home
     value: "['<Super>e']"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
 
-- name: "keyboard Shortcuts - Calculator"
+- name: keyboard Shortcuts - Calculator
   dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/calculator"
+    key: /org/gnome/settings-daemon/plugins/media-keys/calculator
     value: "['<Super>c']"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - keyboard-shortcuts
 
-- name: "keyboard Shortcuts - Defining custom bindings"
+- name: keyboard Shortcuts - Defining custom bindings
   dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+    key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
     value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - keyboard-shortcuts
 
-- name: "keyboard Shortcuts - Terminator name"
+- name: keyboard Shortcuts - Terminator name
   dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+    key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
     value: "'Launch Terminator'"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - keyboard-shortcuts
 
-- name: "keyboard Shortcuts - Terminator binding"
+- name: keyboard Shortcuts - Terminator binding
   dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+    key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
     value: "'<Primary><Alt>t'"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - keyboard-shortcuts
 
-- name: "keyboard Shortcuts - Terminator comand"
+- name: keyboard Shortcuts - Terminator comand
   dconf:
-    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+    key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command
     value: "'/usr/bin/terminator'"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - keyboard-shortcuts

@@ -1,34 +1,34 @@
 ---
-- name: "Emacs - Check that the ~/.emacs.d/prelude-modules.el exists"
-  stat:
+- name: Emacs - Check that the ~/.emacs.d/prelude-modules.el exists
+  ansible.builtin.stat:
     path: /home/{{ user_name }}/.emacs.d/prelude-modules.el
   register: prelude_modules_exists
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - emacs
     - development
 
-- name: "Emacs - Create prelude-modules.el"
-  shell: |
+- name: Emacs - Create prelude-modules.el
+  ansible.builtin.shell: |
     set -o pipefail
     curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
   when: not prelude_modules_exists.stat.exists
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - emacs
     - development
 
-- name: "Emacs - Add prelude tools and languages support"
-  copy:
+- name: Emacs - Add prelude tools and languages support
+  ansible.builtin.copy:
     src: files/prelude-modules.el
     dest: /home/{{ user_name }}/.emacs.d/
-    owner: '{{ user_name }}'
-    group: '{{ user_name }}'
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
     mode: 0644
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - emacs
     - development

@@ -1,8 +1,8 @@
 ---
 - name: Update freshClam database
-  command: freshclam
-  become: yes
+  ansible.builtin.command: freshclam
+  become: true
   tags:
     - security
     - clamav
-  listen: "freshclam"
+  listen: freshclam

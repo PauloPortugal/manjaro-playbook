@@ -1,20 +1,20 @@
 ---
 - name: Install PyTesseract
-  pip:
+  ansible.builtin.pip:
     name: pytesseract
     state: present
-  become: yes
+  become: true
   tags:
     - pip
     - development
     - tesseract
 
 - name: Install Tesseract
-  pacman:
-    name: '{{ tesseract }}'
+  community.general.pacman:
+    name: "{{ tesseract }}"
     state: present
-  become_user: 'root'
-  become: yes
+  become_user: root
+  become: true
   tags:
     - development
     - tesseract
@@ -22,7 +22,7 @@
 - name: Ensure TESSDATA_PREFIX is set
   ansible.builtin.lineinfile:
     path: /home/{{ user_name }}/.zshrc
-    regexp: '^TESSDATA_PREFIX='
+    regexp: ^TESSDATA_PREFIX=
     line: TESSDATA_PREFIX=/usr/share/tessdata/
   tags:
     - development

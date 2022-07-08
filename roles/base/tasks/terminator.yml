@@ -1,22 +1,22 @@
 ---
 - name: Creates terminator config directory
-  file:
+  ansible.builtin.file:
     path: /home/{{ user_name }}/.config/terminator
     state: directory
     mode: 0764
-  become: yes
-  become_user: '{{ user_name }}'
+  become: true
+  become_user: "{{ user_name }}"
   tags:
     - terminator
 
 - name: Configure Terminator
-  copy:
+  ansible.builtin.copy:
     src: files/terminator_config
     dest: /home/{{ user_name }}/.config/terminator/config
-    owner: '{{ user_name }}'
-    group: '{{ user_name }}'
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
     mode: 0644
-  become: yes
-  become_user: '{{ user_name }}'
+  become: true
+  become_user: "{{ user_name }}"
   tags:
     - terminator

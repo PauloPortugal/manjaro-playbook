@@ -1,50 +1,50 @@
 ---
-- name: "Mouse - Locate pointer"
+- name: Mouse - Locate pointer
   dconf:
-    key: "/org/gnome/settings-daemon/peripherals/mouse/locate-pointer"
+    key: /org/gnome/settings-daemon/peripherals/mouse/locate-pointer
     value: "true"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - peripherals
 
-- name: "Touchpad - Enable natural scrolling"
+- name: Touchpad - Enable natural scrolling
   dconf:
-    key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
+    key: /org/gnome/desktop/peripherals/touchpad/natural-scroll
     value: "true"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - peripherals
 
-- name: "Touchpad - Disable edge scrolling"
+- name: Touchpad - Disable edge scrolling
   dconf:
-    key: "/org/gnome/desktop/peripherals/touchpad/edge-scrolling-enabled"
+    key: /org/gnome/desktop/peripherals/touchpad/edge-scrolling-enabled
     value: "false"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - peripherals
 
-- name: "Touchpad - Enable two finger scrolling"
+- name: Touchpad - Enable two finger scrolling
   dconf:
-    key: "/org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled"
+    key: /org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled
     value: "true"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - peripherals
 
-- name: "Touchpad - Disable while typing"
+- name: Touchpad - Disable while typing
   dconf:
-    key: "/org/gnome/desktop/peripherals/touchpad/disable-while-typing"
+    key: /org/gnome/desktop/peripherals/touchpad/disable-while-typing
     value: "true"
     state: present
-  become_user: '{{ user_name }}'
-  become: yes
+  become_user: "{{ user_name }}"
+  become: true
   tags:
     - peripherals

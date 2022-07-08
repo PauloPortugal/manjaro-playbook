@@ -15,7 +15,7 @@
 (require 'prelude-org) ;; Org-mode helps you keep TODO lists, notes and more
 (require 'prelude-perl)
 (require 'prelude-scheme)
-(require 'prelude-shell)
+(require 'prelude-ansible.builtin.shell)
 (require 'prelude-scss)
 (require 'prelude-xml)
 (require 'prelude-yaml)

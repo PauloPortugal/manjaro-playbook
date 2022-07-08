@@ -1,29 +1,29 @@
 ---
 - name: Install browsers
-  pacman:
-    name: '{{ browsers }}'
+  community.general.pacman:
+    name: "{{ browsers }}"
     state: present
-  become: yes
+  become: true
   tags:
     - browsers
 
 - name: Install tor browser and required dependencies
-  pacman:
-    name: '{{ browser_tor }}'
+  community.general.pacman:
+    name: "{{ browser_tor }}"
     state: present
-  become: yes
+  become: true
   tags:
     - browsers
     - tor
 
 - name: Install browsers from Arch User Repository
-  shell: |
+  ansible.builtin.shell: |
     set -o pipefail
     pamac build -d --no-confirm {{ item }} | grep "is up to date"
     if [ $? != 0 ]; then
       pamac build --no-confirm {{ item }}
     fi
-  with_items: '{{ browsers_aur }}'
+  with_items: "{{ browsers_aur }}"
   register: command_result
   failed_when: command_result.rc != 0
   changed_when: "'successfully' in command_result.stdout"

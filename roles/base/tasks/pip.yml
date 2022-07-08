@@ -1,9 +1,9 @@
 ---
-- name: "Install pip packages"
-  pip:
-    name: '{{ pip_packages }}'
+- name: Install pip packages
+  ansible.builtin.pip:
+    name: "{{ pip_packages }}"
     state: present
-  become: yes
+  become: true
   tags:
     - base
     - pip
