@@ -9,23 +9,23 @@ This playbook follows the Manjaro [community recommendation when installing the 
  * Using a bespoke script [install-aur.sh](https://github.com/PauloPortugal/manjaro-playbook/blob/master/aur/install-aur.sh) to provide a "manual installation" for [AUR packages](https://aur.archlinux.org/packages)
 
 
-## Table of contents
+## :placard: Table of contents
 - [Manjaro/Arch Linux Ansible Provision](#manjaroarch-linux-ansible-provision)
-  - [Table of contents](#table-of-contents)
+  - [:placard: Table of contents](#placard-table-of-contents)
   - [Provision and configure a Vagrant VM](#provision-and-configure-a-vagrant-vm)
     - [Provision and configure a Manjaro Vagrant VM](#provision-and-configure-a-manjaro-vagrant-vm)
   - [Run and configure the localhost machine](#run-and-configure-the-localhost-machine)
     - [Install everything](#install-everything)
     - [Install everything with debug turned on](#install-everything-with-debug-turned-on)
     - [Install only the 'dev-tools' role with minimal logging](#install-only-the-dev-tools-role-with-minimal-logging)
-  - [Playbook Roles](#playbook-roles)
-  - [Instructions to install a new Manjaro image](#instructions-to-install-a-new-manjaro-image)
+  - [:toolbox: Playbook Roles](#toolbox-playbook-roles)
+  - [:rocket: Instructions to install a new Manjaro image](#rocket-instructions-to-install-a-new-manjaro-image)
     - [1. Creating Bootable Linux USB Drive from the Command Line](#1-creating-bootable-linux-usb-drive-from-the-command-line)
     - [2. Refresh pacaman mirrors, the copy of the master package database from the server and install `ansible`, `git` and `xclip`](#2-refresh-pacaman-mirrors-the-copy-of-the-master-package-database-from-the-server-and-install-ansible-git-and-xclip)
     - [3. Set Git SSH credentials](#3-set-git-ssh-credentials)
     - [4. Git clone the current project](#4-git-clone-the-current-project)
-  - [Google Cloud Configuration](#google-cloud-configuration)
-  - [TODO](#todo)
+  - [:cloud: Google Cloud Configuration](#cloud-google-cloud-configuration)
+  - [:construction: TODO](#construction-todo)
 
 ----
 
@@ -56,21 +56,24 @@ ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user
 
 ### Install everything
 ```
+ansible-lint
 ansible-playbook playbook.yml -l localhost --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" --ask-become-pass
 ```
 
 ### Install everything with debug turned on
 ```
+ansible-lint
 ansible-playbook -vvvv playbook.yml -l localhost --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" --ask-become-pass
 ```
 
 ### Install only the 'dev-tools' role with minimal logging
 ```
+ansible-lint
 ansible-playbook -v playbook.yml -l localhost --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" --ask-become-pass --tags dev-tools
 ```
 
 
-## Playbook Roles
+## :toolbox: Playbook Roles
 
 Roles supported:
 
@@ -98,7 +101,7 @@ ansible-playbook playbook.yml --extra-vars="user_name=USERNAME user_git_name=GIT
 ```
 
 
-## Instructions to install a new Manjaro image
+## :rocket: Instructions to install a new Manjaro image
 
 ### 1. Creating Bootable Linux USB Drive from the Command Line
 
@@ -155,7 +158,7 @@ cd manjaro-playbook
 
 
 
-## Google Cloud Configuration
+## :cloud: Google Cloud Configuration
 
 On the command line run
 ```
@@ -166,6 +169,6 @@ gcloud auth login
 For more information about Gcloud command lines read https://cloud.google.com/sdk/gcloud
 
 
-## TODO
+## :construction: TODO
 
 1. It would be nice to include more audio-tools.
