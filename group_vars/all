@@ -97,6 +97,7 @@ utils:
     - binutils
     - gcc
     - gconf
+    - gum
     - htop
     - keychain
     - libcurl-gnutls
