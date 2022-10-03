@@ -59,6 +59,7 @@ developer_stack_aur:
     - mongodb-bin 
     - mongodb-tools-bin
     - nancy-bin
+    - nvm
     - postman-bin
     - robo3t-bin
     - tfswitch-bin
@@ -96,6 +97,7 @@ utils:
     - binutils
     - gcc
     - gconf
+    - gum
     - htop
     - keychain
     - libcurl-gnutls
@@ -117,7 +119,6 @@ utils_aur:
     - git-extras
     - lsdesktopf
     - mkpasswd
-    - plugin-autenticacao-gov-pt
     - zsh-git-prompt
 
 printers_aur:
