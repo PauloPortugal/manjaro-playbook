@@ -142,6 +142,7 @@ comms:
 
 comms_aur:
     - slack-desktop
+    - teams
 
 security_tools:
     - clamav
