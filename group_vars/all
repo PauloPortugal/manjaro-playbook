@@ -80,6 +80,7 @@ media:
 
 media_aur:
     - spotify
+    - libwebcam-git
 
 multimedia:
     - darktable
