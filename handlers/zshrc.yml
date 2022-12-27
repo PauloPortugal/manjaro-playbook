@@ -1,5 +1,5 @@
 ---
-- name: source zshrc
+- name: Source zshrc
   ansible.builtin.shell: |
     source ~/.zshrc
   listen: source .zshrc

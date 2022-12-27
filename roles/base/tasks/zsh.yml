@@ -36,7 +36,13 @@
     - zsh
 
 - name: Create zsh shell aliases
-  ansible.builtin.lineinfile: dest=/home/{{ user_name }}/.zshrc regexp='{{ item }}' insertafter='EOF' line='{{ item }}' owner='{{ user_name }}' state=present
+  ansible.builtin.lineinfile:
+    dest: /home/{{ user_name }}/.zshrc
+    regexp: '{{ item }}'
+    insertafter: 'EOF'
+    line: '{{ item }}'
+    owner: '{{ user_name }}'
+    state: present
   with_items: "{{ shell_aliases }}"
   become_user: "{{ user_name }}"
   become: true
