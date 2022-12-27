@@ -20,9 +20,20 @@
     - gnome
     - gnome-favourite
 
-- include: top-bar.yml
-- include: peripherals.yml
-- include: keyboard-shortcuts.yml
-- include: screensaver.yml
-- include: dash-to-dock.yml
-- include: window-titlebars.yml
+- name: Configure top bar
+  import_tasks: top-bar.yml
+
+- name: Configure peripherals
+  import_tasks: peripherals.yml
+
+- name: Configure keyboard shortcuts
+  import_tasks: keyboard-shortcuts.yml
+
+- name: Configure screensaver
+  import_tasks: screensaver.yml
+
+- name: Configure Dash to dock
+  import_tasks: dash-to-dock.yml
+
+- name: Configure Window titlebars
+  import_tasks: window-titlebars.yml

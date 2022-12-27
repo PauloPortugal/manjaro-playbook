@@ -9,5 +9,8 @@
     - clamav
     - ufw
 
-- include: clamav.yml
-- include: ufw.yml
+- name: Configure Clamav
+  import_tasks: clamav.yml
+
+- name: Configure ufw
+  import_tasks: ufw.yml

@@ -9,7 +9,8 @@
     - dev-tools
     - development
 
-- include: go.yml
+- name: Configure Go
+  import_tasks: go.yml
 
 - name: Install Developer Tools from Arch User Repository
   ansible.builtin.script: ../../../aur/install-aur.sh {{ item }}
@@ -23,7 +24,14 @@
     - development
     - aur
 
-- include: nvm.yml
-- include: docker-config.yml
-- include: emacs-config.yml
-- include: tesseract.yml
+- name: Install nvm
+  import_tasks: nvm.yml
+
+- name: Configure docker
+  import_tasks: docker-config.yml
+
+- name: Configure Emacs
+  import_tasks: emacs-config.yml
+
+- name: Configure Tesseract
+  import_tasks: tesseract.yml
