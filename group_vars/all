@@ -97,6 +97,8 @@ shell_aliases:
 utils:
     - base-devel
     - binutils
+    - bluez
+    - bluez-utils
     - gcc
     - gconf
     - gum
