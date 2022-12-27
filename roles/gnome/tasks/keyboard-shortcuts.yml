@@ -1,5 +1,5 @@
 ---
-- name: keyboard Shortcuts - System settings
+- name: Keyboard Shortcuts - System settings
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/control-center
     value: "['<Super>t']"
@@ -7,7 +7,7 @@
   become_user: "{{ user_name }}"
   become: true
 
-- name: keyboard Shortcuts - Hide all normal windows
+- name: Keyboard Shortcuts - Hide all normal windows
   dconf:
     key: /org/gnome/desktop/wm/keybindings/show-desktop
     value: "['<Primary><Alt>d']"
@@ -15,7 +15,7 @@
   become_user: "{{ user_name }}"
   become: true
 
-- name: keyboard Shortcuts - Default Browser
+- name: Keyboard Shortcuts - Default Browser
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/www
     value: "['<Super>w']"
@@ -23,7 +23,7 @@
   become_user: "{{ user_name }}"
   become: true
 
-- name: keyboard Shortcuts - Home
+- name: Keyboard Shortcuts - Home
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/home
     value: "['<Super>e']"
@@ -31,7 +31,7 @@
   become_user: "{{ user_name }}"
   become: true
 
-- name: keyboard Shortcuts - Calculator
+- name: Keyboard Shortcuts - Calculator
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/calculator
     value: "['<Super>c']"
@@ -41,7 +41,7 @@
   tags:
     - keyboard-shortcuts
 
-- name: keyboard Shortcuts - Defining custom bindings
+- name: Keyboard Shortcuts - Defining custom bindings
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
     value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
@@ -51,7 +51,7 @@
   tags:
     - keyboard-shortcuts
 
-- name: keyboard Shortcuts - Terminator name
+- name: Keyboard Shortcuts - Terminator name
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
     value: "'Launch Terminator'"
@@ -61,7 +61,7 @@
   tags:
     - keyboard-shortcuts
 
-- name: keyboard Shortcuts - Terminator binding
+- name: Keyboard Shortcuts - Terminator binding
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
     value: "'<Primary><Alt>t'"
@@ -71,7 +71,7 @@
   tags:
     - keyboard-shortcuts
 
-- name: keyboard Shortcuts - Terminator comand
+- name: Keyboard Shortcuts - Terminator comand
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command
     value: "'/usr/bin/terminator'"

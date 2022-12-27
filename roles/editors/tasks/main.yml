@@ -18,7 +18,10 @@
     - editors_aur
 
 - name: Setup default Git configuration
-  git_config: name="{{ item.name }}" scope=global value="{{ item.value }}"
+  git_config:
+    name: "{{ item.name }}"
+    scope: global
+    value: "{{ item.value }}"
   with_items:
     - {name: user.name, value: "{{ user_git_name }}"}
     - {name: user.email, value: "{{ user_email }}"}

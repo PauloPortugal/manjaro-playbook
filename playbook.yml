@@ -18,6 +18,11 @@
     - {role: virtualization, tags: [virtualization]}
 
   handlers:
-    - import_tasks: handlers/os.yml
-    - import_tasks: handlers/freshclam.yml
-    - import_tasks: handlers/zshrc.yml
+    - name: Configure OS handler
+      import_tasks: handlers/os.yml
+
+    - name: Configure Freshclam OS
+      import_tasks: handlers/freshclam.yml
+
+    - name: Configure .zshrc
+      import_tasks: handlers/zshrc.yml

@@ -34,11 +34,20 @@
     - utils-aur
     - aur
 
-- include: ntp.yml
-- include: pip.yml
-- include: bash.yml
-- include: zsh.yml
-- include: terminator.yml
+- name: Configure NTP
+  import_tasks: ntp.yml
+
+- name: Configure PIP
+  import_tasks: pip.yml
+
+- name: Configure Bash
+  import_tasks: bash.yml
+
+- name: Configure Zsh
+  import_tasks: zsh.yml
+
+- name: Configure terminator
+  import_tasks: terminator.yml
 
 - name: Creates Workspace directory
   ansible.builtin.file:
