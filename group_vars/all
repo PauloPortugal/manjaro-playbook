@@ -115,6 +115,7 @@ utils:
     - pwgen
     - terminator
     - tree
+    - unixodbc
     - wget
     - xclip
     - xorg-xinput
