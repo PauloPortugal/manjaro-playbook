@@ -29,18 +29,20 @@ developer_stack:
     - hub
     - jdk8-openjdk
     - jdk11-openjdk
+    - jdk17-openjdk
     - jq
-    - jre8-openjdk-headless
     - jre8-openjdk
-    - jre11-openjdk-headless
+    - jre8-openjdk-headless
     - jre11-openjdk
+    - jre11-openjdk-headless
+    - jre17-openjdk
+    - jre17-openjdk-headless
     - kubectl
     - kubectx
     - leiningen
     - maven
     - minikube
     - npm
-    - nodejs
     - ruby
     - sbt
     - scala
