@@ -15,6 +15,14 @@
   become_user: "{{ user_name }}"
   become: true
 
+- name: Keyboard Shortcuts - Maximize windows
+  dconf:
+    key: /org/gnome/desktop/wm/keybindings/maximize
+    value: "['<Super>Up']"
+    state: present
+  become_user: "{{ user_name }}"
+  become: true
+
 - name: Keyboard Shortcuts - Default Browser
   dconf:
     key: /org/gnome/settings-daemon/plugins/media-keys/www
