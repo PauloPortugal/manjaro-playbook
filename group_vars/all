@@ -95,6 +95,7 @@ shell_aliases:
     - alias pull='hub pull-request --no-edit -o -p'
     - alias rgrep='grep -r'
     - alias vi=vim
+    - alias W='cd ~/Workspace'
 
 utils:
     - base-devel
