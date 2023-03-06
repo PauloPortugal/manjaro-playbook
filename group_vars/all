@@ -26,6 +26,7 @@ developer_stack:
     - go
     - go-tools
     - go-yq
+    - gradle
     - hub
     - jdk8-openjdk
     - jdk11-openjdk
