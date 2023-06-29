@@ -53,6 +53,6 @@
   ansible.builtin.file:
     path: /home/{{ user_name }}/Workspace
     state: directory
-    mode: 0755
+    mode: "0755"
   become_user: "{{ user_name }}"
   become: true

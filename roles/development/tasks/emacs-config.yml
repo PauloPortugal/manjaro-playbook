@@ -26,7 +26,7 @@
     dest: /home/{{ user_name }}/.emacs.d/
     owner: "{{ user_name }}"
     group: "{{ user_name }}"
-    mode: 0644
+    mode: "0644"
   become_user: "{{ user_name }}"
   become: true
   tags:
