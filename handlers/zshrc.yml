@@ -2,4 +2,5 @@
 - name: Source zshrc
   ansible.builtin.shell: |
     source ~/.zshrc
+  changed_when: true
   listen: source .zshrc
