@@ -1,6 +1,6 @@
 ---
 - name: Get latest release of the Node Version Manager (nvm) repository
-  github_release:
+  community.general.github_release:
     user: nvm-sh
     repo: nvm
     action: latest_release

@@ -8,7 +8,7 @@
     - ntp
 
 - name: Set timezone to Europe/London
-  timezone:
+  community.general.timezone:
     name: Europe/London
   become: true
   tags:

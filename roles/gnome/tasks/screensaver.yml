@@ -1,6 +1,6 @@
 ---
 - name: Screensaver - background
-  dconf:
+  community.general.dconf:
     key: /org/gnome/desktop/screensaver/picture-uri
     value: "'file:///usr/share/backgrounds/gnome/ColdWarm.jpg'"
     state: present
@@ -10,7 +10,7 @@
     - screensaver
 
 - name: Screensaver - background
-  dconf:
+  community.general.dconf:
     key: /org/gnome/desktop/screensaver/picture-options
     value: "'zoom'"
     state: present

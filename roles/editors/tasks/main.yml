@@ -18,7 +18,7 @@
     - editors_aur
 
 - name: Setup default Git configuration
-  git_config:
+  community.general.git_config:
     name: "{{ item.name }}"
     scope: global
     value: "{{ item.value }}"

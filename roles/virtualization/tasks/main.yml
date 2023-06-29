@@ -25,7 +25,7 @@
     - virtualization
 
 - name: Load the vboxdrv module
-  modprobe:
+  community.general.modprobe:
     name: vboxdrv
     state: present
   become: true
@@ -34,7 +34,7 @@
     - modprobe
 
 - name: Load the vboxnetadp module
-  modprobe:
+  community.general.modprobe:
     name: vboxnetadp
     state: present
   become: true
@@ -43,7 +43,7 @@
     - modprobe
 
 - name: Load the vboxnetflt module
-  modprobe:
+  community.general.modprobe:
     name: vboxnetflt
     state: present
   become: true

@@ -10,7 +10,7 @@
     - ufw
 
 - name: Configure Clamav
-  import_tasks: clamav.yml
+  ansible.builtin.import_tasks: clamav.yml
 
 - name: Configure ufw
-  import_tasks: ufw.yml
+  ansible.builtin.import_tasks: ufw.yml
