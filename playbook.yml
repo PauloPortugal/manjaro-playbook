@@ -19,10 +19,10 @@
 
   handlers:
     - name: Configure OS handler
-      import_tasks: handlers/os.yml
+      ansible.builtin.import_tasks: handlers/os.yml
 
     - name: Configure Freshclam OS
-      import_tasks: handlers/freshclam.yml
+      ansible.builtin.import_tasks: handlers/freshclam.yml
 
     - name: Configure .zshrc
-      import_tasks: handlers/zshrc.yml
+      ansible.builtin.import_tasks: handlers/zshrc.yml

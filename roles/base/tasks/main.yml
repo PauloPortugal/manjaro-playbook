@@ -35,24 +35,24 @@
     - aur
 
 - name: Configure NTP
-  import_tasks: ntp.yml
+  ansible.builtin.import_tasks: ntp.yml
 
 - name: Configure PIP
-  import_tasks: pip.yml
+  ansible.builtin.import_tasks: pip.yml
 
 - name: Configure Bash
-  import_tasks: bash.yml
+  ansible.builtin.import_tasks: bash.yml
 
 - name: Configure Zsh
-  import_tasks: zsh.yml
+  ansible.builtin.import_tasks: zsh.yml
 
 - name: Configure terminator
-  import_tasks: terminator.yml
+  ansible.builtin.import_tasks: terminator.yml
 
 - name: Creates Workspace directory
   ansible.builtin.file:
     path: /home/{{ user_name }}/Workspace
     state: directory
-    mode: 0755
+    mode: "0755"
   become_user: "{{ user_name }}"
   become: true

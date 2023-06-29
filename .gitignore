@@ -6,3 +6,6 @@ playbook.retry
 
 # Vagrant build folder
 .vagrant
+
+# VS Code
+.vscode

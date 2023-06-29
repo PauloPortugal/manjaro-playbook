@@ -28,7 +28,7 @@
     dest: /home/{{ user_name }}/.zshrc
     owner: "{{ user_name }}"
     group: "{{ user_name }}"
-    mode: 0644
+    mode: "0644"
   become: true
   become_user: "{{ user_name }}"
   when: not zsh_file_check.stat.exists

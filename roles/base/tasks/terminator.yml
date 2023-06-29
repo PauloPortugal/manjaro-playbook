@@ -3,7 +3,7 @@
   ansible.builtin.file:
     path: /home/{{ user_name }}/.config/terminator
     state: directory
-    mode: 0764
+    mode: "0764"
   become: true
   become_user: "{{ user_name }}"
   tags:
@@ -15,7 +15,7 @@
     dest: /home/{{ user_name }}/.config/terminator/config
     owner: "{{ user_name }}"
     group: "{{ user_name }}"
-    mode: 0644
+    mode: "0644"
   become: true
   become_user: "{{ user_name }}"
   tags:

@@ -1,6 +1,7 @@
 ---
 - name: Update freshClam database
   ansible.builtin.command: freshclam
+  changed_when: true
   become: true
   tags:
     - security

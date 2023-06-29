@@ -13,7 +13,7 @@
   ansible.builtin.shell: |
     set -o pipefail
     curl -L https://github.com/bbatsov/prelude/raw/master/utils/installer.sh | sh
-  when: not prelude_modules_exists.stat.exists
+  changed_when: not prelude_modules_exists.stat.exists
   become_user: "{{ user_name }}"
   become: true
   tags:
@@ -26,7 +26,7 @@
     dest: /home/{{ user_name }}/.emacs.d/
     owner: "{{ user_name }}"
     group: "{{ user_name }}"
-    mode: 0644
+    mode: "0644"
   become_user: "{{ user_name }}"
   become: true
   tags:

@@ -1,6 +1,6 @@
 ---
 - name: Mouse - Locate pointer
-  dconf:
+  community.general.dconf:
     key: /org/gnome/settings-daemon/peripherals/mouse/locate-pointer
     value: "true"
     state: present
@@ -10,7 +10,7 @@
     - peripherals
 
 - name: Touchpad - Enable natural scrolling
-  dconf:
+  community.general.dconf:
     key: /org/gnome/desktop/peripherals/touchpad/natural-scroll
     value: "true"
     state: present
@@ -20,7 +20,7 @@
     - peripherals
 
 - name: Touchpad - Disable edge scrolling
-  dconf:
+  community.general.dconf:
     key: /org/gnome/desktop/peripherals/touchpad/edge-scrolling-enabled
     value: "false"
     state: present
@@ -30,7 +30,7 @@
     - peripherals
 
 - name: Touchpad - Enable two finger scrolling
-  dconf:
+  community.general.dconf:
     key: /org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled
     value: "true"
     state: present
@@ -40,7 +40,7 @@
     - peripherals
 
 - name: Touchpad - Disable while typing
-  dconf:
+  community.general.dconf:
     key: /org/gnome/desktop/peripherals/touchpad/disable-while-typing
     value: "true"
     state: present

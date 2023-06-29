@@ -8,7 +8,7 @@
     - gnome
 
 - name: Configure favourite apps in Gnome
-  dconf:
+  community.general.dconf:
     key: /org/gnome/shell/favorite-apps
     value: "['firefox.desktop', 'google-chrome.desktop', 'spotify.desktop', 'jetbrains-idea.desktop',
       \ 'jetbrains-goland.desktop', 'visual-studio-code.desktop', 'emacs.desktop',
@@ -21,19 +21,19 @@
     - gnome-favourite
 
 - name: Configure top bar
-  import_tasks: top-bar.yml
+  ansible.builtin.import_tasks: top-bar.yml
 
 - name: Configure peripherals
-  import_tasks: peripherals.yml
+  ansible.builtin.import_tasks: peripherals.yml
 
 - name: Configure keyboard shortcuts
-  import_tasks: keyboard-shortcuts.yml
+  ansible.builtin.import_tasks: keyboard-shortcuts.yml
 
 - name: Configure screensaver
-  import_tasks: screensaver.yml
+  ansible.builtin.import_tasks: screensaver.yml
 
 - name: Configure Dash to dock
-  import_tasks: dash-to-dock.yml
+  ansible.builtin.import_tasks: dash-to-dock.yml
 
 - name: Configure Window titlebars
-  import_tasks: window-titlebars.yml
+  ansible.builtin.import_tasks: window-titlebars.yml

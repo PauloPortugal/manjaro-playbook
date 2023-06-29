@@ -12,8 +12,8 @@
       - storage
       - wheel
     state: present
-    ansible.builtin.shell: /bin/zsh
+    shell: /bin/zsh
     system: false
-    createhome: true
+    create_home: true
     home: /home/pmonteiro-work
   become: true
