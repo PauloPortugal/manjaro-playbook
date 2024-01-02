@@ -7,7 +7,7 @@
     line: "{{ item }}"
     owner: "{{ user_name }}"
     state: present
-  with_items: "{{ ansible.builtin.shell_aliases }}"
+  with_items: "{{ shell_aliases }}"
   become_user: "{{ user_name }}"
   become: true
   tags:
