@@ -46,14 +46,12 @@ developer_stack:
     - npm
     - ruby
     - sbt
-    - scala
     - terraform
     - yarn
 
 developer_stack_aur:
     - aws-cli-v2-bin
     - aws-session-manager-plugin
-    - concourse-fly
     - golangci-lint
     - go-swagger-bin
     - heroku-cli
@@ -66,6 +64,7 @@ developer_stack_aur:
     - nvm
     - postman-bin
     - robo3t-bin
+    - scala
     - tfswitch-bin
 
 editors:
@@ -73,8 +72,6 @@ editors:
     - vim
 
 editors_aur:
-    - goland
-    - intellij-idea-ultimate-edition
     - jetbrains-toolbox
     - visual-studio-code-bin
     - xmind
@@ -104,7 +101,6 @@ utils:
     - bluez
     - bluez-utils
     - gcc
-    - gconf
     - gum
     - htop
     - keychain
@@ -113,7 +109,7 @@ utils:
     - make
     - mlocate
     - ntp
-    - openssl-1.0
+    - openssl
     - pamac
     - python-pip
     - pwgen
@@ -127,7 +123,6 @@ utils:
 utils_aur:
     - git-extras
     - lsdesktopf
-    - mkpasswd
     - zsh-git-prompt
 
 printers_aur:
@@ -144,7 +139,6 @@ zsh_plugins:
     - spring
 
 pip_packages:
-    - github3.py
 
 comms:
     - signal-desktop
