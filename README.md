@@ -9,12 +9,20 @@ This playbook follows the Manjaro [community recommendation when installing the 
  * Using a bespoke script [install-aur.sh](https://github.com/PauloPortugal/manjaro-playbook/blob/master/aur/install-aur.sh) to provide a "manual installation" for [AUR packages](https://aur.archlinux.org/packages)
 
 
+## :book: Documentation
+
+- **[ANSIBLE_GUIDELINES.md](ANSIBLE_GUIDELINES.md)** - Best practices and coding standards
+- **[AUDIT_REPORT.md](AUDIT_REPORT.md)** - Project quality audit and assessment
+- **[IMPROVEMENT_PLAN.md](IMPROVEMENT_PLAN.md)** - Roadmap for enhancements
+
 ## :placard: Table of contents
 - [Manjaro/Arch Linux Ansible Provision](#manjaroarch-linux-ansible-provision)
+  - [:book: Documentation](#book-documentation)
   - [:placard: Table of contents](#placard-table-of-contents)
   - [Provision and configure a Vagrant VM](#provision-and-configure-a-vagrant-vm)
     - [Provision and configure a Manjaro Vagrant VM](#provision-and-configure-a-manjaro-vagrant-vm)
   - [Run and configure the localhost machine](#run-and-configure-the-localhost-machine)
+    - [Code Quality Checks](#code-quality-checks)
     - [Install everything](#install-everything)
     - [Install everything with debug turned on](#install-everything-with-debug-turned-on)
     - [Install only the 'dev-tools' role with minimal logging](#install-only-the-dev-tools-role-with-minimal-logging)
@@ -53,6 +61,21 @@ ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user
 ```
 
 ## Run and configure the localhost machine
+
+### Code Quality Checks
+
+Before running the playbook, validate your code:
+
+```bash
+# Check YAML syntax and style
+yamllint .
+
+# Check Ansible best practices
+ansible-lint
+
+# Verify playbook syntax
+ansible-playbook --syntax-check playbook.yml
+```
 
 ### Install everything
 ```
