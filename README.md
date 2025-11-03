@@ -9,15 +9,8 @@ This playbook follows the Manjaro [community recommendation when installing the 
  * Using a bespoke script [install-aur.sh](https://github.com/PauloPortugal/manjaro-playbook/blob/master/aur/install-aur.sh) to provide a "manual installation" for [AUR packages](https://aur.archlinux.org/packages)
 
 
-## :book: Documentation
-
-- **[ANSIBLE_GUIDELINES.md](ANSIBLE_GUIDELINES.md)** - Best practices and coding standards
-- **[AUDIT_REPORT.md](AUDIT_REPORT.md)** - Project quality audit and assessment
-- **[IMPROVEMENT_PLAN.md](IMPROVEMENT_PLAN.md)** - Roadmap for enhancements
-
 ## :placard: Table of contents
 - [Manjaro/Arch Linux Ansible Provision](#manjaroarch-linux-ansible-provision)
-  - [:book: Documentation](#book-documentation)
   - [:placard: Table of contents](#placard-table-of-contents)
   - [Provision and configure a Vagrant VM](#provision-and-configure-a-vagrant-vm)
     - [Provision and configure a Manjaro Vagrant VM](#provision-and-configure-a-manjaro-vagrant-vm)
@@ -76,6 +69,8 @@ ansible-lint
 # Verify playbook syntax
 ansible-playbook --syntax-check playbook.yml
 ```
+
+**Note**: If you ran `./setup-dev-environment.sh`, pre-commit hooks are already installed and will run these checks automatically on every commit!
 
 ### Install everything
 ```
@@ -141,14 +136,19 @@ dd bs=4M if=/path/to/iso of=/dev/sdx status=progress oflag=sync
 Change boot order and install Manjaro.
 
 
-### 2. Refresh pacaman mirrors, the copy of the master package database from the server and install `ansible`, `git` and `xclip`
+### 2. Install development dependencies
 
-After installing Manjaro, ensure that ansible, git and xclip are installed
+After installing Manjaro, run the automated setup script:
 
-```
+```bash
 sudo pacman-mirrors -f && sudo pacman -Syyu
-sudo pacman -S ansible ansible-lint git xclip --noconfirm
+sudo pacman -S git --noconfirm
+git clone git@github.com:PauloPortugal/manjaro-playbook.git
+cd manjaro-playbook
+./setup-dev-environment.sh
 ```
+
+This will install all required dependencies: ansible, ansible-lint, yamllint, python-pytokens, and Ansible collections.
 
 ### 3. Set Git SSH credentials
 
@@ -178,7 +178,19 @@ git clone git@github.com:PauloPortugal/manjaro-playbook.git
 cd manjaro-playbook
 ```
 
+### 5. Run the playbook
 
+Now you're ready to run the playbook:
+
+```bash
+# Validate code quality first
+yamllint . && ansible-lint
+
+# Run the playbook
+ansible-playbook playbook.yml -l localhost \
+  --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" \
+  --ask-become-pass
+```
 
 
 ## :cloud: Google Cloud Configuration

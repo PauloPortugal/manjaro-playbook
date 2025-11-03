@@ -58,7 +58,7 @@ developer_stack_aur:
     - kubefwd-bin
     - lens-bin
     - mongosh-bin
-    - mongodb-bin 
+    - mongodb-bin
     - mongodb-tools-bin
     - nancy-bin
     - nvm

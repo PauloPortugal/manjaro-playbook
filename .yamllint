@@ -38,14 +38,21 @@ rules:
     min-spaces-inside: 0
     max-spaces-inside: 0
 
-  # Comments
+  # Comments - must be 1 for ansible-lint compatibility
   comments:
-    min-spaces-from-content: 2
+    min-spaces-from-content: 1
+
+  comments-indentation: disable
 
   # Truthy values (allow yes/no, true/false)
   truthy:
     allowed-values: ['true', 'false', 'yes', 'no']
     check-keys: false
+
+  # Octal values - required by ansible-lint
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
 
 ignore: |
   .github/
