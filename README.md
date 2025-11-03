@@ -1,5 +1,7 @@
 # Manjaro/Arch Linux Ansible Provision
 
+[![CI](https://github.com/PauloPortugal/manjaro-playbook/workflows/CI/badge.svg)](https://github.com/PauloPortugal/manjaro-playbook/actions)
+
 This is an [Ansible playbook](https://docs.ansible.com/ansible/latest/user_guide/index.html) meant to configure a Manjaro OS (Arch Linux distribution) GNOME 3 desktop.
 It should run locally after a clean OS install.
 
