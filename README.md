@@ -1,5 +1,7 @@
 # Manjaro/Arch Linux Ansible Provision
 
+[![CI](https://github.com/PauloPortugal/manjaro-playbook/workflows/CI/badge.svg)](https://github.com/PauloPortugal/manjaro-playbook/actions)
+
 This is an [Ansible playbook](https://docs.ansible.com/ansible/latest/user_guide/index.html) meant to configure a Manjaro OS (Arch Linux distribution) GNOME 3 desktop.
 It should run locally after a clean OS install.
 
@@ -15,6 +17,7 @@ This playbook follows the Manjaro [community recommendation when installing the 
   - [Provision and configure a Vagrant VM](#provision-and-configure-a-vagrant-vm)
     - [Provision and configure a Manjaro Vagrant VM](#provision-and-configure-a-manjaro-vagrant-vm)
   - [Run and configure the localhost machine](#run-and-configure-the-localhost-machine)
+    - [Code Quality Checks](#code-quality-checks)
     - [Install everything](#install-everything)
     - [Install everything with debug turned on](#install-everything-with-debug-turned-on)
     - [Install only the 'dev-tools' role with minimal logging](#install-only-the-dev-tools-role-with-minimal-logging)
@@ -53,6 +56,23 @@ ansible-playbook playbook.yml -l testbuild --extra-vars="user_name=USERNAME user
 ```
 
 ## Run and configure the localhost machine
+
+### Code Quality Checks
+
+Before running the playbook, validate your code:
+
+```bash
+# Check YAML syntax and style
+yamllint .
+
+# Check Ansible best practices
+ansible-lint
+
+# Verify playbook syntax
+ansible-playbook --syntax-check playbook.yml
+```
+
+**Note**: If you ran `./setup-dev-environment.sh`, pre-commit hooks are already installed and will run these checks automatically on every commit!
 
 ### Install everything
 ```
@@ -118,14 +138,19 @@ dd bs=4M if=/path/to/iso of=/dev/sdx status=progress oflag=sync
 Change boot order and install Manjaro.
 
 
-### 2. Refresh pacaman mirrors, the copy of the master package database from the server and install `ansible`, `git` and `xclip`
+### 2. Install development dependencies
 
-After installing Manjaro, ensure that ansible, git and xclip are installed
+After installing Manjaro, run the automated setup script:
 
-```
+```bash
 sudo pacman-mirrors -f && sudo pacman -Syyu
-sudo pacman -S ansible ansible-lint git xclip --noconfirm
+sudo pacman -S git --noconfirm
+git clone git@github.com:PauloPortugal/manjaro-playbook.git
+cd manjaro-playbook
+./setup-dev-environment.sh
 ```
+
+This will install all required dependencies: ansible, ansible-lint, yamllint, python-pytokens, and Ansible collections.
 
 ### 3. Set Git SSH credentials
 
@@ -155,7 +180,19 @@ git clone git@github.com:PauloPortugal/manjaro-playbook.git
 cd manjaro-playbook
 ```
 
+### 5. Run the playbook
 
+Now you're ready to run the playbook:
+
+```bash
+# Validate code quality first
+yamllint . && ansible-lint
+
+# Run the playbook
+ansible-playbook playbook.yml -l localhost \
+  --extra-vars="user_name=USERNAME user_git_name=GIT_USERNAME user_email=EMAIL" \
+  --ask-become-pass
+```
 
 
 ## :cloud: Google Cloud Configuration

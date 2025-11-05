@@ -1,0 +1,48 @@
+---
+# ansible-lint configuration for manjaro-playbook
+# See https://ansible-lint.readthedocs.io/
+
+# Exclude paths
+exclude_paths:
+  - .git/
+  - .github/
+  - .vagrant/
+  - .vscode/
+  - .idea/
+  - target/
+  - .ansible/
+
+# Enable checking of loop variable prefixes in roles
+loop_var_prefix: "{role}_"
+
+# Offline mode (don't check for updates)
+offline: false
+
+# List of rules to skip
+skip_list:
+  # Skip var-naming and loop-var-prefix for now
+  # These will be addressed in Phase 5 (Code Modernization)
+  - var-naming[no-role-prefix]  # Variables should use role prefix
+  - loop-var-prefix[missing]     # Loop variables should use role prefix
+
+# Warn on these instead of failing
+warn_list:
+  - experimental  # all rules tagged as experimental
+  - role-name  # Role name doesn't match regex
+
+# Enable rules
+enable_list:
+  - args
+  - empty-string-compare
+  - no-log-password
+  - no-same-owner
+
+# Set to true to use progressive mode (only check changed files)
+progressive: false
+
+# Write violations to file
+# write_list:
+#   - all
+
+# Parseable output
+# parseable: true

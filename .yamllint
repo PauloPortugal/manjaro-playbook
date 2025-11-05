@@ -1,0 +1,62 @@
+# yamllint configuration for manjaro-playbook
+---
+extends: default
+
+rules:
+  # Line length set to 120 for better readability with modern screens
+  # Can be gradually reduced to 80 if desired
+  line-length:
+    max: 120
+    level: warning
+
+  # Allow multiple spaces for alignment
+  colons:
+    max-spaces-after: 1
+
+  # Indentation: 2 spaces
+  indentation:
+    spaces: 2
+    indent-sequences: true
+
+  # Allow trailing spaces (will be handled by pre-commit if needed)
+  trailing-spaces: enable
+
+  # Document start (---) required
+  document-start:
+    present: true
+
+  # Allow empty lines
+  empty-lines:
+    max: 2
+
+  # Brace and bracket spacing
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 0
+
+  # Comments - must be 1 for ansible-lint compatibility
+  comments:
+    min-spaces-from-content: 1
+
+  comments-indentation: disable
+
+  # Truthy values (allow yes/no, true/false)
+  truthy:
+    allowed-values: ['true', 'false', 'yes', 'no']
+    check-keys: false
+
+  # Octal values - required by ansible-lint
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
+
+ignore: |
+  .github/
+  .vagrant/
+  target/
+  .vscode/
+  .idea/

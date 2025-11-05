@@ -1,0 +1,75 @@
+---
+# Pre-commit hooks for manjaro-playbook
+# See https://pre-commit.com for more information
+#
+# Install hooks: pre-commit install
+# Run manually: pre-commit run --all-files
+# Update hooks: pre-commit autoupdate
+
+repos:
+  # General file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        name: Trim trailing whitespace
+      - id: end-of-file-fixer
+        name: Fix end of files
+      - id: check-yaml
+        name: Check YAML syntax
+        args: [--unsafe]  # Allow custom tags for Ansible
+      - id: check-added-large-files
+        name: Check for large files
+        args: [--maxkb=500]
+      - id: check-case-conflict
+        name: Check for case conflicts
+      - id: check-merge-conflict
+        name: Check for merge conflicts
+      - id: mixed-line-ending
+        name: Check line endings
+        args: [--fix=lf]
+
+  # YAML linting
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        name: Lint YAML files
+        args: [--strict]
+
+  # Ansible linting (using system ansible-lint to avoid venv issues)
+  - repo: local
+    hooks:
+      - id: ansible-lint
+        name: Lint Ansible playbooks
+        entry: ansible-lint
+        language: system
+        files: \.(yaml|yml)$
+        pass_filenames: false
+        always_run: false
+
+  # Shell script linting
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        name: Lint shell scripts
+        args: [--severity=warning]
+
+# Configuration
+default_language_version:
+  python: python3
+
+# Fail fast - stop on first failure
+fail_fast: false
+
+# Exclude files/directories
+exclude: |
+  (?x)^(
+    .git/|
+    .vagrant/|
+    .vscode/|
+    .idea/|
+    target/|
+    .ansible/
+  )$

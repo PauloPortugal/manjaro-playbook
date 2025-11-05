@@ -18,7 +18,7 @@ if [ -z "${searchResult}" ]; then
   tar -xvzf /tmp/${1}/${1}.tar.gz -C /tmp/${1}/
 
   # Create install package
-  cd /tmp/${1}/${1}
+  cd /tmp/${1}/${1} || exit 1
   makepkg -s --skippgpcheck
 
   # Install package
@@ -28,5 +28,5 @@ if [ -z "${searchResult}" ]; then
   rm -rf /tmp/${1}
 else
   echo "${searchQuery} package already installed"
-  exit -1;
+  exit 255
 fi
