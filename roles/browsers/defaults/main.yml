@@ -1,0 +1,17 @@
+---
+# Browsers role default variables
+
+# Browsers from official repos
+browsers:
+  - firefox
+
+# Tor browser and dependencies
+browser_tor:
+  - nyx
+  - tor
+  - torbrowser-launcher
+
+# Browsers from AUR
+browsers_aur:
+  - chromedriver
+  - google-chrome

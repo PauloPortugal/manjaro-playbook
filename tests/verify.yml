@@ -1,0 +1,134 @@
+---
+# Verification Playbook
+# Tests that key components are installed and configured correctly
+
+- name: Verify Manjaro Playbook Installation
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Verification - Base utilities
+      tags:
+        - verify
+        - verify-base
+      block:
+        - name: Check git is installed
+          ansible.builtin.package_facts:
+            manager: auto
+
+        - name: Verify git package
+          ansible.builtin.assert:
+            that:
+              - "'git' in ansible_facts.packages"
+            fail_msg: "Git is not installed"
+            success_msg: "Git is installed"
+
+        - name: Get git version  # noqa: command-instead-of-module
+          ansible.builtin.command: git --version
+          register: git_version
+          changed_when: false
+
+        - name: Check htop is installed
+          ansible.builtin.command: htop --version
+          register: htop_version
+          changed_when: false
+          failed_when: htop_version.rc != 0
+
+        - name: Check Workspace directory exists
+          ansible.builtin.stat:
+            path: "/home/{{ ansible_user_id }}/Workspace"
+          register: workspace_dir
+          failed_when: not workspace_dir.stat.exists or not workspace_dir.stat.isdir
+
+        - name: Display base verification results
+          ansible.builtin.debug:
+            msg:
+              - "✓ Git version: {{ git_version.stdout }}"
+              - "✓ htop installed"
+              - "✓ Workspace directory exists"
+
+    - name: Verification - Development tools
+      tags:
+        - verify
+        - verify-development
+      when: "'development' in ansible_run_tags or 'all' in ansible_run_tags"
+      block:
+        - name: Check Docker is installed
+          ansible.builtin.command: docker --version
+          register: docker_version
+          changed_when: false
+          failed_when: docker_version.rc != 0
+          ignore_errors: true
+
+        - name: Check Go is installed
+          ansible.builtin.command: go version
+          register: go_version
+          changed_when: false
+          failed_when: go_version.rc != 0
+          ignore_errors: true
+
+        - name: Check kubectl is installed
+          ansible.builtin.command: kubectl version --client
+          register: kubectl_version
+          changed_when: false
+          failed_when: kubectl_version.rc != 0
+          ignore_errors: true
+
+        - name: Display development verification results
+          ansible.builtin.debug:
+            msg:
+              - "Docker: {{ 'installed - ' + docker_version.stdout if docker_version.rc == 0 else 'not installed' }}"
+              - "Go: {{ 'installed - ' + go_version.stdout if go_version.rc == 0 else 'not installed' }}"
+              - "kubectl: {{ 'installed' if kubectl_version.rc == 0 else 'not installed' }}"
+
+    - name: Verification - Security tools
+      tags:
+        - verify
+        - verify-security
+      when: "'security' in ansible_run_tags or 'all' in ansible_run_tags"
+      block:
+        - name: Check UFW is installed
+          ansible.builtin.command: ufw --version
+          register: ufw_version
+          changed_when: false
+          failed_when: ufw_version.rc != 0
+          become: true
+          ignore_errors: true
+
+        - name: Check ClamAV is installed
+          ansible.builtin.command: clamscan --version
+          register: clamscan_version
+          changed_when: false
+          failed_when: clamscan_version.rc != 0
+          ignore_errors: true
+
+        - name: Check UFW status
+          ansible.builtin.command: ufw status
+          register: ufw_status
+          changed_when: false
+          become: true
+          ignore_errors: true
+
+        - name: Display security verification results
+          ansible.builtin.debug:
+            msg:
+              - "UFW: {{ 'installed' if ufw_version.rc == 0 else 'not installed' }}"
+              - "ClamAV: {{ 'installed - ' + clamscan_version.stdout
+                if clamscan_version.rc == 0 else 'not installed' }}"
+              - "UFW Status: {{ ufw_status.stdout_lines[0]
+                if ufw_status.rc == 0 else 'unknown' }}"
+
+    - name: Verification Summary
+      ansible.builtin.debug:
+        msg:
+          - "========================================"
+          - "Verification Complete"
+          - "========================================"
+          - "System: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+          - "Kernel: {{ ansible_kernel }}"
+          - "Python: {{ ansible_python_version }}"
+          - ""
+          - "✅ Base verification passed"
+          - "Check detailed output above for component status"
+      tags:
+        - verify
+        - always

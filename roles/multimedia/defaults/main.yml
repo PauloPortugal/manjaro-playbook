@@ -1,0 +1,8 @@
+---
+# Multimedia role default variables
+
+# Multimedia applications
+multimedia:
+  - darktable
+  - gimp
+  - kdenlive

@@ -1,0 +1,11 @@
+---
+# Communications role default variables
+
+# Communication apps from official repos
+comms:
+  - signal-desktop
+
+# Communication apps from AUR
+comms_aur:
+  - slack-desktop
+  - teams

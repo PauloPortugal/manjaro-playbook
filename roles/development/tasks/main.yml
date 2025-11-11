@@ -14,7 +14,7 @@
 
 - name: Install Developer Tools from Arch User Repository
   ansible.builtin.script: ../../../aur/install-aur.sh {{ item }}
-  with_items: "{{ developer_stack_aur }}"
+  loop: "{{ developer_stack_aur }}"
   register: install_result
   changed_when: install_result.rc == 0
   failed_when: install_result.rc != 0 and install_result.rc != 255

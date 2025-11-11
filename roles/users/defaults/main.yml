@@ -1,0 +1,9 @@
+---
+# Users role default variables
+
+# User management settings
+# Note: user_name, user_git_name, and user_email must be provided
+# via --extra-vars when running the playbook
+
+# Default shell
+default_shell: /usr/bin/zsh

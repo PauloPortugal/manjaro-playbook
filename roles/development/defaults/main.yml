@@ -1,0 +1,60 @@
+---
+# Development role default variables
+
+# Developer tools from official repos
+developer_stack:
+  - ansible
+  - ansible-lint
+  - clojure
+  - dbeaver
+  - docker
+  - docker-compose
+  - go
+  - go-tools
+  - go-yq
+  - gradle
+  - hub
+  - jdk8-openjdk
+  - jdk11-openjdk
+  - jdk17-openjdk
+  - jq
+  - jre8-openjdk
+  - jre8-openjdk-headless
+  - jre11-openjdk
+  - jre11-openjdk-headless
+  - jre17-openjdk
+  - jre17-openjdk-headless
+  - kubectl
+  - kubectx
+  - leiningen
+  - maven
+  - minikube
+  - npm
+  - ruby
+  - sbt
+  - terraform
+  - yarn
+
+# Developer tools from AUR
+developer_stack_aur:
+  - aws-cli-v2-bin
+  - aws-session-manager-plugin
+  - golangci-lint
+  - go-swagger-bin
+  - heroku-cli
+  - kubefwd-bin
+  - lens-bin
+  - mongosh-bin
+  - mongodb-bin
+  - mongodb-tools-bin
+  - nancy-bin
+  - nvm
+  - postman-bin
+  - robo3t-bin
+  - scala
+  - tfswitch-bin
+
+# Tesseract OCR
+tesseract:
+  - tesseract
+  - tesseract-data-eng

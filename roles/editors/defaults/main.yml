@@ -1,0 +1,16 @@
+---
+# Editors role default variables
+
+# Editors from official repos
+editors:
+  - emacs
+  - vim
+
+# Editors from AUR
+editors_aur:
+  - jetbrains-toolbox
+  - visual-studio-code-bin
+  - xmind
+
+# Git default editor
+git_default_editor: vim

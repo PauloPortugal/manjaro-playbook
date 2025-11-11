@@ -1,0 +1,18 @@
+---
+# Security role default variables
+
+# Security tools
+security_tools:
+  - clamav
+  - clamtk
+  - gufw
+  - ufw
+  - ufw-extras
+
+# UFW configuration
+ufw_enabled: true
+ufw_default_incoming: deny
+ufw_default_outgoing: allow
+
+# ClamAV configuration
+clamav_update_database: true

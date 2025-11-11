@@ -23,7 +23,7 @@
     if [ $? != 0 ]; then
       pamac build --no-confirm {{ item }}
     fi
-  with_items: "{{ browsers_aur }}"
+  loop: "{{ browsers_aur }}"
   register: command_result
   failed_when: command_result.rc != 0
   changed_when: "'successfully' in command_result.stdout"

@@ -1,0 +1,6 @@
+---
+# Cloud tools role default variables
+
+# Cloud tools from AUR
+cloud_tools_aur:
+  - google-cloud-sdk

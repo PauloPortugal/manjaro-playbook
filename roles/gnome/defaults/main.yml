@@ -1,0 +1,17 @@
+---
+# GNOME role default variables
+
+# GNOME packages
+gnome:
+  - manjaro-settings-manager
+
+# ZSH plugins for GNOME terminal
+zsh_plugins:
+  - archlinux
+  - colored-man-pages
+  - docker
+  - docker-compose
+  - dotenv
+  - git-prompt
+  - git-extras
+  - spring

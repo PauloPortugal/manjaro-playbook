@@ -1,0 +1,7 @@
+---
+# Virtualization role default variables
+
+# Virtualization tools
+virtualization:
+  - vagrant
+  - virtualbox
