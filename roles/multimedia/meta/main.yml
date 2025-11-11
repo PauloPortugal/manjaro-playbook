@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Paulo Monteiro
+  description: Multimedia editing tools for Manjaro/Arch Linux
+  license: MIT
+  min_ansible_version: "2.9"
+
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+
+  galaxy_tags:
+    - manjaro
+    - arch
+    - multimedia
+    - gimp
+    - video
+    - photo
+
+dependencies: []

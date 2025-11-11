@@ -1,0 +1,6 @@
+---
+# Printers role default variables
+
+# Printer drivers from AUR
+printers_aur:
+  - brother-mfc-j415w

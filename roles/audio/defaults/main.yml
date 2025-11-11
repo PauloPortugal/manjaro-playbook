@@ -1,0 +1,6 @@
+---
+# Audio role default variables
+
+# Audio tools
+audio_tools:
+  - audacity

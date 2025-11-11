@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: Paulo Monteiro
+  description: Development tools and environments for Manjaro/Arch Linux
+  license: MIT
+  min_ansible_version: "2.9"
+
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+
+  galaxy_tags:
+    - manjaro
+    - arch
+    - development
+    - docker
+    - kubernetes
+    - programming
+
+dependencies:
+  - role: base

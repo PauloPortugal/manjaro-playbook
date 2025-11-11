@@ -1,0 +1,52 @@
+---
+# Base role default variables
+
+# System utilities to install
+utils:
+  - base-devel
+  - binutils
+  - bluez
+  - bluez-utils
+  - gcc
+  - gum
+  - htop
+  - keychain
+  - libcurl-gnutls
+  - lib32-glibc
+  - make
+  - mlocate
+  - ntp
+  - openssl
+  - pamac
+  - python-pip
+  - pwgen
+  - terminator
+  - tree
+  - unixodbc
+  - wget
+  - xclip
+  - xorg-xinput
+
+# AUR utilities
+utils_aur:
+  - git-extras
+  - lsdesktopf
+  - zsh-git-prompt
+
+# Shell aliases
+shell_aliases:
+  - alias ll='ls -lrt'
+  - alias pull='hub pull-request --no-edit -o -p'
+  - alias rgrep='grep -r'
+  - alias vi=vim
+  - alias W='cd ~/Workspace'
+
+# Workspace directory
+workspace_dir: "{{ ansible_env.HOME }}/Workspace"
+workspace_mode: "0755"
+
+# NTP configuration
+configure_ntp: true
+
+# PIP packages
+pip_packages: []

@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: Paulo Monteiro
+  description: Security tools and firewall configuration for Manjaro/Arch Linux
+  license: MIT
+  min_ansible_version: "2.9"
+
+  platforms:
+    - name: ArchLinux
+      versions:
+        - all
+
+  galaxy_tags:
+    - manjaro
+    - arch
+    - security
+    - firewall
+    - ufw
+    - clamav
+    - antivirus
+
+dependencies:
+  - role: base

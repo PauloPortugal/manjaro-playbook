@@ -1,0 +1,11 @@
+---
+# Media role default variables
+
+# Media tools from official repos
+media:
+  - peek
+
+# Media tools from AUR
+media_aur:
+  - spotify
+  - libwebcam-git
