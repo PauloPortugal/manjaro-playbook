@@ -36,13 +36,24 @@ vagrant plugin install vagrant-vbguest  # Optional but recommended
 ### Run All Tests Locally
 
 ```bash
-# Linting and syntax
+# Quick test suite (linting + syntax + verification)
+./tests/run-all-tests.sh
+
+# Or run individual test suites:
+
+# 1. Linting and syntax
 yamllint . && ansible-lint && ansible-playbook --syntax-check playbook.yml
 
-# Idempotency test (requires Vagrant)
+# 2. Verification tests
+ansible-playbook tests/verify.yml -l localhost
+
+# 3. Role-specific tests
+ansible-playbook tests/test-roles.yml -l localhost
+
+# 4. Idempotency test (requires Vagrant)
 ./tests/test-idempotency.sh testbuild
 
-# Full Vagrant test cycle
+# 5. Full Vagrant test cycle
 ./tests/vagrant-test.sh all
 ```
 
