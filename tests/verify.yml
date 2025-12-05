@@ -6,6 +6,11 @@
   hosts: all
   gather_facts: true
   tasks:
+    - name: Set user_name if not defined
+      ansible.builtin.set_fact:
+        user_name: "{{ ansible_user_id }}"
+      when: user_name is not defined
+      tags: always
     - name: Verification - Base utilities
       tags:
         - verify
@@ -35,9 +40,30 @@
 
         - name: Check Workspace directory exists
           ansible.builtin.stat:
-            path: "/home/{{ ansible_user_id }}/Workspace"
+            path: "/home/{{ user_name }}/Workspace"
           register: workspace_dir
           failed_when: not workspace_dir.stat.exists or not workspace_dir.stat.isdir
+
+        - name: Check vim is installed
+          ansible.builtin.command: vim --version
+          register: vim_version
+          changed_when: false
+          failed_when: vim_version.rc != 0
+          ignore_errors: true
+
+        - name: Check zsh is installed
+          ansible.builtin.command: zsh --version
+          register: zsh_version
+          changed_when: false
+          failed_when: zsh_version.rc != 0
+          ignore_errors: true
+
+        - name: Check pip is installed
+          ansible.builtin.command: pip --version
+          register: pip_version
+          changed_when: false
+          failed_when: pip_version.rc != 0
+          ignore_errors: true
 
         - name: Display base verification results
           ansible.builtin.debug:
@@ -45,6 +71,9 @@
               - "✓ Git version: {{ git_version.stdout }}"
               - "✓ htop installed"
               - "✓ Workspace directory exists"
+              - "Vim: {{ 'installed' if vim_version.rc == 0 else 'not installed' }}"
+              - "Zsh: {{ zsh_version.stdout if zsh_version.rc == 0 else 'not installed' }}"
+              - "Pip: {{ pip_version.stdout if pip_version.rc == 0 else 'not installed' }}"
 
     - name: Verification - Development tools
       tags:
@@ -111,11 +140,95 @@
         - name: Display security verification results
           ansible.builtin.debug:
             msg:
-              - "UFW: {{ 'installed' if ufw_version.rc == 0 else 'not installed' }}"
+              - "UFW: {{ 'installed' if ufw_version is succeeded else 'not installed' }}"
               - "ClamAV: {{ 'installed - ' + clamscan_version.stdout
-                if clamscan_version.rc == 0 else 'not installed' }}"
+                if clamscan_version is succeeded else 'not installed' }}"
               - "UFW Status: {{ ufw_status.stdout_lines[0]
-                if ufw_status.rc == 0 else 'unknown' }}"
+                if ufw_status is succeeded else 'unknown' }}"
+
+    - name: Verification - Browsers
+      tags:
+        - verify
+        - verify-browsers
+      when: "'browsers' in ansible_run_tags or 'all' in ansible_run_tags"
+      block:
+        - name: Check Firefox is installed
+          ansible.builtin.command: firefox --version
+          register: firefox_version
+          changed_when: false
+          failed_when: firefox_version.rc != 0
+          ignore_errors: true
+
+        - name: Check Chrome is installed
+          ansible.builtin.command: google-chrome-stable --version
+          register: chrome_version
+          changed_when: false
+          failed_when: chrome_version.rc != 0
+          ignore_errors: true
+
+        - name: Display browsers verification results
+          ansible.builtin.debug:
+            msg:
+              - "Firefox: {{ firefox_version.stdout if firefox_version.rc == 0 else 'not installed' }}"
+              - "Chrome: {{ chrome_version.stdout if chrome_version.rc == 0 else 'not installed' }}"
+
+    - name: Verification - Editors
+      tags:
+        - verify
+        - verify-editors
+      when: "'editors' in ansible_run_tags or 'all' in ansible_run_tags"
+      block:
+        - name: Check VSCode is installed
+          ansible.builtin.command: code --version
+          register: vscode_version
+          changed_when: false
+          failed_when: vscode_version.rc != 0
+          ignore_errors: true
+
+        - name: Check Emacs is installed
+          ansible.builtin.command: emacs --version
+          register: emacs_version
+          changed_when: false
+          failed_when: emacs_version.rc != 0
+          ignore_errors: true
+
+        - name: Display editors verification results
+          ansible.builtin.debug:
+            msg:
+              - >-
+                VSCode: {{ 'installed - ' + vscode_version.stdout_lines[0]
+                if vscode_version.rc == 0 else 'not installed' }}
+              - "Emacs: {{ 'installed' if emacs_version.rc == 0 else 'not installed' }}"
+
+    - name: Verification - Configuration Files
+      tags:
+        - verify
+        - verify-config
+      block:
+        - name: Check .zshrc exists
+          ansible.builtin.stat:
+            path: "/home/{{ user_name }}/.zshrc"
+          register: zshrc_file
+          ignore_errors: true
+
+        - name: Check .bashrc exists
+          ansible.builtin.stat:
+            path: "/home/{{ user_name }}/.bashrc"
+          register: bashrc_file
+          ignore_errors: true
+
+        - name: Check .gitconfig exists
+          ansible.builtin.stat:
+            path: "/home/{{ user_name }}/.gitconfig"
+          register: gitconfig_file
+          ignore_errors: true
+
+        - name: Display config verification results
+          ansible.builtin.debug:
+            msg:
+              - ".zshrc: {{ 'exists' if zshrc_file.stat.exists else 'missing' }}"
+              - ".bashrc: {{ 'exists' if bashrc_file.stat.exists else 'missing' }}"
+              - ".gitconfig: {{ 'exists' if gitconfig_file.stat.exists else 'missing' }}"
 
     - name: Verification Summary
       ansible.builtin.debug:

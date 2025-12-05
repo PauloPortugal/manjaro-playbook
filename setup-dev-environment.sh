@@ -25,7 +25,7 @@ if ! command -v pacman &> /dev/null; then
 fi
 
 echo -e "${YELLOW}Step 1: Installing system packages via pacman${NC}"
-echo "This will install: ansible, ansible-lint, git, xclip, python-pip, yamllint, python-pytokens, pre-commit"
+echo "This will install: ansible, ansible-lint, git, xclip, python-pip, yamllint, python-pytokens, shellcheck, pre-commit"
 echo ""
 
 sudo pacman -S --needed --noconfirm \
@@ -36,6 +36,7 @@ sudo pacman -S --needed --noconfirm \
     python-pip \
     python-pytokens \
     yamllint \
+    shellcheck \
     pre-commit
 
 echo -e "${GREEN}✓ System packages installed${NC}"

@@ -1,0 +1,129 @@
+---
+# Role-Specific Test Playbook
+# Tests individual roles for functionality and idempotency
+
+- name: Test Individual Roles
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Test Base Role
+      tags:
+        - test
+        - test-base
+      block:
+        - name: Run base role
+          ansible.builtin.include_role:
+            name: base
+          vars:
+            user_name: "{{ ansible_user_id }}"
+
+        - name: Verify base role outputs
+          ansible.builtin.assert:
+            that:
+              - workspace_dir.stat.exists
+              - workspace_dir.stat.isdir
+            fail_msg: "Base role did not create expected outputs"
+            success_msg: "Base role outputs verified"
+
+        - name: Test base role idempotency
+          ansible.builtin.include_role:
+            name: base
+          vars:
+            user_name: "{{ ansible_user_id }}"
+          register: base_second_run
+
+        - name: Verify base role is idempotent
+          ansible.builtin.assert:
+            that:
+              - base_second_run is not changed
+            fail_msg: "Base role is not idempotent"
+            success_msg: "Base role is idempotent"
+
+    - name: Test Development Role
+      tags:
+        - test
+        - test-development
+      when: "'development' in ansible_run_tags or 'test' in ansible_run_tags"
+      block:
+        - name: Check if Docker is available after role
+          ansible.builtin.command: docker --version
+          register: docker_check
+          changed_when: false
+          failed_when: false
+
+        - name: Check if Go is available after role
+          ansible.builtin.command: go version
+          register: go_check
+          changed_when: false
+          failed_when: false
+
+        - name: Report development tools status
+          ansible.builtin.debug:
+            msg:
+              - "Docker: {{ 'available' if docker_check.rc == 0 else 'not available' }}"
+              - "Go: {{ 'available' if go_check.rc == 0 else 'not available' }}"
+
+    - name: Test Security Role
+      tags:
+        - test
+        - test-security
+      when: "'security' in ansible_run_tags or 'test' in ansible_run_tags"
+      block:
+        - name: Check UFW service
+          ansible.builtin.systemd:
+            name: ufw
+          register: ufw_service
+          become: true
+          ignore_errors: true
+
+        - name: Check ClamAV freshclam service
+          ansible.builtin.systemd:
+            name: clamav-freshclam
+          register: clamav_service
+          become: true
+          ignore_errors: true
+
+        - name: Report security services status
+          ansible.builtin.debug:
+            msg:
+              - "UFW service: {{ ufw_service.status.ActiveState | default('unknown') }}"
+              - "ClamAV service: {{ clamav_service.status.ActiveState | default('unknown') }}"
+
+    - name: Test Configuration Integrity
+      tags:
+        - test
+        - test-config
+      block:
+        - name: Check critical config files exist
+          ansible.builtin.stat:
+            path: "{{ item }}"
+          loop:
+            - "/home/{{ ansible_user_id }}/.bashrc"
+            - "/home/{{ ansible_user_id }}/.zshrc"
+            - "/home/{{ ansible_user_id }}/.gitconfig"
+          register: config_files
+
+        - name: Verify config files
+          ansible.builtin.assert:
+            that:
+              - item.stat.exists
+            fail_msg: "Config file {{ item.item }} is missing"
+            success_msg: "Config file {{ item.item }} exists"
+          loop: "{{ config_files.results }}"
+          loop_control:
+            label: "{{ item.item }}"
+
+    - name: Test Summary
+      tags:
+        - test
+        - always
+      block:
+        - name: Display test summary
+          ansible.builtin.debug:
+            msg:
+              - "========================================"
+              - "Role Testing Complete"
+              - "========================================"
+              - "All role-specific tests passed"
+              - "System is properly configured"

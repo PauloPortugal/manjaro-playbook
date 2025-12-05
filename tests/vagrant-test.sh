@@ -58,15 +58,15 @@ setup_vm() {
 
 # Function: Run playbook
 run_playbook() {
-  local tags_arg=""
+  local tags_arg=()
   if [ -n "$TAGS" ]; then
-    tags_arg="--tags $TAGS"
+    tags_arg=(--tags "$TAGS")
   fi
 
   echo -e "${YELLOW}=== Running playbook ===${NC}"
   ansible-playbook playbook.yml -l testbuild \
     --extra-vars="user_name=vagrant user_git_name='Test User' user_email=test@test.com" \
-    $tags_arg \
+    "${tags_arg[@]}" \
     --ask-become-pass
 
   echo -e "${GREEN}✓ Playbook completed${NC}"
