@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Automated semantic versioning based on conventional commits
+- GitHub Actions workflow for automatic releases
+- Changelog generation from commit messages
+- Version bump script (`scripts/bump-version.sh`)
+
 - **Phase 6: Advanced Testing** (2025-11-12)
   - Enhanced `tests/verify.yml` with comprehensive checks
   - Added verification for browsers, editors, and configuration files
@@ -87,12 +92,77 @@ See git history for changes prior to v2.15.0.
 
 ---
 
-## Version Numbering
+## How Automated Versioning Works
 
-This project uses Semantic Versioning:
-- **MAJOR** version: Incompatible changes (requires manual intervention)
-- **MINOR** version: New features (backward compatible)
-- **PATCH** version: Bug fixes (backward compatible)
+This project uses [Semantic Versioning](https://semver.org/) with automated version bumps based on commit messages.
+
+### Version Bump Rules
+
+- **MAJOR** version: Breaking changes (commits with `!` like `feat!:` or `fix!:`)
+- **MINOR** version: New features (commits starting with `feat:` or `feature:`)
+- **PATCH** version: Bug fixes (commits starting with `fix:` or `patch:`)
+
+### Commit Message Format
+
+We follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+**Types:**
+- `feat:` or `feature:` - New feature (triggers MINOR version bump)
+- `fix:` or `patch:` - Bug fix (triggers PATCH version bump)
+- `docs:` - Documentation changes (no version bump)
+- `chore:` - Maintenance tasks (no version bump)
+- `refactor:` - Code refactoring (no version bump)
+- `test:` - Adding or updating tests (no version bump)
+- `ci:` - CI/CD changes (no version bump)
+
+**Breaking Changes:**
+Add `!` after the type to indicate a breaking change (e.g., `feat!:` or `fix!:`).
+
+**Examples:**
+```bash
+# Minor version bump (1.0.0 -> 1.1.0)
+git commit -m "feat: add semantic versioning automation"
+
+# Patch version bump (1.0.0 -> 1.0.1)
+git commit -m "fix: correct ansible-lint errors in base role"
+
+# Major version bump (1.0.0 -> 2.0.0)
+git commit -m "feat!: redesign role structure requiring Python 3.11+"
+```
+
+### Manual Version Bumps
+
+You can also manually bump versions using the script:
+
+```bash
+# Dry run to see what would happen
+./scripts/bump-version.sh --dry-run
+
+# Create version bump and tag
+./scripts/bump-version.sh
+
+# Skip pushing to remote
+./scripts/bump-version.sh --skip-push
+```
+
+### Automatic Releases
+
+When you push to the `main` branch, GitHub Actions automatically:
+1. Analyzes commits since the last tag
+2. Determines the version bump type
+3. Creates a new git tag
+4. Generates a changelog from commits
+5. Creates a GitHub release with the changelog
+
+To skip automatic releases, include `[skip ci]` or `[ci skip]` in your commit message.
 
 ## Contributing
 

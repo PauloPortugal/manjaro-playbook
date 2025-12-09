@@ -1,0 +1,244 @@
+---
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        description: 'Version bump type (auto, major, minor, patch)'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - major
+          - minor
+          - patch
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]') && !contains(github.event.head_commit.message, '[ci skip]')"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch all history for tags
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Analyze commits and determine version bump
+        id: version
+        run: |
+          # Get latest tag
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+
+          if [ -z "$LATEST_TAG" ]; then
+            echo "No existing tags found"
+            CURRENT_VERSION="0.0.0"
+            SINCE_REF=""
+          else
+            CURRENT_VERSION="${LATEST_TAG#v}"
+            SINCE_REF="$LATEST_TAG"
+            echo "Current version: v$CURRENT_VERSION"
+          fi
+
+          # Get commits since last tag
+          if [ -z "$SINCE_REF" ]; then
+            COMMITS=$(git log --pretty=format:"%s" --no-merges)
+          else
+            COMMITS=$(git log "${SINCE_REF}..HEAD" --pretty=format:"%s" --no-merges)
+          fi
+
+          if [ -z "$COMMITS" ]; then
+            echo "No new commits since last tag"
+            echo "should_release=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "Commits since last tag:"
+          echo "$COMMITS"
+          echo ""
+
+          # Determine bump type
+          BUMP_TYPE="${{ github.event.inputs.bump_type || 'auto' }}"
+
+          if [ "$BUMP_TYPE" = "auto" ]; then
+            # Analyze commits
+            HAS_BREAKING=false
+            HAS_FEAT=false
+            HAS_FIX=false
+
+            # Check for breaking changes (feat!: or fix!: syntax)
+            if echo "$COMMITS" | grep -qiE "^(feat|feature|fix|patch)!(\(.+\))?:"; then
+              HAS_BREAKING=true
+            fi
+
+            if echo "$COMMITS" | grep -qiE "^(feat|feature)(\(.+\))?:"; then
+              HAS_FEAT=true
+            fi
+
+            if echo "$COMMITS" | grep -qiE "^(fix|patch)(\(.+\))?:"; then
+              HAS_FIX=true
+            fi
+
+            # Determine bump type
+            if [ "$HAS_BREAKING" = true ]; then
+              BUMP_TYPE="major"
+            elif [ "$HAS_FEAT" = true ]; then
+              BUMP_TYPE="minor"
+            elif [ "$HAS_FIX" = true ]; then
+              BUMP_TYPE="patch"
+            else
+              echo "No version bump needed (no feat/fix commits found)"
+              echo "should_release=false" >> $GITHUB_OUTPUT
+              exit 0
+            fi
+          fi
+
+          echo "Bump type: $BUMP_TYPE"
+
+          # Parse current version
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT_VERSION"
+
+          # Bump version
+          case $BUMP_TYPE in
+            major)
+              ((MAJOR++))
+              MINOR=0
+              PATCH=0
+              ;;
+            minor)
+              ((MINOR++))
+              PATCH=0
+              ;;
+            patch)
+              ((PATCH++))
+              ;;
+          esac
+
+          NEW_VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          NEW_TAG="v${NEW_VERSION}"
+
+          echo "New version: $NEW_TAG"
+
+          echo "should_release=true" >> $GITHUB_OUTPUT
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
+          echo "old_tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "bump_type=$BUMP_TYPE" >> $GITHUB_OUTPUT
+
+      - name: Generate changelog
+        id: changelog
+        if: steps.version.outputs.should_release == 'true'
+        run: |
+          OLD_TAG="${{ steps.version.outputs.old_tag }}"
+          NEW_TAG="${{ steps.version.outputs.new_tag }}"
+
+          echo "Generating changelog for $NEW_TAG"
+
+          # Get commits since last tag
+          if [ -z "$OLD_TAG" ]; then
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          else
+            COMMITS=$(git log "${OLD_TAG}..HEAD" --pretty=format:"- %s (%h)" --no-merges)
+          fi
+
+          # Categorize commits
+          BREAKING_CHANGES=$(echo "$COMMITS" | grep -iE "^- (feat|feature|fix|patch)!(\(.+\))?:" || true)
+          FEATURES=$(echo "$COMMITS" | grep -iE "^- (feat|feature)(\(.+\))?:" | grep -viE "!" || true)
+          FIXES=$(echo "$COMMITS" | grep -iE "^- (fix|patch)(\(.+\))?:" | grep -viE "!" || true)
+          OTHER=$(echo "$COMMITS" | grep -viE "^- (feat|feature|fix|patch)!?(\(.+\))?:" || true)
+
+          # Build changelog
+          CHANGELOG="## What's Changed"
+          CHANGELOG="${CHANGELOG}"$'\n\n'
+
+          if [ -n "$BREAKING_CHANGES" ]; then
+            CHANGELOG="${CHANGELOG}### ⚠️ BREAKING CHANGES"$'\n\n'
+            CHANGELOG="${CHANGELOG}${BREAKING_CHANGES}"$'\n\n'
+          fi
+
+          if [ -n "$FEATURES" ]; then
+            CHANGELOG="${CHANGELOG}### ✨ Features"$'\n\n'
+            CHANGELOG="${CHANGELOG}${FEATURES}"$'\n\n'
+          fi
+
+          if [ -n "$FIXES" ]; then
+            CHANGELOG="${CHANGELOG}### 🐛 Bug Fixes"$'\n\n'
+            CHANGELOG="${CHANGELOG}${FIXES}"$'\n\n'
+          fi
+
+          if [ -n "$OTHER" ]; then
+            CHANGELOG="${CHANGELOG}### 🔧 Other Changes"$'\n\n'
+            CHANGELOG="${CHANGELOG}${OTHER}"$'\n\n'
+          fi
+
+          # Add full changelog link
+          if [ -n "$OLD_TAG" ]; then
+            CHANGELOG="${CHANGELOG}"$'\n'"**Full Changelog**: https://github.com/${{ github.repository }}/compare/${OLD_TAG}...${NEW_TAG}"
+          else
+            CHANGELOG="${CHANGELOG}"$'\n'"**Full Changelog**: https://github.com/${{ github.repository }}/commits/${NEW_TAG}"
+          fi
+
+          # Save changelog to file
+          echo "$CHANGELOG" > CHANGELOG.tmp
+
+          # Output for GitHub
+          {
+            echo 'changelog<<EOF'
+            echo "$CHANGELOG"
+            echo EOF
+          } >> $GITHUB_OUTPUT
+
+      - name: Create and push tag
+        if: steps.version.outputs.should_release == 'true'
+        run: |
+          NEW_TAG="${{ steps.version.outputs.new_tag }}"
+
+          git tag -a "$NEW_TAG" -m "Release $NEW_TAG"
+          git push origin "$NEW_TAG"
+
+          echo "✓ Created and pushed tag: $NEW_TAG"
+
+      - name: Create GitHub Release
+        if: steps.version.outputs.should_release == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.new_tag }}
+          name: Release ${{ steps.version.outputs.new_tag }}
+          body: ${{ steps.changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Summary
+        if: steps.version.outputs.should_release == 'true'
+        run: |
+          echo "## 🚀 Release Created" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version**: ${{ steps.version.outputs.new_tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Bump Type**: ${{ steps.version.outputs.bump_type }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Changelog" >> $GITHUB_STEP_SUMMARY
+          cat CHANGELOG.tmp >> $GITHUB_STEP_SUMMARY
+
+      - name: No release needed
+        if: steps.version.outputs.should_release == 'false'
+        run: |
+          echo "## ℹ️ No Release Needed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "No version bump required. No feat/fix commits found since last tag." >> $GITHUB_STEP_SUMMARY
