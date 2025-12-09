@@ -31,13 +31,8 @@ developer_stack:
     - jdk8-openjdk
     - jdk11-openjdk
     - jdk17-openjdk
+    - jdk21-openjdk
     - jq
-    - jre8-openjdk
-    - jre8-openjdk-headless
-    - jre11-openjdk
-    - jre11-openjdk-headless
-    - jre17-openjdk
-    - jre17-openjdk-headless
     - kubectl
     - kubectx
     - leiningen
