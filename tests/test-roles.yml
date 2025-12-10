@@ -58,11 +58,31 @@
           changed_when: false
           failed_when: false
 
+        - name: Check if Hugo is available after role
+          ansible.builtin.command: hugo version
+          register: hugo_check
+          changed_when: false
+          failed_when: false
+
+        - name: Verify Hugo can create a new site
+          ansible.builtin.command: hugo new site /tmp/hugo-test-site --force
+          register: hugo_site_test
+          changed_when: false
+          failed_when: false
+
+        - name: Clean up Hugo test site
+          ansible.builtin.file:
+            path: /tmp/hugo-test-site
+            state: absent
+          when: hugo_site_test.rc == 0
+
         - name: Report development tools status
           ansible.builtin.debug:
             msg:
               - "Docker: {{ 'available' if docker_check.rc == 0 else 'not available' }}"
               - "Go: {{ 'available' if go_check.rc == 0 else 'not available' }}"
+              - "Hugo: {{ 'available - ' + hugo_check.stdout if hugo_check.rc == 0 else 'not available' }}"
+              - "Hugo functional test: {{ 'passed' if hugo_site_test.rc == 0 else 'failed' }}"
 
     - name: Test Security Role
       tags:
