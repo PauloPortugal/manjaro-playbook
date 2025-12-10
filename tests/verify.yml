@@ -102,12 +102,26 @@
           failed_when: kubectl_version.rc != 0
           ignore_errors: true
 
+        - name: Check Hugo is installed
+          ansible.builtin.command: hugo version
+          register: hugo_version
+          changed_when: false
+          failed_when: hugo_version.rc != 0
+          ignore_errors: true
+
+        - name: Verify Hugo executable exists
+          ansible.builtin.stat:
+            path: /usr/bin/hugo
+          register: hugo_binary
+          ignore_errors: true
+
         - name: Display development verification results
           ansible.builtin.debug:
             msg:
               - "Docker: {{ 'installed - ' + docker_version.stdout if docker_version.rc == 0 else 'not installed' }}"
               - "Go: {{ 'installed - ' + go_version.stdout if go_version.rc == 0 else 'not installed' }}"
               - "kubectl: {{ 'installed' if kubectl_version.rc == 0 else 'not installed' }}"
+              - "Hugo: {{ 'installed - ' + hugo_version.stdout if hugo_version.rc == 0 else 'not installed' }}"
 
     - name: Verification - Security tools
       tags:
