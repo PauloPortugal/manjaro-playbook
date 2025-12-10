@@ -172,16 +172,16 @@ bump_version() {
     # Bump according to type
     case $bump_type in
         major)
-            ((major++))
+            major=$((major + 1))
             minor=0
             patch=0
             ;;
         minor)
-            ((minor++))
+            minor=$((minor + 1))
             patch=0
             ;;
         patch)
-            ((patch++))
+            patch=$((patch + 1))
             ;;
         *)
             log_error "Invalid bump type: $bump_type"
