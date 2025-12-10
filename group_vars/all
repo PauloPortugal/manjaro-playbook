@@ -20,6 +20,7 @@ developer_stack:
     - ansible
     - ansible-lint
     - clojure
+    - dart-sass
     - dbeaver
     - docker
     - docker-compose
