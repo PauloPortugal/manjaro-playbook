@@ -6,6 +6,7 @@ developer_stack:
   - ansible
   - ansible-lint
   - clojure
+  - dart-sass
   - dbeaver
   - docker
   - docker-compose
@@ -14,9 +15,11 @@ developer_stack:
   - go-yq
   - gradle
   - hub
+  - hugo
   - jdk8-openjdk
   - jdk11-openjdk
   - jdk17-openjdk
+  - jdk21-openjdk
   - jq
   - jre8-openjdk
   - jre8-openjdk-headless
