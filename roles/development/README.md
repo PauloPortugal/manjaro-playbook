@@ -135,7 +135,6 @@ All variables are defined in `group_vars/all`:
 **Development Tools:**
 - postman-bin - API testing
 - nvm - Node version manager
-- heroku-cli - Heroku deployment
 - scala - Scala language
 - tfswitch-bin - Terraform version manager
 
