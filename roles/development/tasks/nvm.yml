@@ -1,9 +1,8 @@
 ---
 - name: Get latest release of the Node Version Manager (nvm) repository
-  community.general.github_release:
-    user: nvm-sh
-    repo: nvm
-    action: latest_release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/nvm-sh/nvm/releases/latest
+    return_content: true
   register: nvm_latest_version
   tags:
     - nvm
@@ -12,9 +11,9 @@
 - name: Install nvm
   ansible.builtin.shell: |
     set -o pipefail
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest_version.tag }}/install.sh | zsh
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_latest_version.json.tag_name }}/install.sh | bash
   args:
-    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+    creates: "{{ ansible_facts['env']['HOME'] }}/.nvm/nvm.sh"
   tags:
     - nvm
     - development
