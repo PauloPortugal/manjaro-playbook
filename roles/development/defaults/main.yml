@@ -47,7 +47,6 @@ developer_stack_aur:
   - nancy-bin
   - nvm
   - postman-bin
-  - robo3t-bin
   - scala
   - tfswitch-bin
 

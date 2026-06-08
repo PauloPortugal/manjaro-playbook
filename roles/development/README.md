@@ -131,7 +131,6 @@ All variables are defined in `group_vars/all`:
 **Databases:**
 - mongodb-bin, mongodb-tools-bin - MongoDB database
 - mongosh-bin - MongoDB shell
-- robo3t-bin - MongoDB GUI
 
 **Development Tools:**
 - postman-bin - API testing
