@@ -10,7 +10,6 @@ editors:
 editors_aur:
   - jetbrains-toolbox
   - visual-studio-code-bin
-  - xmind
 
 # Git default editor
 git_default_editor: vim

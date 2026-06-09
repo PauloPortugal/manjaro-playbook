@@ -3,5 +3,8 @@
 
 # Virtualization tools
 virtualization:
-  - vagrant
   - virtualbox
+
+# AUR Virtualization tools
+virtualization_aur:
+  - vagrant

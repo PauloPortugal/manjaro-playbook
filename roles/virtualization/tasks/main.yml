@@ -7,6 +7,21 @@
   tags:
     - virtualization
 
+- name: Install virtualization tools from Arch User Repository
+  ansible.builtin.shell: |
+    set -o pipefail
+    pamac build -d --no-confirm {{ item }} | grep "is up to date"
+    if [ $? != 0 ]; then
+      pamac build --no-confirm {{ item }}
+    fi
+  loop: "{{ virtualization_aur }}"
+  register: command_result
+  failed_when: command_result.rc != 0
+  changed_when: "'successfully' in command_result.stdout"
+  tags:
+    - virtualization
+    - aur
+
 - name: Get the Linux kernel version
   register: kernel_version
   ansible.builtin.shell: |
@@ -61,7 +76,6 @@
   register: command_result
   failed_when: command_result.rc != 0
   changed_when: "'successfully' in command_result.stdout"
-  become: true
   tags:
     - virtualization
     - oracle

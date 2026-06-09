@@ -13,11 +13,16 @@
   ansible.builtin.import_tasks: go.yml
 
 - name: Install Developer Tools from Arch User Repository
-  ansible.builtin.script: ../../../aur/install-aur.sh {{ item }}
+  ansible.builtin.shell: |
+    set -o pipefail
+    pamac build -d --no-confirm {{ item }} | grep "is up to date"
+    if [ $? != 0 ]; then
+      pamac build --no-confirm {{ item }}
+    fi
   loop: "{{ developer_stack_aur }}"
-  register: install_result
-  changed_when: install_result.rc == 0
-  failed_when: install_result.rc != 0 and install_result.rc != 255
+  register: command_result
+  failed_when: command_result.rc != 0
+  changed_when: "'successfully' in command_result.stdout"
   tags:
     - dev-tools-aur
     - development-aur
@@ -32,6 +37,3 @@
 
 - name: Configure Emacs
   ansible.builtin.import_tasks: emacs-config.yml
-
-- name: Configure Tesseract
-  ansible.builtin.import_tasks: tesseract.yml
