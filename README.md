@@ -104,9 +104,9 @@ Roles supported:
 | printers       | Install printer drivers                                                                                          |
 | browsers       | Install tor, google-chrome and chromedriver                                                                      |
 | audio-tools    | Install audacity                                                                                                 |
-| dev-tools      | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, kubectx, kubefwd, hub and heroku  |
+| dev-tools      | Install jq, xq, docker, docker-compose, go, nodejs, npm, nvm, jre8, jre10, maven, clojure, leiningen, sbt, scala, minikube, kubectl, kubectx, kubefwd and hub  |
 | cloud-tools    | Install google-cloud-sdk                                                                                         |
-| editors        | Install vim, emacs, gimp, Intellij + JetBrains Toolbox, Goland, Visual Studio Code and Xmind                  |
+| editors        | Install vim, emacs, gimp, Intellij + JetBrains Toolbox, Goland and Visual Studio Code                         |
 | media          | Install Spotify and Peek (GIF Screen recorder)                                                                   |
 | multimedia     | Install gimp, darktable and kdenlive                                                                                       |
 | gnome          | Configure the desktop environment                                                                                |
