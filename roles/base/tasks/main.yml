@@ -25,7 +25,6 @@
       pamac build --no-confirm {{ item }}
     fi
   loop: "{{ utils_aur }}"
-  become: true
   register: command_result
   failed_when: command_result.rc != 0
   changed_when: "'successfully' in command_result.stdout"
