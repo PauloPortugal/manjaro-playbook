@@ -1,10 +1,17 @@
 ---
-- name: Ensure that clamav-freshclam is not running in order to update the database
+- name: Stop clamav-freshclam to allow manual database update
   ansible.builtin.systemd:
     state: stopped
     name: clamav-freshclam
   become: true
-  notify: freshclam
+  tags:
+    - security
+    - clamav
+
+- name: Update ClamAV virus database
+  ansible.builtin.command: freshclam
+  become: true
+  changed_when: true
   tags:
     - security
     - clamav
