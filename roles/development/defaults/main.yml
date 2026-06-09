@@ -48,8 +48,3 @@ developer_stack_aur:
   - postman-bin
   - scala
   - tfswitch-bin
-
-# Tesseract OCR
-tesseract:
-  - tesseract
-  - tesseract-data-eng

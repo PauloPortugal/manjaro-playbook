@@ -37,6 +37,3 @@
 
 - name: Configure Emacs
   ansible.builtin.import_tasks: emacs-config.yml
-
-- name: Configure Tesseract
-  ansible.builtin.import_tasks: tesseract.yml

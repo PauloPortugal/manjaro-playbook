@@ -10,7 +10,6 @@ The `development` role installs a comprehensive development stack including:
 - Container tools (Docker, Docker Compose, Kubernetes)
 - Cloud tools (AWS CLI, Terraform)
 - Code editors configuration (Emacs)
-- OCR tools (Tesseract)
 - Version control enhancements
 - Database tools (DBeaver, MongoDB, Robo3T)
 
@@ -32,8 +31,6 @@ All variables are defined in `group_vars/all`:
 |----------|------|-------------|
 | `developer_stack` | list | Dev tools from official repos |
 | `developer_stack_aur` | list | Dev tools from AUR |
-| `tesseract` | list | OCR engine and language data |
-
 ### User Variables
 
 | Variable | Required | Description |
@@ -73,10 +70,6 @@ All variables are defined in `group_vars/all`:
 6. **Configure Emacs**
    - Imports `emacs-config.yml` tasks
    - Sets up Emacs Prelude configuration
-
-7. **Configure Tesseract**
-   - Imports `tesseract.yml` tasks
-   - Installs OCR engine and language data
 
 ## Installed Packages
 
@@ -160,11 +153,6 @@ All variables are defined in `group_vars/all`:
 - Checks for existing Emacs Prelude configuration
 - Installs Emacs Prelude if not present
 - Sets up Emacs modules
-
-### Tesseract (tasks/tesseract.yml)
-- Installs Tesseract OCR engine
-- Installs English language data
-- Ready for text recognition tasks
 
 ## Tags
 
