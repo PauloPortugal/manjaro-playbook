@@ -34,10 +34,10 @@ developer_stack:
 
 # Developer tools from AUR
 developer_stack_aur:
-  - aws-cli-v2-bin
+  - aws-cli-bin
   - aws-session-manager-plugin
-  - golangci-lint
-  - go-swagger-bin
+  - golangci-lint-bin
+  - swag-bin
   - kubefwd-bin
   - lens-bin
   - mongosh-bin
