@@ -8,4 +8,4 @@ comms:
 # Communication apps from AUR
 comms_aur:
   - slack-desktop
-  - teams
+  - teams-for-linux-bin
